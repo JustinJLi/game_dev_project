@@ -346,6 +346,9 @@ scale = Vector2(3, 3)
 shadow_enabled = true
 texture = ExtResource("44_tqx7a")
 
+[node name="reload" type="Timer" parent="Player"]
+one_shot = true
+
 [node name="Enemy" type="CharacterBody2D" parent="."]
 position = Vector2(807, 388)
 scale = Vector2(0.5, 0.5)
@@ -374,4 +377,5 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_g8q00")
 
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Player/reload" to="Player" method="_on_reload_timeout"]
 [connection signal="area_entered" from="Enemy/enemy_hitbox" to="Enemy" method="_on_area_2d_area_entered"]
