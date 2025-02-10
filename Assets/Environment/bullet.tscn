@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccpv7j3qo54yc"]
+
+[ext_resource type="Script" path="res://Assets/Environment/bullet.gd" id="1_sh25a"]
+[ext_resource type="Texture2D" uid="uid://doayxogt7gyhx" path="res://Assets/Player/hand_gun_bullet.png" id="1_vu8jg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n0hi8"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xiae"]
+size = Vector2(6, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsn6q"]
+size = Vector2(6, 10)
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_sh25a")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_n0hi8")
+texture = ExtResource("1_vu8jg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1xiae")
+
+[node name="bullet_hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_hitbox"]
+shape = SubResource("RectangleShape2D_wsn6q")
+
+[connection signal="area_entered" from="bullet_hitbox" to="." method="_on_bullet_hitbox_area_entered"]
+[connection signal="body_entered" from="bullet_hitbox" to="." method="_on_bullet_hitbox_body_entered"]
