@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://cycitxx4lav04"]
+[gd_scene load_steps=75 format=4 uid="uid://cycitxx4lav04"]
 
 [ext_resource type="Texture2D" uid="uid://crop6ahqsjvk1" path="res://Assets/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_0.png" id="1_5pvdt"]
 [ext_resource type="Script" path="res://player.gd" id="1_j0qcm"]
@@ -48,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://d4g5tpln6pqfb" path="res://Assets/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_2.png" id="44_gpj6q"]
 [ext_resource type="Texture2D" uid="uid://v6sk7badwnux" path="res://Assets/spotlight.png" id="44_tqx7a"]
 [ext_resource type="Texture2D" uid="uid://d3nmjhmb8bxlr" path="res://Assets/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_3.png" id="45_h7wmb"]
+[ext_resource type="Texture2D" uid="uid://ogogk33yj36j" path="res://Assets/Light.png" id="45_qmwiw"]
 [ext_resource type="Texture2D" uid="uid://cev74yiypuq5" path="res://Assets/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_4.png" id="46_ieawd"]
 [ext_resource type="Texture2D" uid="uid://dtxro2lyatcba" path="res://Assets/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_5.png" id="47_g3ead"]
 [ext_resource type="Texture2D" uid="uid://eydjqsj555kt" path="res://Assets/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_6.png" id="48_jbk2c"]
@@ -307,7 +308,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAA
 tile_set = SubResource("TileSet_p7kar")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(89, 70)
+position = Vector2(100, 265)
 scale = Vector2(0.25, 0.25)
 collision_mask = 2
 motion_mode = 1
@@ -340,11 +341,16 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="PointLight2D" type="PointLight2D" parent="Player"]
-position = Vector2(10, 0)
+[node name="PlayerLight" type="PointLight2D" parent="Player"]
+position = Vector2(25, 0)
 scale = Vector2(3, 3)
 shadow_enabled = true
 texture = ExtResource("44_tqx7a")
+
+[node name="Flashlight" type="PointLight2D" parent="Player"]
+position = Vector2(532, 40)
+shadow_enabled = true
+texture = ExtResource("45_qmwiw")
 
 [node name="reload" type="Timer" parent="Player"]
 one_shot = true
@@ -404,6 +410,9 @@ collision_mask = 5
 position = Vector2(2, 6)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_g8q00")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.393086, 0.393086, 0.393085, 1)
 
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Player/reload" to="Player" method="_on_reload_timeout"]
