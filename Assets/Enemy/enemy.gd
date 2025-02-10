@@ -6,8 +6,7 @@ var motion = Vector2()
 func _ready() -> void:
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var Player = get_parent().get_node("Player")
 	
 	position += (Player.position - position) / 100
