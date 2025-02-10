@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://cycitxx4lav04"]
+[gd_scene load_steps=77 format=4 uid="uid://cycitxx4lav04"]
 
 [ext_resource type="Texture2D" uid="uid://crop6ahqsjvk1" path="res://Assets/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_0.png" id="1_5pvdt"]
 [ext_resource type="Script" path="res://player.gd" id="1_j0qcm"]
@@ -218,6 +218,9 @@ animations = [{
 radius = 80.0
 height = 228.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bhy5h"]
+light_mode = 2
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tl3w3"]
 animations = [{
 "frames": [{
@@ -294,6 +297,9 @@ height = 144.0
 radius = 37.0
 height = 144.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2clt3"]
+light_mode = 2
+
 [node name="world" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -365,6 +371,7 @@ script = ExtResource("42_nx6qj")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+material = SubResource("CanvasItemMaterial_bhy5h")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_tl3w3")
 animation = &"move"
@@ -393,6 +400,7 @@ script = ExtResource("42_nx6qj")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy2"]
+material = SubResource("CanvasItemMaterial_2clt3")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_tl3w3")
 animation = &"move"
