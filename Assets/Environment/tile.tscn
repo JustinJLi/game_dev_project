@@ -9,7 +9,6 @@ size = Vector2(252, 252)
 polygon = PackedVector2Array(-128, -128, -128, 128, 128, 128, 128, -128)
 
 [node name="Tile" type="Node2D"]
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0625, 0.0625)
