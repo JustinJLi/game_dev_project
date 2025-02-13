@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1ao6hhk8ljdm"]
+
+[ext_resource type="Script" path="res://Assets/Interaction/interaction_manager.gd" id="1_4uufc"]
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://Assets/TooMuchInk.ttf" id="2_eoeb7"]
+
+[node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_4uufc")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_eoeb7")
+text = "[E] to Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
