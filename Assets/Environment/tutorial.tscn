@@ -78,7 +78,6 @@ position = Vector2(0.5, 27.5)
 shape = SubResource("RectangleShape2D_kus0f")
 
 [node name="SceneTransition" parent="." instance=ExtResource("6_umigm")]
-visible = false
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(187, 459)

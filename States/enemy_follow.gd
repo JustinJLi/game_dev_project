@@ -4,7 +4,7 @@ class_name enemy_follow
 var player: CharacterBody2D
 
 @export var enemy: CharacterBody2D
-@export var move_speed := 100.0
+@export var move_speed := 150.0
 
 func Enter():
 	player = get_tree().get_first_node_in_group("Player")

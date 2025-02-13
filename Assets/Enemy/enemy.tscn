@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://clsa2mtofaw5a"]
+[gd_scene load_steps=30 format=3 uid="uid://clsa2mtofaw5a"]
 
 [ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_g3y21"]
 [ext_resource type="Texture2D" uid="uid://b7g3eqo03h8ec" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_0.png" id="2_k02w6"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://States/state_machine.gd" id="22_qwo38"]
 [ext_resource type="Script" path="res://States/enemy_follow.gd" id="23_k1osr"]
 [ext_resource type="Script" path="res://States/idle_enemy.gd" id="24_vae1h"]
+[ext_resource type="AudioStream" uid="uid://e5a66svb0fl1" path="res://Assets/detected.mp3" id="25_hqxeu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bhy5h"]
 light_mode = 2
@@ -145,5 +146,8 @@ enemy = NodePath("../..")
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("24_vae1h")
 enemy = NodePath("../..")
+
+[node name="Detected" type="AudioStreamPlayer2D" parent="StateMachine/Idle"]
+stream = ExtResource("25_hqxeu")
 
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_area_2d_area_entered"]
