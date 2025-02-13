@@ -1,0 +1,237 @@
+[gd_scene load_steps=47 format=3 uid="uid://iy488y8isrrk"]
+
+[ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_cmp4a"]
+[ext_resource type="Texture2D" uid="uid://crop6ahqsjvk1" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_0.png" id="2_foqwj"]
+[ext_resource type="Texture2D" uid="uid://d11jvcsntn7ma" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_1.png" id="3_eeghb"]
+[ext_resource type="Texture2D" uid="uid://b81h2jqpidvee" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_2.png" id="4_4vkxm"]
+[ext_resource type="Texture2D" uid="uid://coee4l2icpyrp" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_3.png" id="5_pb5hc"]
+[ext_resource type="Texture2D" uid="uid://cnwht2y1la8ib" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_4.png" id="6_53g4c"]
+[ext_resource type="Texture2D" uid="uid://cckw3uqq0hyoe" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_5.png" id="7_bclpp"]
+[ext_resource type="Texture2D" uid="uid://c4d5k7ss5ln0g" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_6.png" id="8_8j52w"]
+[ext_resource type="Texture2D" uid="uid://twe8p6by2tr6" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_7.png" id="9_ph6l0"]
+[ext_resource type="Texture2D" uid="uid://ch47vsuajhymd" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_8.png" id="10_bwfqs"]
+[ext_resource type="Texture2D" uid="uid://dtascc123q8j7" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_9.png" id="11_sr6g2"]
+[ext_resource type="Texture2D" uid="uid://cscvpy575j2d2" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_10.png" id="12_fe6vv"]
+[ext_resource type="Texture2D" uid="uid://yjul07lkd4ui" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_11.png" id="13_x7wy4"]
+[ext_resource type="Texture2D" uid="uid://dyxleyphdc6w0" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_12.png" id="14_4gere"]
+[ext_resource type="Texture2D" uid="uid://cx578wxqenml3" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_13.png" id="15_e2k1y"]
+[ext_resource type="Texture2D" uid="uid://bvgsgwq3k7xhq" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_14.png" id="16_ckiuh"]
+[ext_resource type="Texture2D" uid="uid://c8loiduhqydjf" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_15.png" id="17_d2ycd"]
+[ext_resource type="Texture2D" uid="uid://ksn4rgrx1ag0" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_16.png" id="18_506c4"]
+[ext_resource type="Texture2D" uid="uid://wr82eu8a58tn" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_17.png" id="19_5d1ll"]
+[ext_resource type="Texture2D" uid="uid://bi5geajqnijn" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_18.png" id="20_tde03"]
+[ext_resource type="Texture2D" uid="uid://cqv4jvhx5luck" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_19.png" id="21_01j8w"]
+[ext_resource type="Texture2D" uid="uid://daja0nqwuqeaq" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_0.png" id="22_fjhnf"]
+[ext_resource type="Texture2D" uid="uid://cxjx2x6kx6kwv" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_1.png" id="23_nwsqo"]
+[ext_resource type="Texture2D" uid="uid://bcoo1xfy5h2o8" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_2.png" id="24_6h0sa"]
+[ext_resource type="Texture2D" uid="uid://c4m2vw3hkstdd" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_3.png" id="25_g1w74"]
+[ext_resource type="Texture2D" uid="uid://dhfmbg5ytt4dk" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_4.png" id="26_85jld"]
+[ext_resource type="Texture2D" uid="uid://dj74y6fdbqt5h" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_5.png" id="27_igg6t"]
+[ext_resource type="Texture2D" uid="uid://c2ogmqdaybdxa" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_6.png" id="28_0bn8d"]
+[ext_resource type="Texture2D" uid="uid://cqrc2c0d53yc7" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_7.png" id="29_qwvf8"]
+[ext_resource type="Texture2D" uid="uid://b6xeqc2p5n1u4" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_8.png" id="30_gmh0w"]
+[ext_resource type="Texture2D" uid="uid://bfjgt4mp62nqe" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_9.png" id="31_rwn54"]
+[ext_resource type="Texture2D" uid="uid://df8y2k1ifhl0" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_10.png" id="32_gyiwk"]
+[ext_resource type="Texture2D" uid="uid://cqtqpa8ss60o5" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_11.png" id="33_k6wqq"]
+[ext_resource type="Texture2D" uid="uid://xpfx7r8srfve" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_12.png" id="34_5mhqq"]
+[ext_resource type="Texture2D" uid="uid://bvu1h7cplmqc" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_13.png" id="35_8joyd"]
+[ext_resource type="Texture2D" uid="uid://bmp7mmfqmamtd" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_14.png" id="36_raj5n"]
+[ext_resource type="Texture2D" uid="uid://b80sje4v0gqnn" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_15.png" id="37_yfnl6"]
+[ext_resource type="Texture2D" uid="uid://xhf5dd41tx00" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_16.png" id="38_hn6ct"]
+[ext_resource type="Texture2D" uid="uid://dy7fiptetjyaf" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_17.png" id="39_a8vc2"]
+[ext_resource type="Texture2D" uid="uid://bcrltbr5djdb6" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_18.png" id="40_hyudy"]
+[ext_resource type="Texture2D" uid="uid://ci48s83xpb4es" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_19.png" id="41_dwuw5"]
+[ext_resource type="Texture2D" uid="uid://ogogk33yj36j" path="res://Assets/Player/Light.png" id="42_k7mab"]
+[ext_resource type="Texture2D" uid="uid://boebtnul60g3p" path="res://Assets/Player/spotlight.png" id="43_8g1wg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w68qo"]
+radius = 80.0
+height = 188.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iblyq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_foqwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eeghb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4vkxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pb5hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_53g4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bclpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8j52w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ph6l0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bwfqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sr6g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fe6vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_x7wy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4gere")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_e2k1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ckiuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d2ycd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_506c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5d1ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_tde03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_01j8w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_fjhnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_nwsqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6h0sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_g1w74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_85jld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_igg6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_0bn8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_qwvf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_gmh0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_rwn54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_gyiwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_k6wqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_5mhqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_8joyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_raj5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_yfnl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_hn6ct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_a8vc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_hyudy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_dwuw5")
+}],
+"loop": true,
+"name": &"move",
+"speed": 30.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pvgvg"]
+radius = 80.0
+height = 228.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(87, 262)
+scale = Vector2(0.25, 0.25)
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_cmp4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_w68qo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -8)
+sprite_frames = SubResource("SpriteFrames_iblyq")
+animation = &"idle"
+frame_progress = 0.27474
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(135, 46)
+
+[node name="player_hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(25, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pvgvg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Flashlight" type="PointLight2D" parent="."]
+position = Vector2(20, 0)
+shadow_enabled = true
+texture = ExtResource("42_k7mab")
+offset = Vector2(520, 35)
+
+[node name="PlayerLight" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("43_8g1wg")
+offset = Vector2(25, 0)
+
+[node name="reload" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

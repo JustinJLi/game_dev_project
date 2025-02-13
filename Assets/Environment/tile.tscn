@@ -8,7 +8,7 @@ size = Vector2(252, 252)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ppfbc"]
 polygon = PackedVector2Array(-128, -128, -128, 128, 128, 128, 128, -128)
 
-[node name="Tile" type="Node2D"]
+[node name="Tile" type="Node2D" groups=["Environment"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0625, 0.0625)

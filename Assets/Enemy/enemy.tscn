@@ -1,0 +1,149 @@
+[gd_scene load_steps=29 format=3 uid="uid://clsa2mtofaw5a"]
+
+[ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_g3y21"]
+[ext_resource type="Texture2D" uid="uid://b7g3eqo03h8ec" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_0.png" id="2_k02w6"]
+[ext_resource type="Texture2D" uid="uid://4ni2exsdocp2" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_1.png" id="3_q4q6m"]
+[ext_resource type="Texture2D" uid="uid://d4g5tpln6pqfb" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_2.png" id="4_qf21x"]
+[ext_resource type="Texture2D" uid="uid://d3nmjhmb8bxlr" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_3.png" id="5_qa8o2"]
+[ext_resource type="Texture2D" uid="uid://cev74yiypuq5" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_4.png" id="6_mx0ny"]
+[ext_resource type="Texture2D" uid="uid://dtxro2lyatcba" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_5.png" id="7_lp6ui"]
+[ext_resource type="Texture2D" uid="uid://eydjqsj555kt" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_6.png" id="8_paim5"]
+[ext_resource type="Texture2D" uid="uid://ctwl8wfmmvkur" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_7.png" id="9_qmvow"]
+[ext_resource type="Texture2D" uid="uid://lt057k24c675" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_8.png" id="10_0dso3"]
+[ext_resource type="Texture2D" uid="uid://c5ba1juxytbel" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_9.png" id="11_iiowl"]
+[ext_resource type="Texture2D" uid="uid://bd61qykbog5ng" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_10.png" id="12_vey5m"]
+[ext_resource type="Texture2D" uid="uid://pxkkv0ud1b2r" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_11.png" id="13_v0j6f"]
+[ext_resource type="Texture2D" uid="uid://b1j4ritncxr5u" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_12.png" id="14_vpetd"]
+[ext_resource type="Texture2D" uid="uid://byj87rvsxkb4g" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_13.png" id="15_qq1q6"]
+[ext_resource type="Texture2D" uid="uid://d27w0wxemk0l2" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_14.png" id="16_v84ec"]
+[ext_resource type="Texture2D" uid="uid://brr623e3isfbj" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_15.png" id="17_nxy3h"]
+[ext_resource type="Texture2D" uid="uid://d0wh4b7oni8si" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_16.png" id="18_jgy4b"]
+[ext_resource type="Texture2D" uid="uid://bl5lkhw1kpidi" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_17.png" id="19_vrf71"]
+[ext_resource type="Texture2D" uid="uid://cdh2iehj6if66" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_18.png" id="20_0pbio"]
+[ext_resource type="Texture2D" uid="uid://qbtmj12th42u" path="res://Assets/Player/Top_Down_Survivor 2/rifle/move/survivor-move_rifle_19.png" id="21_uutwg"]
+[ext_resource type="Script" path="res://States/state_machine.gd" id="22_qwo38"]
+[ext_resource type="Script" path="res://States/enemy_follow.gd" id="23_k1osr"]
+[ext_resource type="Script" path="res://States/idle_enemy.gd" id="24_vae1h"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bhy5h"]
+light_mode = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tl3w3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k02w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q4q6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qf21x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qa8o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mx0ny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lp6ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_paim5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qmvow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0dso3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_iiowl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vey5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v0j6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vpetd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qq1q6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v84ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nxy3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_jgy4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_vrf71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0pbio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_uutwg")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdmi2"]
+radius = 37.0
+height = 144.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8q00"]
+radius = 37.0
+height = 144.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+position = Vector2(807, 388)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_g3y21")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_bhy5h")
+position = Vector2(-2.125, 1.75)
+scale = Vector2(0.486422, 0.48301)
+sprite_frames = SubResource("SpriteFrames_tl3w3")
+animation = &"move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fdmi2")
+
+[node name="enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
+position = Vector2(2, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_g8q00")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("22_qwo38")
+initial_state = NodePath("Idle")
+
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("23_k1osr")
+enemy = NodePath("../..")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("24_vae1h")
+enemy = NodePath("../..")
+
+[connection signal="area_entered" from="enemy_hitbox" to="." method="_on_area_2d_area_entered"]

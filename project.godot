@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="final_project"
-run/main_scene="res://world.tscn"
+run/main_scene="res://Assets/Environment/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=2500
 window/size/viewport_height=1500
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+Environment=""
 
 [input]
 
@@ -56,5 +60,10 @@ shoot={
 reload={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }

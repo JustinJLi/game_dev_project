@@ -63,6 +63,10 @@ func kill():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print(body.name + " entered player.")
+	
+	if body.name == "door":
+		if Input.is_action_just_pressed("interact"):
+			get_tree().change_scene_to_file("res://Assets/Environment/world.tscn")
 
 func reload():
 	if ammo < 8:

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://blj8jwv4ew0en"]
+
+[ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_t4kit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cv8d2"]
+size = Vector2(253.968, 253.968)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a1ksl"]
+polygon = PackedVector2Array(-126.984, -126.984, 126.984, -126.984, 126.984, 126.984, -126.984, 126.984)
+
+[node name="Door" type="Node2D" groups=["Environment"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.588235, 0.294118, 0, 1)
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("1_t4kit")
+
+[node name="door" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/door"]
+position = Vector2(3.78442e-06, -3.78442e-06)
+shape = SubResource("RectangleShape2D_cv8d2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_a1ksl")
