@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
 	print("Bullet hit " + area.name)
-	if get_tree().get_nodes_in_group("Enemies"):
+	if get_tree().get_nodes_in_group("Enemies") or get_tree().get_nodes_in_group("Hostages"):
 		queue_free()
 
 

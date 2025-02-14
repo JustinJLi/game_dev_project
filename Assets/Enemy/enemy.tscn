@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://clsa2mtofaw5a"]
+[gd_scene load_steps=30 format=3 uid="uid://clsa2mtofaw5a"]
 
 [ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_g3y21"]
 [ext_resource type="Texture2D" uid="uid://cn0u6bra5lirc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_0.png" id="2_chf8q"]
@@ -25,6 +25,9 @@
 [ext_resource type="Script" path="res://States/enemy_follow.gd" id="23_k1osr"]
 [ext_resource type="Script" path="res://States/idle_enemy.gd" id="24_vae1h"]
 [ext_resource type="AudioStream" uid="uid://e5a66svb0fl1" path="res://Assets/detected.mp3" id="25_hqxeu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7p6bn"]
+light_mode = 2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tl3w3"]
 animations = [{
@@ -112,6 +115,7 @@ script = ExtResource("1_g3y21")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_7p6bn")
 position = Vector2(-2.125, 1.75)
 scale = Vector2(0.486422, 0.48301)
 sprite_frames = SubResource("SpriteFrames_tl3w3")

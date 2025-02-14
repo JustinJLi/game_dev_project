@@ -220,12 +220,14 @@ position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
 [node name="Flashlight" type="PointLight2D" parent="."]
-position = Vector2(20, 0)
+position = Vector2(-20, 7.99998)
+scale = Vector2(1.30514, 0.912671)
 shadow_enabled = true
 texture = ExtResource("42_k7mab")
 offset = Vector2(520, 35)
 
 [node name="PlayerLight" type="PointLight2D" parent="."]
+scale = Vector2(1.1, 1.1)
 shadow_enabled = true
 texture = ExtResource("43_8g1wg")
 offset = Vector2(25, 0)

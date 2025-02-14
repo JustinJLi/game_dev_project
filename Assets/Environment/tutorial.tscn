@@ -1,12 +1,14 @@
-[gd_scene load_steps=38 format=4 uid="uid://bw2gqnt3c3a4c"]
+[gd_scene load_steps=44 format=4 uid="uid://bw2gqnt3c3a4c"]
 
 [ext_resource type="Script" path="res://Assets/Environment/tutorial.gd" id="1_o7ci4"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_rl55e"]
 [ext_resource type="PackedScene" uid="uid://dtuerfvovpydv" path="res://Assets/Environment/tile.tscn" id="2_0veuk"]
 [ext_resource type="PackedScene" uid="uid://blj8jwv4ew0en" path="res://Assets/Environment/door.tscn" id="3_khqpi"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="4_837nf"]
+[ext_resource type="Script" path="res://Assets/Environment/Notes/enemy_tutorial.gd" id="6_gh1e4"]
 [ext_resource type="PackedScene" uid="uid://d32hk85x1qgl" path="res://Assets/Environment/scene_transition.tscn" id="6_umigm"]
 [ext_resource type="PackedScene" uid="uid://cheyfa7hyapul" path="res://Assets/Environment/Notes/note.tscn" id="7_1mx8q"]
+[ext_resource type="Script" path="res://Assets/Environment/Notes/hostage_tutorial.gd" id="7_3w28u"]
 [ext_resource type="Script" path="res://Assets/Environment/Notes/controls.gd" id="8_nbqye"]
 [ext_resource type="Texture2D" uid="uid://boebtnul60g3p" path="res://Assets/Player/spotlight.png" id="9_tqwli"]
 [ext_resource type="Script" path="res://Assets/Enemy/dummy.gd" id="10_pjvba"]
@@ -30,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://iv76t02kgqjf" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_17.png" id="28_4c2ye"]
 [ext_resource type="Texture2D" uid="uid://bpcymjborcell" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_18.png" id="29_wv5g8"]
 [ext_resource type="Texture2D" uid="uid://cahjtm20v1eyd" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_19.png" id="30_84av4"]
+[ext_resource type="Texture2D" uid="uid://beh3564ag28ye" path="res://Assets/Hostage/Citizens/Walk1Civ1.png" id="32_vo881"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6xtw8"]
 resource_name = "Wall"
@@ -42,6 +45,8 @@ scenes/1/scene = ExtResource("3_khqpi")
 [sub_resource type="TileSet" id="TileSet_8pscn"]
 sources/0 = SubResource("TileSetScenesCollectionSource_6xtw8")
 sources/1 = SubResource("TileSetScenesCollectionSource_p7uar")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rvblb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kus0f"]
 size = Vector2(27, 75)
@@ -121,6 +126,21 @@ animations = [{
 radius = 88.0
 height = 248.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vj2r8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_vo881")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7u4h"]
+radius = 57.1429
+height = 171.428
+
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_o7ci4")
 
@@ -156,12 +176,20 @@ tile_set = SubResource("TileSet_8pscn")
 color = Color(0.544974, 0.544974, 0.544974, 1)
 
 [node name="Note" parent="." instance=ExtResource("7_1mx8q")]
-position = Vector2(637, 187)
+material = SubResource("CanvasItemMaterial_rvblb")
+position = Vector2(898, 286)
+
+[node name="EnemyTutorial" parent="." instance=ExtResource("7_1mx8q")]
+position = Vector2(186, 161)
+script = ExtResource("6_gh1e4")
+
+[node name="HostageTutorial" parent="." instance=ExtResource("7_1mx8q")]
+position = Vector2(184, 413)
+script = ExtResource("7_3w28u")
 
 [node name="Controls" parent="." instance=ExtResource("7_1mx8q")]
-position = Vector2(745, 188)
+position = Vector2(313, 280)
 script = ExtResource("8_nbqye")
-metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_837nf")]
 
@@ -175,15 +203,21 @@ shape = SubResource("RectangleShape2D_kus0f")
 
 [node name="SceneTransition" parent="." instance=ExtResource("6_umigm")]
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(190, 116)
+scale = Vector2(1.31641, 0.5)
+shadow_enabled = true
+texture = ExtResource("9_tqwli")
+
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(187, 459)
 scale = Vector2(1.21094, 0.5)
 shadow_enabled = true
 texture = ExtResource("9_tqwli")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(190, 116)
-scale = Vector2(1.31641, 0.5)
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(466, 291)
+scale = Vector2(2.74219, 0.734375)
 shadow_enabled = true
 texture = ExtResource("9_tqwli")
 
@@ -193,6 +227,7 @@ rotation = 1.5708
 scale = Vector2(0.25, 0.25)
 collision_layer = 2
 collision_mask = 5
+motion_mode = 1
 script = ExtResource("10_pjvba")
 metadata/_edit_group_ = true
 
@@ -211,6 +246,7 @@ rotation = 1.5708
 scale = Vector2(0.25, 0.25)
 collision_layer = 2
 collision_mask = 5
+motion_mode = 1
 script = ExtResource("10_pjvba")
 metadata/_edit_group_ = true
 
@@ -222,5 +258,37 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy2"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_phej1")
+
+[node name="Dummy3" type="CharacterBody2D" parent="." groups=["Hostages"]]
+position = Vector2(133, 450)
+scale = Vector2(0.35, 0.35)
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("10_pjvba")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dummy3"]
+sprite_frames = SubResource("SpriteFrames_vj2r8")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy3"]
+shape = SubResource("CapsuleShape2D_s7u4h")
+
+[node name="Dummy4" type="CharacterBody2D" parent="." groups=["Hostages"]]
+position = Vector2(241, 450)
+scale = Vector2(0.35, 0.35)
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("10_pjvba")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dummy4"]
+sprite_frames = SubResource("SpriteFrames_vj2r8")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy4"]
+shape = SubResource("CapsuleShape2D_s7u4h")
 
 [connection signal="body_entered" from="tutorial_exit" to="." method="_on_tutorial_exit_body_entered"]
