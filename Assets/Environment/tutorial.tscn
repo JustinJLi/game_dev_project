@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bw2gqnt3c3a4c"]
+[gd_scene load_steps=38 format=4 uid="uid://bw2gqnt3c3a4c"]
 
 [ext_resource type="Script" path="res://Assets/Environment/tutorial.gd" id="1_o7ci4"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_rl55e"]
@@ -9,6 +9,27 @@
 [ext_resource type="PackedScene" uid="uid://cheyfa7hyapul" path="res://Assets/Environment/Notes/note.tscn" id="7_1mx8q"]
 [ext_resource type="Script" path="res://Assets/Environment/Notes/controls.gd" id="8_nbqye"]
 [ext_resource type="Texture2D" uid="uid://boebtnul60g3p" path="res://Assets/Player/spotlight.png" id="9_tqwli"]
+[ext_resource type="Script" path="res://Assets/Enemy/dummy.gd" id="10_pjvba"]
+[ext_resource type="Texture2D" uid="uid://cn0u6bra5lirc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_0.png" id="11_xhr8r"]
+[ext_resource type="Texture2D" uid="uid://byowjgsr0todr" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_1.png" id="12_dbaw6"]
+[ext_resource type="Texture2D" uid="uid://catuaqjwjl7c7" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_2.png" id="13_pat8s"]
+[ext_resource type="Texture2D" uid="uid://pc6flitxefvs" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_3.png" id="14_uthsj"]
+[ext_resource type="Texture2D" uid="uid://c1wsmo2y8nd1d" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_4.png" id="15_2frat"]
+[ext_resource type="Texture2D" uid="uid://bq8rymc8mf7nc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_5.png" id="16_6dyoj"]
+[ext_resource type="Texture2D" uid="uid://dii7qg0vf2abr" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_6.png" id="17_rpn7l"]
+[ext_resource type="Texture2D" uid="uid://c4kbpd5wqdmuj" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_7.png" id="18_a3jhn"]
+[ext_resource type="Texture2D" uid="uid://bsyodxeivxrdp" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_8.png" id="19_gnn6t"]
+[ext_resource type="Texture2D" uid="uid://cexoing42q6np" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_9.png" id="20_j2h7b"]
+[ext_resource type="Texture2D" uid="uid://cheijkntuep3w" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_10.png" id="21_gubf0"]
+[ext_resource type="Texture2D" uid="uid://bdysa2c6eblfu" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_11.png" id="22_64n8x"]
+[ext_resource type="Texture2D" uid="uid://ddlpm01nsliv1" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_12.png" id="23_cah8k"]
+[ext_resource type="Texture2D" uid="uid://6ph7w8qhewfq" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_13.png" id="24_wbjj0"]
+[ext_resource type="Texture2D" uid="uid://dkelsnfoxrotl" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_14.png" id="25_m5l57"]
+[ext_resource type="Texture2D" uid="uid://cg0powe2otlwj" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_15.png" id="26_65cnc"]
+[ext_resource type="Texture2D" uid="uid://cr2nwb8v7eyc5" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_16.png" id="27_ifwkx"]
+[ext_resource type="Texture2D" uid="uid://iv76t02kgqjf" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_17.png" id="28_4c2ye"]
+[ext_resource type="Texture2D" uid="uid://bpcymjborcell" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_18.png" id="29_wv5g8"]
+[ext_resource type="Texture2D" uid="uid://cahjtm20v1eyd" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_19.png" id="30_84av4"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6xtw8"]
 resource_name = "Wall"
@@ -24,6 +45,81 @@ sources/1 = SubResource("TileSetScenesCollectionSource_p7uar")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kus0f"]
 size = Vector2(27, 75)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rjkj7"]
+light_mode = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8tp6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_xhr8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dbaw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pat8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_uthsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2frat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6dyoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rpn7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_a3jhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gnn6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_j2h7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_gubf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_64n8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_cah8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_wbjj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_m5l57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_65cnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ifwkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_4c2ye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_wv5g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_84av4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phej1"]
+radius = 88.0
+height = 248.0
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_o7ci4")
@@ -90,5 +186,41 @@ position = Vector2(190, 116)
 scale = Vector2(1.31641, 0.5)
 shadow_enabled = true
 texture = ExtResource("9_tqwli")
+
+[node name="Dummy" type="CharacterBody2D" parent="." groups=["Enemies"]]
+position = Vector2(133, 118)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("10_pjvba")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dummy"]
+material = SubResource("CanvasItemMaterial_rjkj7")
+sprite_frames = SubResource("SpriteFrames_8tp6m")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_phej1")
+
+[node name="Dummy2" type="CharacterBody2D" parent="." groups=["Enemies"]]
+position = Vector2(241, 118)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("10_pjvba")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dummy2"]
+material = SubResource("CanvasItemMaterial_rjkj7")
+sprite_frames = SubResource("SpriteFrames_8tp6m")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy2"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_phej1")
 
 [connection signal="body_entered" from="tutorial_exit" to="." method="_on_tutorial_exit_body_entered"]
