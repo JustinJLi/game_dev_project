@@ -63,8 +63,6 @@ func kill():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print(body.name + " entered player.")
-	
-	
 
 func reload():
 	if ammo < 8:
