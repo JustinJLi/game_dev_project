@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://iy488y8isrrk"]
+[gd_scene load_steps=50 format=3 uid="uid://iy488y8isrrk"]
 
 [ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_cmp4a"]
 [ext_resource type="Texture2D" uid="uid://crop6ahqsjvk1" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_0.png" id="2_foqwj"]
@@ -43,6 +43,9 @@
 [ext_resource type="Texture2D" uid="uid://ci48s83xpb4es" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_19.png" id="41_dwuw5"]
 [ext_resource type="Texture2D" uid="uid://ogogk33yj36j" path="res://Assets/Player/Light.png" id="42_k7mab"]
 [ext_resource type="Texture2D" uid="uid://boebtnul60g3p" path="res://Assets/Player/spotlight.png" id="43_8g1wg"]
+[ext_resource type="AudioStream" uid="uid://cx2k0lq04gpb4" path="res://Assets/Player/reload_pistol.mp3" id="44_cghh7"]
+[ext_resource type="AudioStream" uid="uid://y506kyra8o7c" path="res://Assets/Player/empty_click.mp3" id="45_iyxq4"]
+[ext_resource type="AudioStream" uid="uid://ekhobpo8hkdo" path="res://Assets/Player/shooting_pistol.mp3" id="46_w1r8t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w68qo"]
 radius = 80.0
@@ -233,7 +236,17 @@ texture = ExtResource("43_8g1wg")
 offset = Vector2(25, 0)
 
 [node name="reload" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("44_cghh7")
+
+[node name="EmptyClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("45_iyxq4")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("46_w1r8t")
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

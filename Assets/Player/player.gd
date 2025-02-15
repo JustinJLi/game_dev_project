@@ -29,6 +29,7 @@ func _physics_process(delta):
 			fire()
 			print("Ammo in Magazine: " + str(ammo))
 		else:
+			$EmptyClick.play()
 			print("Out of Ammo! Reload!")
 	if Input.is_action_just_pressed("reload"):
 		reload()
@@ -54,9 +55,8 @@ func fire():
 	get_tree().get_root().call_deferred("add_child", bullet_instance)
 	
 	if ammo > 0:
+		$Shoot.play()
 		ammo -= 1
-	else:
-		print("Out of Ammo! Reload!")
 
 func kill():
 	get_tree().call_deferred("reload_current_scene")
@@ -67,6 +67,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func reload():
 	if ammo < 8:
 		print("Reloading...")
+		$Reload.play()
 		$reload.start()
 	else:
 		print("Magazine is Full!")
