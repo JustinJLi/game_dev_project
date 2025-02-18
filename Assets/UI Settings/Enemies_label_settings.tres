@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dbdyw3xgaep41"]
+
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="1_rp65i"]
+
+[resource]
+font = ExtResource("1_rp65i")
+font_size = 32
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 100
+shadow_color = Color(0.125911, 0.125911, 0.125911, 0)
+shadow_offset = Vector2(1, 100)

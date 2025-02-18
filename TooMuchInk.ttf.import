@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://blykbpqefuxbh"
-path="res://.godot/imported/TooMuchInk.ttf-5b9a2dc16bb808ba4a9796fc539f022b.fontdata"
+path="res://.godot/imported/TooMuchInk.ttf-ec8dc2ba503a37756f7814431087e734.fontdata"
 
 [deps]
 
-source_file="res://Assets/TooMuchInk.ttf"
-dest_files=["res://.godot/imported/TooMuchInk.ttf-5b9a2dc16bb808ba4a9796fc539f022b.fontdata"]
+source_file="res://TooMuchInk.ttf"
+dest_files=["res://.godot/imported/TooMuchInk.ttf-ec8dc2ba503a37756f7814431087e734.fontdata"]
 
 [params]
 

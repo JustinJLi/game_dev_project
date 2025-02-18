@@ -5,12 +5,48 @@ var screen_size
 var bullet_speed = 1000
 var bullet = preload("res://Assets/Environment/bullet.tscn")
 var ammo = 8
+var total_ammo = 24
+var max_health = 100
+var health = max_health  # Player starts with full health
+@onready var hud = get_parent().get_node("HUD")  
+@onready var healthbar = get_parent().get_node("CanvasLayer/HUD/HealthBar")
+#@onready var healthbar = $HealthBar
+
+@onready var pause_menu = $CanvasLayer/PauseMenu
+var paused = false
+
 
 func _ready() -> void:
+
+	hud = get_tree().get_first_node_in_group("hud")
 	screen_size = get_viewport_rect().size
+	pause_menu.visible = false
+
+	
+	### Initialize the health bar with full health
+	#healthbar.init_health(max_health)
+	#healthbar.health = health
+	
 	print("Ammo in Magazine: " + str(ammo))
+	print("Player Health: " + str(health))
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+		
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else: 
+		pause_menu.show()
+		Engine.time_scale = 0
+	paused = !paused
 
 func _physics_process(delta):
+	if paused:
+		return  # Stop player movement when paused
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
@@ -48,24 +84,48 @@ func _physics_process(delta):
 	move_and_slide()
 
 func fire():
+	if paused:
+		return  # Stop player movement when paused
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.position = $Marker2D.global_position
 	bullet_instance.rotation_degrees = $Marker2D.global_rotation_degrees + 90
 	bullet_instance.linear_velocity = Vector2(bullet_speed,0).rotated(rotation)
 	get_tree().get_root().call_deferred("add_child", bullet_instance)
 	
-	if ammo > 0:
+	if total_ammo && ammo == 0:
+		print("Out of ammo")
+	
+	else:
 		$Shoot.play()
 		ammo -= 1
+		hud.update_bullet_label(ammo, total_ammo)
+
+func take_damage(damage_amount):
+	health -= damage_amount
+	healthbar._set_health(health)
+	print("Player took ", damage_amount, "damage. Health: ", health)
+
+	if health <= 0:
+		kill()
+
 
 func kill():
 	get_tree().call_deferred("reload_current_scene")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print(body.name + " entered player.")
+	
+	# Example: If colliding with an enemy, take damage
+	if body.is_in_group("Enemies"):  # Ensure enemies are in the "enemies" group
+		take_damage(20)  # Take 20 damage if hit by an enemy
 
 func reload():
-	if ammo < 8:
+	if total_ammo == 0:
+		print("Can't reload, out of ammo")
+	#elif total_ammo < 8:
+		#ammo = total_ammo
+		
+	elif ammo < 8:
 		print("Reloading...")
 		$Reload.play()
 		$reload.start()
@@ -73,5 +133,12 @@ func reload():
 		print("Magazine is Full!")
 
 func _on_reload_timeout() -> void:
-	ammo = 8
+	var needed_ammo = 8 - ammo  # How much ammo we need to fill the magazine
+	if total_ammo >= needed_ammo:
+		total_ammo -= needed_ammo
+		ammo = 8  # Full reload
+	else:
+		ammo += total_ammo
+		total_ammo = 0  # No more ammo left outside
+	hud.update_bullet_label(ammo, total_ammo)
 	print("Reloaded!")

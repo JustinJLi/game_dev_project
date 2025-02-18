@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://iy488y8isrrk"]
+[gd_scene load_steps=51 format=3 uid="uid://iy488y8isrrk"]
 
 [ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_cmp4a"]
 [ext_resource type="Texture2D" uid="uid://crop6ahqsjvk1" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_0.png" id="2_foqwj"]
@@ -41,11 +41,12 @@
 [ext_resource type="Texture2D" uid="uid://dy7fiptetjyaf" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_17.png" id="39_a8vc2"]
 [ext_resource type="Texture2D" uid="uid://bcrltbr5djdb6" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_18.png" id="40_hyudy"]
 [ext_resource type="Texture2D" uid="uid://ci48s83xpb4es" path="res://Assets/Player/Top_Down_Survivor 2/handgun/move/survivor-move_handgun_19.png" id="41_dwuw5"]
-[ext_resource type="Texture2D" uid="uid://ogogk33yj36j" path="res://Assets/Player/Light.png" id="42_k7mab"]
+[ext_resource type="Texture2D" uid="uid://ogogk33yj36j" path="res://States/Light.png" id="42_k7mab"]
 [ext_resource type="Texture2D" uid="uid://boebtnul60g3p" path="res://Assets/Player/spotlight.png" id="43_8g1wg"]
 [ext_resource type="AudioStream" uid="uid://cx2k0lq04gpb4" path="res://Assets/Player/reload_pistol.mp3" id="44_cghh7"]
 [ext_resource type="AudioStream" uid="uid://y506kyra8o7c" path="res://Assets/Player/empty_click.mp3" id="45_iyxq4"]
 [ext_resource type="AudioStream" uid="uid://ekhobpo8hkdo" path="res://Assets/Player/shooting_pistol.mp3" id="46_w1r8t"]
+[ext_resource type="PackedScene" uid="uid://06idny2ui12l" path="res://Assets/UI/pause_menu/PauseMenu.tscn" id="47_a7cnj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w68qo"]
 radius = 80.0
@@ -195,6 +196,11 @@ collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_cmp4a")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("47_a7cnj")]
+position = Vector2(700, 349)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(25, 0)
 rotation = 1.5708
@@ -204,7 +210,6 @@ shape = SubResource("CapsuleShape2D_w68qo")
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_iblyq")
 animation = &"idle"
-frame_progress = 0.27474
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(135, 46)

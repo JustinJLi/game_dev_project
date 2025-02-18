@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Assets/Dialogue/textbox.gd" id="1_4sug8"]
 [ext_resource type="Texture2D" uid="uid://c6804k6puj65f" path="res://Assets/Dialogue/textbox.png" id="1_p1aq1"]
-[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://Assets/TooMuchInk.ttf" id="2_t3fxo"]
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="2_t3fxo"]
 
 [node name="TextBox" type="MarginContainer"]
 script = ExtResource("1_4sug8")

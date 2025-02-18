@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1ao6hhk8ljdm"]
 
 [ext_resource type="Script" path="res://Assets/Interaction/interaction_manager.gd" id="1_4uufc"]
-[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://Assets/TooMuchInk.ttf" id="2_eoeb7"]
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="2_eoeb7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a57uy"]
 light_mode = 2

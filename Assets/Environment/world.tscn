@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cycitxx4lav04"]
+[gd_scene load_steps=15 format=4 uid="uid://cycitxx4lav04"]
 
 [ext_resource type="Script" path="res://Assets/Environment/world.gd" id="1_dcxjt"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_uq5s8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d32hk85x1qgl" path="res://Assets/Environment/scene_transition.tscn" id="7_11isr"]
 [ext_resource type="PackedScene" uid="uid://5pleal1rafp6" path="res://Assets/Hostage/hostage.tscn" id="8_53skn"]
 [ext_resource type="Script" path="res://Assets/Interaction/InteractionArea/interaction_area.gd" id="9_8rijd"]
+[ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="10_muig2"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gkpny"]
 resource_name = "Wall"
@@ -31,6 +32,10 @@ height = 80.0
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_dcxjt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("10_muig2")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.256318, 0.503789, 0.21577, 1)

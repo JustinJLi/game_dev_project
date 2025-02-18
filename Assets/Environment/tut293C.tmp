@@ -145,10 +145,6 @@ height = 171.428
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_o7ci4")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("34_hqga6")]
-
 [node name="Grass" type="Sprite2D" parent="."]
 modulate = Color(0.388012, 0.731574, 0, 1)
 position = Vector2(1164.5, 666)
@@ -295,5 +291,9 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy4"]
 shape = SubResource("CapsuleShape2D_s7u4h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("34_hqga6")]
 
 [connection signal="body_entered" from="tutorial_exit" to="." method="_on_tutorial_exit_body_entered"]

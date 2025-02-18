@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dbn74ka4atm35"]
+
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="1_cortj"]
+
+[resource]
+font = ExtResource("1_cortj")
+font_size = 32

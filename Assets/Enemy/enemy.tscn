@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://clsa2mtofaw5a"]
+[gd_scene load_steps=31 format=3 uid="uid://clsa2mtofaw5a"]
 
 [ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_g3y21"]
 [ext_resource type="Texture2D" uid="uid://cn0u6bra5lirc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_0.png" id="2_chf8q"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://States/enemy_follow.gd" id="23_k1osr"]
 [ext_resource type="Script" path="res://States/idle_enemy.gd" id="24_vae1h"]
 [ext_resource type="AudioStream" uid="uid://e5a66svb0fl1" path="res://Assets/detected.mp3" id="25_hqxeu"]
+[ext_resource type="PackedScene" uid="uid://bmr7tlslbbydx" path="res://Assets/UI/healthbar/health_bar.tscn" id="26_3gu1f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7p6bn"]
 light_mode = 2
@@ -112,7 +113,6 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_g3y21")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_7p6bn")
@@ -150,5 +150,11 @@ enemy = NodePath("../..")
 [node name="Detected" type="AudioStreamPlayer2D" parent="StateMachine/Idle"]
 visible = false
 stream = ExtResource("25_hqxeu")
+
+[node name="HealthBar" parent="." instance=ExtResource("26_3gu1f")]
+offset_left = -52.0
+offset_top = -58.0
+offset_right = 59.0
+offset_bottom = -50.0
 
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_area_2d_area_entered"]
