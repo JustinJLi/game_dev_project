@@ -226,7 +226,7 @@ scale = Vector2(2.74219, 0.734375)
 shadow_enabled = true
 texture = ExtResource("9_tqwli")
 
-[node name="Dummy" type="CharacterBody2D" parent="." groups=["Enemies"]]
+[node name="Dummy" type="CharacterBody2D" parent="."]
 position = Vector2(133, 118)
 rotation = 1.5708
 scale = Vector2(0.25, 0.25)
@@ -245,7 +245,7 @@ animation = &"idle"
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_phej1")
 
-[node name="Dummy2" type="CharacterBody2D" parent="." groups=["Enemies"]]
+[node name="Dummy2" type="CharacterBody2D" parent="."]
 position = Vector2(241, 118)
 rotation = 1.5708
 scale = Vector2(0.25, 0.25)
