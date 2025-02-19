@@ -8,9 +8,18 @@ var max_health = 100
 var health = max_health
 
 
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hud = get_tree().get_first_node_in_group("hud")
+
+	#healthbar.light_mask = 2
+	#healthbar.visibility_layer = 1
+	healthbar.hide()
+
+
 
 
 func _physics_process(delta: float) -> void:
@@ -23,7 +32,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage_amount):
 	health -= damage_amount
 	healthbar._set_health(health)
-	print("Enemy took ", damage_amount, "damage. Health: ", health)
+	print("Enemy took ", damage_amount, " damage. Health: ", health)
 
 	if health <= 0:
 		enemies_cleared += 1

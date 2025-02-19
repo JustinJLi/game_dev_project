@@ -1,10 +1,13 @@
-[gd_scene load_steps=45 format=4 uid="uid://bw2gqnt3c3a4c"]
+[gd_scene load_steps=48 format=4 uid="uid://bw2gqnt3c3a4c"]
 
 [ext_resource type="Script" path="res://Assets/Environment/tutorial.gd" id="1_o7ci4"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_rl55e"]
 [ext_resource type="PackedScene" uid="uid://dtuerfvovpydv" path="res://Assets/Environment/tile.tscn" id="2_0veuk"]
+[ext_resource type="Script" path="res://Assets/UI/sub_viewport.gd" id="3_5x1vx"]
 [ext_resource type="PackedScene" uid="uid://blj8jwv4ew0en" path="res://Assets/Environment/door.tscn" id="3_khqpi"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="4_837nf"]
+[ext_resource type="Texture2D" uid="uid://cxx7fq5ekctqd" path="res://Assets/UI/minimap_tutorial_2.png" id="4_hnejn"]
+[ext_resource type="Texture2D" uid="uid://c362parb0cxiy" path="res://Assets/UI/Flash Light.png" id="5_g6ewb"]
 [ext_resource type="Script" path="res://Assets/Environment/Notes/enemy_tutorial.gd" id="6_gh1e4"]
 [ext_resource type="PackedScene" uid="uid://d32hk85x1qgl" path="res://Assets/Environment/scene_transition.tscn" id="6_umigm"]
 [ext_resource type="PackedScene" uid="uid://cheyfa7hyapul" path="res://Assets/Environment/Notes/note.tscn" id="7_1mx8q"]
@@ -148,6 +151,34 @@ script = ExtResource("1_o7ci4")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("34_hqga6")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 103.0
+offset_top = -348.0
+offset_right = 359.0
+offset_bottom = -92.0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/HUD/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+script = ExtResource("3_5x1vx")
+
+[node name="MinimapImage" type="Sprite2D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport"]
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("4_hnejn")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport"]
+
+[node name="PlayerMapIcon" type="Sprite2D" parent="CanvasLayer/HUD/SubViewportContainer"]
+position = Vector2(122, 127)
+texture = ExtResource("5_g6ewb")
 
 [node name="Grass" type="Sprite2D" parent="."]
 modulate = Color(0.388012, 0.731574, 0, 1)

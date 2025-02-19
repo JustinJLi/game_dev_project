@@ -1,15 +1,20 @@
-[gd_scene load_steps=15 format=4 uid="uid://cycitxx4lav04"]
+[gd_scene load_steps=18 format=4 uid="uid://cycitxx4lav04"]
 
 [ext_resource type="Script" path="res://Assets/Environment/world.gd" id="1_dcxjt"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_uq5s8"]
 [ext_resource type="PackedScene" uid="uid://dtuerfvovpydv" path="res://Assets/Environment/tile.tscn" id="2_6igmd"]
 [ext_resource type="PackedScene" uid="uid://blj8jwv4ew0en" path="res://Assets/Environment/door.tscn" id="3_05kjw"]
+[ext_resource type="Script" path="res://Assets/UI/sub_viewport.gd" id="3_kpfml"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="3_lilql"]
 [ext_resource type="PackedScene" uid="uid://clsa2mtofaw5a" path="res://Assets/Enemy/enemy.tscn" id="4_q7ssq"]
+[ext_resource type="Texture2D" uid="uid://c362parb0cxiy" path="res://Assets/UI/Flash Light.png" id="5_b10xi"]
 [ext_resource type="PackedScene" uid="uid://d32hk85x1qgl" path="res://Assets/Environment/scene_transition.tscn" id="7_11isr"]
 [ext_resource type="PackedScene" uid="uid://5pleal1rafp6" path="res://Assets/Hostage/hostage.tscn" id="8_53skn"]
 [ext_resource type="Script" path="res://Assets/Interaction/InteractionArea/interaction_area.gd" id="9_8rijd"]
 [ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="10_muig2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m3f0p"]
+load_path = "res://.godot/imported/minimap_level1.png-c988bfcab225b8c2167820315c5c7af3.ctex"
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gkpny"]
 resource_name = "Wall"
@@ -36,6 +41,34 @@ script = ExtResource("1_dcxjt")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("10_muig2")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 103.0
+offset_top = -348.0
+offset_right = 359.0
+offset_bottom = -92.0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/HUD/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+script = ExtResource("3_kpfml")
+
+[node name="MinimapImage" type="Sprite2D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport"]
+scale = Vector2(2, 2)
+texture = SubResource("CompressedTexture2D_m3f0p")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport"]
+
+[node name="PlayerMapIcon" type="Sprite2D" parent="CanvasLayer/HUD/SubViewportContainer"]
+position = Vector2(122, 127)
+texture = ExtResource("5_b10xi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.256318, 0.503789, 0.21577, 1)

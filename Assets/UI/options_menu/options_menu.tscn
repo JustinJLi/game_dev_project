@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4akratys6jl"]
+
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="1_dgvah"]
+[ext_resource type="Script" path="res://Assets/UI/options_menu/options_menu.gd" id="1_ptace"]
+[ext_resource type="Texture2D" uid="uid://bgeins8yppghv" path="res://Assets/UI/main_menu/main_menu.png" id="2_lp2fm"]
+[ext_resource type="PackedScene" uid="uid://bwtlc7mo05jx3" path="res://Assets/UI/options_menu/settings_tab_container.tscn" id="4_h4d3y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2x2ap"]
+texture = ExtResource("2_lp2fm")
+modulate_color = Color(0.517184, 0.517184, 0.517184, 1)
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -720.0
+offset_bottom = -462.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptace")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1922.0
+offset_bottom = 1081.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2x2ap")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.6
+anchor_bottom = 1.731
+offset_bottom = 10.2419
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -30
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_dgvah")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsTabContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_h4d3y")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1028, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_dgvah")
+text = "Back"

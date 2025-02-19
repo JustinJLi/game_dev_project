@@ -13,6 +13,9 @@ var health = max_health  # Player starts with full health
 #@onready var healthbar = $HealthBar
 
 @onready var pause_menu = $CanvasLayer/PauseMenu
+#@onready var flashlight = $Flashlight
+@onready var options_menu: Control = $CanvasLayer/PauseMenu/CanvasLayer/OptionsMenu
+
 var paused = false
 
 

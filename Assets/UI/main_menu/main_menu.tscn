@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0qgldypsdhwg"]
+[gd_scene load_steps=10 format=3 uid="uid://d0qgldypsdhwg"]
 
 [ext_resource type="Script" path="res://Assets/UI/main_menu/main_menu.gd" id="1_3ro7t"]
 [ext_resource type="Texture2D" uid="uid://bgeins8yppghv" path="res://Assets/UI/main_menu/main_menu.png" id="1_rtbow"]
 [ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="2_jttxi"]
+[ext_resource type="PackedScene" uid="uid://b4akratys6jl" path="res://Assets/UI/options_menu/options_menu.tscn" id="4_do7xk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_om1p6"]
 texture = ExtResource("1_rtbow")
@@ -48,14 +49,14 @@ offset_right = 1922.0
 offset_bottom = 1081.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_om1p6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MenuButtons" type="VBoxContainer" parent="."]
 offset_left = 733.0
 offset_top = 635.0
 offset_right = 1186.0
 offset_bottom = 880.0
 theme_override_constants/separation = 20
 
-[node name="StartGame" type="Button" parent="VBoxContainer"]
+[node name="StartGame" type="Button" parent="MenuButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -66,6 +67,7 @@ theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("2_jttxi")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cabqj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h881i")
@@ -74,7 +76,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1yy31")
 text = "Start Game"
 metadata/_edit_use_anchors_ = true
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Options" type="Button" parent="MenuButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -85,6 +87,7 @@ theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("2_jttxi")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cabqj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h881i")
@@ -93,7 +96,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1yy31")
 text = "Options"
 metadata/_edit_use_anchors_ = true
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="Button" parent="MenuButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -104,6 +107,7 @@ theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 0
 theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("2_jttxi")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cabqj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h881i")
@@ -112,7 +116,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1yy31")
 text = "Exit"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="MenuTitle" type="Label" parent="."]
 offset_left = 694.0
 offset_top = 359.0
 offset_right = 1227.0
@@ -125,6 +129,11 @@ text = "Metal Gear Solid 6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource("4_do7xk")]
+visible = false
+
+[connection signal="pressed" from="MenuButtons/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MenuButtons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MenuButtons/Exit" to="." method="_on_exit_pressed"]

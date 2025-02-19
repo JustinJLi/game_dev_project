@@ -1,0 +1,124 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwtlc7mo05jx3"]
+
+[ext_resource type="PackedScene" uid="uid://0rwu1qxwvtfq" path="res://Assets/UI/options_menu/window_mode_button.tscn" id="1_0bpqp"]
+[ext_resource type="PackedScene" uid="uid://c64htqewqr02p" path="res://Assets/UI/options_menu/resolution_mode_button.tscn" id="2_hylan"]
+
+[node name="SettingsTabContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="Label2" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="Label3" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="Label4" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="Label5" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="Graphics" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting g"
+
+[node name="Label2" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="Label3" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="Label4" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="Label5" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sample Setting"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Graphics/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 128
+
+[node name="Window_Mode_Button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0bpqp")]
+layout_mode = 2
+
+[node name="Resolution_Mode_Button" parent="TabContainer/Graphics/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_hylan")]
+layout_mode = 2
