@@ -175,6 +175,7 @@ texture = ExtResource("4_hnejn")
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.3, 0.3)
 
 [node name="PlayerMapIcon" type="Sprite2D" parent="CanvasLayer/HUD/SubViewportContainer"]
 position = Vector2(122, 127)

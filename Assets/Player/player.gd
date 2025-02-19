@@ -15,8 +15,11 @@ var health = max_health  # Player starts with full health
 @onready var pause_menu = $CanvasLayer/PauseMenu
 #@onready var flashlight = $Flashlight
 @onready var options_menu: Control = $CanvasLayer/PauseMenu/CanvasLayer/OptionsMenu
+@onready var game_over_screen: Node2D = $CanvasLayer3/GameOverScreen
 
 var paused = false
+var level_completed = false
+var game_over = false
 
 
 func _ready() -> void:
@@ -48,7 +51,7 @@ func pauseMenu():
 	paused = !paused
 
 func _physics_process(delta):
-	if paused:
+	if paused || level_completed || game_over:
 		return  # Stop player movement when paused
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("up"):
@@ -87,7 +90,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func fire():
-	if paused:
+	if paused || level_completed || game_over:
 		return  # Stop player movement when paused
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.position = $Marker2D.global_position
@@ -104,16 +107,22 @@ func fire():
 		hud.update_bullet_label(ammo, total_ammo)
 
 func take_damage(damage_amount):
+	if healthbar == null:
+		print("Warning: HealthBar is null, skipping _set_health()")
+		return
+
 	health -= damage_amount
 	healthbar._set_health(health)
 	print("Player took ", damage_amount, "damage. Health: ", health)
 
 	if health <= 0:
+		game_over = true
 		kill()
 
 
 func kill():
-	get_tree().call_deferred("reload_current_scene")
+	game_over_screen.show()
+	#get_tree().call_deferred("reload_current_scene")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print(body.name + " entered player.")

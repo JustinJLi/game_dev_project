@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1dgh8l1mi1de"]
+
+[ext_resource type="Script" path="res://Assets/UI/game_over_screen/game_over_screen.gd" id="1_jkmwv"]
+[ext_resource type="Shader" path="res://Assets/UI/pause_menu/PauseMenu.gdshader" id="2_7e8pa"]
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="3_vv5pc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4eid"]
+shader = ExtResource("2_7e8pa")
+shader_parameter/amount = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o535t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjatd"]
+bg_color = Color(0.733005, 0.733005, 0.733005, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.207843)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ncg5"]
+bg_color = Color(0.396889, 0.396889, 0.396889, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.207843)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anuow"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.207843)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_jkmwv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_m4eid")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161364.0
+offset_top = -58676.0
+offset_right = 161364.0
+offset_bottom = 58676.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+offset_left = 777.0
+offset_top = 458.0
+offset_right = 1176.0
+offset_bottom = 695.0
+theme_override_constants/separation = 20
+
+[node name="Retry" type="Button" parent="MenuButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_vv5pc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit To Main Menu" type="Button" parent="MenuButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_vv5pc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "Exit To Main Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuTitle" type="Label" parent="."]
+offset_left = 714.0
+offset_top = 251.0
+offset_right = 1247.0
+offset_bottom = 397.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_vv5pc")
+theme_override_font_sizes/font_size = 60
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_pressed"]

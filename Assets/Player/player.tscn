@@ -1,9 +1,11 @@
-[gd_scene load_steps=51 format=3 uid="uid://iy488y8isrrk"]
+[gd_scene load_steps=53 format=3 uid="uid://iy488y8isrrk"]
 
 [ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_cmp4a"]
 [ext_resource type="Texture2D" uid="uid://crop6ahqsjvk1" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_0.png" id="2_foqwj"]
 [ext_resource type="Texture2D" uid="uid://d11jvcsntn7ma" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_1.png" id="3_eeghb"]
+[ext_resource type="PackedScene" uid="uid://c3jdtiryjg8cf" path="res://Assets/UI/level_complete_screen/level_complete_screen.tscn" id="3_h43iu"]
 [ext_resource type="Texture2D" uid="uid://b81h2jqpidvee" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_2.png" id="4_4vkxm"]
+[ext_resource type="PackedScene" uid="uid://d1dgh8l1mi1de" path="res://Assets/UI/game_over_screen/game_over_screen.tscn" id="4_itxc6"]
 [ext_resource type="Texture2D" uid="uid://coee4l2icpyrp" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_3.png" id="5_pb5hc"]
 [ext_resource type="Texture2D" uid="uid://cnwht2y1la8ib" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_4.png" id="6_53g4c"]
 [ext_resource type="Texture2D" uid="uid://cckw3uqq0hyoe" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_5.png" id="7_bclpp"]
@@ -200,6 +202,15 @@ script = ExtResource("1_cmp4a")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("47_a7cnj")]
 position = Vector2(700, 349)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleteScreen" parent="CanvasLayer2" instance=ExtResource("3_h43iu")]
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="GameOverScreen" parent="CanvasLayer3" instance=ExtResource("4_itxc6")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(25, 0)
