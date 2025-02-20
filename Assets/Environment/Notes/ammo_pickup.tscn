@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbwd2ap1cbdym"]
+
+[ext_resource type="Script" path="res://Assets/Environment/Notes/ammo_pickup.gd" id="1_7oj4c"]
+[ext_resource type="Texture2D" uid="uid://d2knftuguvc0k" path="res://Assets/Environment/Notes/ammobox.png" id="1_vwxma"]
+[ext_resource type="PackedScene" uid="uid://b3tgjqai3frdd" path="res://Assets/Interaction/InteractionArea/interaction_area.tscn" id="3_nnoi7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rdntt"]
+light_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aakaa"]
+radius = 212.5
+
+[node name="AmmoPickup" type="Node2D"]
+z_as_relative = false
+scale = Vector2(0.08, 0.08)
+script = ExtResource("1_7oj4c")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_rdntt")
+texture = ExtResource("1_vwxma")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_nnoi7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_aakaa")

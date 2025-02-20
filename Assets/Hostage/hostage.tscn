@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://States/hostage_follow.gd" id="10_sq5bs"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jne10"]
-light_mode = 2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2m7i2"]
 animations = [{
@@ -42,13 +41,14 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sgjgy"]
 radius = 24.0
-height = 70.0
+height = 48.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxa1x"]
-radius = 32.0
-height = 80.0
+radius = 29.0
+height = 58.0
 
 [node name="Hostage" type="CharacterBody2D" groups=["Hostages"]]
+z_index = 5
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1

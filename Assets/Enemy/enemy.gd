@@ -9,6 +9,8 @@ static var enemies_killed_score = 0
 var max_health = 100
 var health = max_health
 static var total_enemies = 0
+var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
+var ammo_spawn_chance = 0.1
 @onready var hostage: hostage = $"../Hostage"
 
 
@@ -53,11 +55,18 @@ func take_damage(damage_amount):
 		hud.update_enemies_cleared_label(enemies_cleared)
 		level_complete_screen.update_enemies_killed_score(enemies_cleared, enemies_killed_score)
 		
+		if ammo_pickup and randf() < ammo_spawn_chance:
+			var ammo_instance = ammo_pickup.instantiate()
+			ammo_instance.position = global_position
+			get_parent().call_deferred("add_child", ammo_instance)
+			print("Ammo spawned at:", ammo_instance.position)
+		
 		# Show level complete screen if all enemies are gone
 		if total_enemies && hostage.total_hostages <= 0:
 			level_complete_screen.show()
 			
 		queue_free()
+
 	
 func kill():
 	get_tree().call_deferred("reload_current_scene")

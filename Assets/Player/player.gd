@@ -8,6 +8,7 @@ var ammo = 8
 var total_ammo = 24
 var max_health = 100
 var health = max_health  # Player starts with full health
+var is_flashlight_on = true
 @onready var hud = get_parent().get_node("HUD")  
 @onready var healthbar = get_parent().get_node("CanvasLayer/HUD/HealthBar")
 #@onready var healthbar = $HealthBar
@@ -27,6 +28,7 @@ func _ready() -> void:
 	hud = get_tree().get_first_node_in_group("hud")
 	screen_size = get_viewport_rect().size
 	pause_menu.visible = false
+	$Flashlight.show()
 
 	
 	### Initialize the health bar with full health
@@ -75,6 +77,14 @@ func _physics_process(delta):
 			print("Out of Ammo! Reload!")
 	if Input.is_action_just_pressed("reload"):
 		reload()
+		
+	if Input.is_action_just_pressed("toggle_flashlight"):
+		if is_flashlight_on:
+			$Flashlight.hide()
+			is_flashlight_on = false
+		else:
+			$Flashlight.show()
+			is_flashlight_on = true
 			
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * SPEED
