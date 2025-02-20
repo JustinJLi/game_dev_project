@@ -21,6 +21,7 @@ material = SubResource("CanvasItemMaterial_rdntt")
 texture = ExtResource("1_vwxma")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_nnoi7")]
+action_name = "pickup"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_aakaa")

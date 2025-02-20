@@ -265,5 +265,9 @@ stream = ExtResource("45_iyxq4")
 [node name="Shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("46_w1r8t")
 
+[node name="damage_buffer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
+[connection signal="timeout" from="damage_buffer" to="." method="_on_damage_buffer_timeout"]

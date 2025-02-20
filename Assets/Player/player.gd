@@ -139,7 +139,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	# Example: If colliding with an enemy, take damage
 	if body.is_in_group("Enemies"):  # Ensure enemies are in the "enemies" group
-		take_damage(20)  # Take 20 damage if hit by an enemy
+		take_damage(20)
+		$damage_buffer.start()
+		
+func _on_player_hitbox_body_exited(body: Node2D) -> void:
+	$damage_buffer.stop()
 
 func reload():
 	if total_ammo == 0:
@@ -164,3 +168,7 @@ func _on_reload_timeout() -> void:
 		total_ammo = 0  # No more ammo left outside
 	hud.update_bullet_label(ammo, total_ammo)
 	print("Reloaded!")
+
+
+func _on_damage_buffer_timeout() -> void:
+	take_damage(20)  # Take 20 damage if hit by an enemy
