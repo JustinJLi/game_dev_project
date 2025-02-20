@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://States/hostage_follow.gd" id="10_sq5bs"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jne10"]
+light_mode = 2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2m7i2"]
 animations = [{
