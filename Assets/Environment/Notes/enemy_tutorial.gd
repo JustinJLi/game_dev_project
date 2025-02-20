@@ -6,7 +6,7 @@ extends Node2D
 const lines: Array[String] = [
 	"The enemy faction.",
 	"They will patrol the area until they find you...",
-	"Eliminate them before they do.",
+	"Eliminate them before they kill you.",
 ]
 
 func _ready() -> void:

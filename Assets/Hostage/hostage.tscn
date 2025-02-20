@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5pleal1rafp6"]
+[gd_scene load_steps=17 format=3 uid="uid://5pleal1rafp6"]
 
 [ext_resource type="Texture2D" uid="uid://beh3564ag28ye" path="res://Assets/Hostage/Citizens/Walk1Civ1.png" id="1_otn81"]
 [ext_resource type="Script" path="res://Assets/Hostage/hostage.gd" id="1_y7s2f"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c46vgnsnk5y5t" path="res://Assets/Hostage/Citizens/Walk5Civ1.png" id="5_eiyga"]
 [ext_resource type="Texture2D" uid="uid://cdyns6ucmuux1" path="res://Assets/Hostage/Citizens/Walk6Civ1.png" id="6_j3l72"]
 [ext_resource type="Script" path="res://States/state_machine.gd" id="8_36plb"]
+[ext_resource type="Script" path="res://Assets/Interaction/InteractionArea/interaction_area.gd" id="8_mddan"]
 [ext_resource type="Script" path="res://States/idle_hostage.gd" id="9_vr4uc"]
 [ext_resource type="Script" path="res://States/hostage_follow.gd" id="10_sq5bs"]
 
@@ -44,6 +45,9 @@ animations = [{
 radius = 24.0
 height = 48.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jw3vl"]
+radius = 29.0172
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxa1x"]
 radius = 29.0
 height = 58.0
@@ -64,6 +68,12 @@ sprite_frames = SubResource("SpriteFrames_2m7i2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_sgjgy")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("8_mddan")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_jw3vl")
 
 [node name="hostage_hitbox" type="Area2D" parent="."]
 collision_layer = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://bw2gqnt3c3a4c"]
+[gd_scene load_steps=51 format=4 uid="uid://bw2gqnt3c3a4c"]
 
 [ext_resource type="Script" path="res://Assets/Environment/tutorial.gd" id="1_o7ci4"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_rl55e"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Assets/Environment/Notes/hostage_tutorial.gd" id="7_3w28u"]
 [ext_resource type="Script" path="res://Assets/Environment/Notes/controls.gd" id="8_nbqye"]
 [ext_resource type="Texture2D" uid="uid://boebtnul60g3p" path="res://Assets/Player/spotlight.png" id="9_tqwli"]
+[ext_resource type="Script" path="res://Assets/Environment/Notes/ammo_note.gd" id="10_eayu5"]
 [ext_resource type="Script" path="res://Assets/Enemy/dummy.gd" id="10_pjvba"]
 [ext_resource type="Texture2D" uid="uid://cn0u6bra5lirc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_0.png" id="11_xhr8r"]
 [ext_resource type="Texture2D" uid="uid://byowjgsr0todr" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_1.png" id="12_dbaw6"]
@@ -37,6 +38,8 @@
 [ext_resource type="Texture2D" uid="uid://cahjtm20v1eyd" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_19.png" id="30_84av4"]
 [ext_resource type="Texture2D" uid="uid://beh3564ag28ye" path="res://Assets/Hostage/Citizens/Walk1Civ1.png" id="32_vo881"]
 [ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="34_hqga6"]
+[ext_resource type="PackedScene" uid="uid://4n7jyouunb1e" path="res://Assets/Environment/Notes/magazine_pickup.tscn" id="38_nlo2i"]
+[ext_resource type="PackedScene" uid="uid://cbwd2ap1cbdym" path="res://Assets/Environment/Notes/ammo_pickup.tscn" id="39_57yd0"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6xtw8"]
 resource_name = "Wall"
@@ -216,6 +219,11 @@ color = Color(0.544974, 0.544974, 0.544974, 1)
 material = SubResource("CanvasItemMaterial_rvblb")
 position = Vector2(898, 286)
 
+[node name="AmmoNote" parent="." instance=ExtResource("7_1mx8q")]
+material = SubResource("CanvasItemMaterial_rvblb")
+position = Vector2(550, 175)
+script = ExtResource("10_eayu5")
+
 [node name="EnemyTutorial" parent="." instance=ExtResource("7_1mx8q")]
 position = Vector2(186, 161)
 script = ExtResource("6_gh1e4")
@@ -227,6 +235,12 @@ script = ExtResource("7_3w28u")
 [node name="Controls" parent="." instance=ExtResource("7_1mx8q")]
 position = Vector2(313, 280)
 script = ExtResource("8_nbqye")
+
+[node name="MagazinePickup" parent="." instance=ExtResource("38_nlo2i")]
+position = Vector2(650, 130)
+
+[node name="AmmoPickup" parent="." instance=ExtResource("39_57yd0")]
+position = Vector2(440, 130)
 
 [node name="Player" parent="." instance=ExtResource("4_837nf")]
 
@@ -254,6 +268,12 @@ texture = ExtResource("9_tqwli")
 
 [node name="PointLight2D3" type="PointLight2D" parent="."]
 position = Vector2(466, 291)
+scale = Vector2(2.74219, 0.734375)
+shadow_enabled = true
+texture = ExtResource("9_tqwli")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(538, 142)
 scale = Vector2(2.74219, 0.734375)
 shadow_enabled = true
 texture = ExtResource("9_tqwli")

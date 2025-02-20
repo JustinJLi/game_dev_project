@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cycitxx4lav04"]
+[gd_scene load_steps=17 format=4 uid="uid://cycitxx4lav04"]
 
 [ext_resource type="Script" path="res://Assets/Environment/world.gd" id="1_dcxjt"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_uq5s8"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c362parb0cxiy" path="res://Assets/UI/Flash Light.png" id="5_b10xi"]
 [ext_resource type="PackedScene" uid="uid://d32hk85x1qgl" path="res://Assets/Environment/scene_transition.tscn" id="7_11isr"]
 [ext_resource type="PackedScene" uid="uid://5pleal1rafp6" path="res://Assets/Hostage/hostage.tscn" id="8_53skn"]
-[ext_resource type="Script" path="res://Assets/Interaction/InteractionArea/interaction_area.gd" id="9_8rijd"]
 [ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="10_muig2"]
+[ext_resource type="PackedScene" uid="uid://4n7jyouunb1e" path="res://Assets/Environment/Notes/magazine_pickup.tscn" id="12_ri80l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m3f0p"]
 load_path = "res://.godot/imported/minimap_level1.png-c988bfcab225b8c2167820315c5c7af3.ctex"
@@ -30,10 +30,6 @@ physics_layer_0/collision_mask = 7
 terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetScenesCollectionSource_gkpny")
 sources/1 = SubResource("TileSetScenesCollectionSource_5283g")
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riw8r"]
-radius = 32.0
-height = 80.0
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_dcxjt")
@@ -90,13 +86,6 @@ color = Color(0.393086, 0.393086, 0.393085, 1)
 [node name="Hostage" parent="." instance=ExtResource("8_53skn")]
 position = Vector2(1086, 54)
 
-[node name="InteractionArea" type="Area2D" parent="Hostage"]
-script = ExtResource("9_8rijd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hostage/InteractionArea"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_riw8r")
-
 [node name="Enemy" parent="." instance=ExtResource("4_q7ssq")]
 
 [node name="SceneTransition" parent="." instance=ExtResource("7_11isr")]
@@ -104,12 +93,11 @@ shape = SubResource("CapsuleShape2D_riw8r")
 [node name="Hostage2" parent="." instance=ExtResource("8_53skn")]
 position = Vector2(497, 722)
 
-[node name="InteractionArea" type="Area2D" parent="Hostage2"]
-script = ExtResource("9_8rijd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hostage2/InteractionArea"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_riw8r")
-
 [node name="Enemy2" parent="." instance=ExtResource("4_q7ssq")]
 position = Vector2(413, 517)
+
+[node name="MagazinePickup" parent="." instance=ExtResource("12_ri80l")]
+position = Vector2(542, 223)
+
+[node name="MagazinePickup2" parent="." instance=ExtResource("12_ri80l")]
+position = Vector2(376, 689)

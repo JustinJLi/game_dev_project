@@ -10,6 +10,6 @@ func _ready() -> void:
 	hud = get_tree().get_first_node_in_group("hud")
 
 func _on_interact():
-	player.total_ammo += 24
+	player.total_ammo += 8
 	hud.update_bullet_label(player.ammo, player.total_ammo)
 	queue_free()

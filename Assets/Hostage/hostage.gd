@@ -37,7 +37,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _on_interact():
-	
 	DialogueManager.start_dialog(global_position, lines)
 	await DialogueManager.dialog_finished
 	_rescue_hostage()
@@ -49,7 +48,7 @@ func _on_hostage_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_hostage_hitbox_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-			_on_interact()
+		_on_interact()
 			
 func _rescue_hostage():
 	if rescued:

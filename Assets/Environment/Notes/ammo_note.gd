@@ -4,13 +4,7 @@ extends Node2D
 @onready var sprite = $Sprite2D
 
 const lines: Array[String] = [
-	"A crumbled note...",
-	"Controls:",
-	"WASD to move.",
-	"Left click to shoot.",
-	"R to reload.",
-	"F to toggle flashlight.",
-	"Watch your ammo."
+	"Look out for ammo...",
 ]
 
 func _ready() -> void:

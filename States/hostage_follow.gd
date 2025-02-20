@@ -23,6 +23,9 @@ func Physics_Update(delta: float):
 		hostage.look_at(player.position)
 	else:
 		hostage.velocity = Vector2()
+		
+	if direction.length() < 55: #Stop moving during dialogue
+		hostage.velocity = Vector2()
 	
 	if direction.length() > 200:
 		Transitioned.emit(self, "Idle")
