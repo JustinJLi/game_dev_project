@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cycitxx4lav04"]
+[gd_scene load_steps=18 format=4 uid="uid://cycitxx4lav04"]
 
 [ext_resource type="Script" path="res://Assets/Environment/world.gd" id="1_dcxjt"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_uq5s8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://5pleal1rafp6" path="res://Assets/Hostage/hostage.tscn" id="8_53skn"]
 [ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="10_muig2"]
 [ext_resource type="PackedScene" uid="uid://4n7jyouunb1e" path="res://Assets/Environment/Notes/magazine_pickup.tscn" id="12_ri80l"]
+[ext_resource type="PackedScene" uid="uid://btepaiabjrmi7" path="res://Assets/Enemy/brute.tscn" id="13_m0hbf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m3f0p"]
 load_path = "res://.godot/imported/minimap_level1.png-c988bfcab225b8c2167820315c5c7af3.ctex"
@@ -101,3 +102,6 @@ position = Vector2(542, 223)
 
 [node name="MagazinePickup2" parent="." instance=ExtResource("12_ri80l")]
 position = Vector2(376, 689)
+
+[node name="Brute" parent="." instance=ExtResource("13_m0hbf")]
+position = Vector2(752, 176)

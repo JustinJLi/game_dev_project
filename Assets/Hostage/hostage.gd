@@ -25,6 +25,7 @@ const lines: Array[String] = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimatedSprite2D.play("walk")
 	hud = get_tree().get_first_node_in_group("hud")
 	interaction_area.interact = Callable(self, "_on_interact")
 	total_hostages += 1
@@ -49,6 +50,7 @@ func _on_hostage_hitbox_area_entered(area: Area2D) -> void:
 func _on_hostage_hitbox_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		_on_interact()
+		$AnimatedSprite2D.stop()
 			
 func _rescue_hostage():
 	if rescued:
@@ -85,3 +87,7 @@ func _killed_hostage():
 		level_complete_screen.show()
 
 	queue_free()
+
+
+func _on_hostage_hitbox_area_exited(area: Area2D) -> void:
+	$AnimatedSprite2D.play("walk")

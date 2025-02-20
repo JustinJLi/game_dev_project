@@ -1,12 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://5pleal1rafp6"]
+[gd_scene load_steps=15 format=3 uid="uid://5pleal1rafp6"]
 
 [ext_resource type="Texture2D" uid="uid://beh3564ag28ye" path="res://Assets/Hostage/Citizens/Walk1Civ1.png" id="1_otn81"]
 [ext_resource type="Script" path="res://Assets/Hostage/hostage.gd" id="1_y7s2f"]
 [ext_resource type="Texture2D" uid="uid://lxymse0chngx" path="res://Assets/Hostage/Citizens/Walk2Civ1.png" id="2_psuxf"]
-[ext_resource type="Texture2D" uid="uid://emxun0n4dljm" path="res://Assets/Hostage/Citizens/Walk3Civ1.png" id="3_1e5nh"]
 [ext_resource type="Texture2D" uid="uid://rg20kirm2bgq" path="res://Assets/Hostage/Citizens/Walk4Civ1.png" id="4_ujrql"]
 [ext_resource type="Texture2D" uid="uid://c46vgnsnk5y5t" path="res://Assets/Hostage/Citizens/Walk5Civ1.png" id="5_eiyga"]
-[ext_resource type="Texture2D" uid="uid://cdyns6ucmuux1" path="res://Assets/Hostage/Citizens/Walk6Civ1.png" id="6_j3l72"]
 [ext_resource type="Script" path="res://States/state_machine.gd" id="8_36plb"]
 [ext_resource type="Script" path="res://Assets/Interaction/InteractionArea/interaction_area.gd" id="8_mddan"]
 [ext_resource type="Script" path="res://States/idle_hostage.gd" id="9_vr4uc"]
@@ -25,20 +23,14 @@ animations = [{
 "texture": ExtResource("2_psuxf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_1e5nh")
-}, {
-"duration": 1.0,
 "texture": ExtResource("4_ujrql")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_eiyga")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_j3l72")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"walk",
+"speed": 2.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sgjgy"]
@@ -64,6 +56,7 @@ metadata/_edit_group_ = true
 material = SubResource("CanvasItemMaterial_jne10")
 scale = Vector2(0.35, 0.35)
 sprite_frames = SubResource("SpriteFrames_2m7i2")
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -98,4 +91,5 @@ hostage = NodePath("../..")
 move_speed = 50.0
 
 [connection signal="area_entered" from="hostage_hitbox" to="." method="_on_hostage_hitbox_area_entered"]
+[connection signal="area_exited" from="hostage_hitbox" to="." method="_on_hostage_hitbox_area_exited"]
 [connection signal="body_entered" from="hostage_hitbox" to="." method="_on_hostage_hitbox_body_entered"]

@@ -69,6 +69,7 @@ func _physics_process(delta):
 		velocity.x -= 1
 		$AnimatedSprite2D.animation = "move"
 	if Input.is_action_just_pressed("shoot"):
+		$AnimatedSprite2D.animation = "shoot"
 		if ammo > 0:
 			fire()
 			print("Ammo in Magazine: " + str(ammo))
@@ -88,9 +89,9 @@ func _physics_process(delta):
 			
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * SPEED
-		$AnimatedSprite2D.play()
+		$AnimatedSprite2D.play("move")
 	else:
-		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("idle")
 		
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
@@ -135,7 +136,7 @@ func kill():
 	#get_tree().call_deferred("reload_current_scene")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body.name + " entered player.")
+	#print(body.name + " entered player.")
 	
 	# Example: If colliding with an enemy, take damage
 	if body.is_in_group("Enemies"):  # Ensure enemies are in the "enemies" group
