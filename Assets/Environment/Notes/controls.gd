@@ -17,5 +17,7 @@ func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
 
 func _on_interact():
+	get_tree().paused = true
 	DialogueManager.start_dialog(global_position, lines)
 	await DialogueManager.dialog_finished
+	get_tree().paused = false

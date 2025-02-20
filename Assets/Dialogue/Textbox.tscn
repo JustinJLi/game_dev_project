@@ -5,6 +5,10 @@
 [ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="2_t3fxo"]
 
 [node name="TextBox" type="MarginContainer"]
+process_mode = 2
+top_level = true
+light_mask = 0
+z_index = 20
 script = ExtResource("1_4sug8")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

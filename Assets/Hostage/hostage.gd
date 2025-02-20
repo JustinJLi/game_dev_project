@@ -38,8 +38,10 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _on_interact():
+	get_tree().paused = true
 	DialogueManager.start_dialog(global_position, lines)
 	await DialogueManager.dialog_finished
+	get_tree().paused = false
 	_rescue_hostage()
 
 		

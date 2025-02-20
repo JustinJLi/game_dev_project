@@ -13,6 +13,10 @@ var can_advance_line = false
 
 signal dialog_finished()
 
+func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS  # Dialogue should process even when game is paused
+
+
 func start_dialog(position: Vector2, lines: Array[String]):
 	if is_dialog_active:
 		return
