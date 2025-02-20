@@ -3,15 +3,18 @@ class_name brute
 
 @onready var hud = get_parent().get_node("HUD")  
 @onready var level_complete_screen = get_parent().get_node("Player/CanvasLayer2/LevelCompleteScreen")  
-static var enemies_cleared = 0
-static var enemies_killed_score = 0
+#static var enemies_cleared = 0
+#static var enemies_killed_score = 0
 @onready var healthbar = get_node("HealthBar")
 var max_health = 200
 var health = max_health
-static var total_enemies = 0
+#static var total_enemies = 0
 var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
 var ammo_spawn_chance = 0.2
 @onready var hostage: hostage = $"../Hostage"
+@onready var player: CharacterBody2D = $"../Player"
+@onready var enemy: CharacterBody2D = $"../Enemy"
+
 
 
 
@@ -27,7 +30,7 @@ func _ready() -> void:
 	healthbar.hide()
 	
 	# Increase total enemies count when spawned
-	total_enemies += 1
+	enemy.total_enemies += 1
 	#enemies_cleared = 0
 	#enemies_killed_score = 0
 
@@ -40,6 +43,8 @@ func _physics_process(delta: float) -> void:
 	#var player = get_parent().get_node("Pl+ayer")
 	
 	#position += (Player.position - position) / 100
+	if player.level_completed:
+		return
 	#look_at(player.position)
 	move_and_slide()
 	$AnimatedSprite2D.play()
@@ -49,12 +54,12 @@ func take_damage(damage_amount):
 	healthbar._set_health(health)
 	print("Enemy took ", damage_amount, " damage. Health: ", health)
 
-	if health <= 0:
-		total_enemies -= 1  # Decrease enemy count when defeated
-		enemies_cleared += 1
-		enemies_killed_score += 100
-		hud.update_enemies_cleared_label(enemies_cleared)
-		level_complete_screen.update_enemies_killed_score(enemies_cleared, enemies_killed_score)
+	if health <= 0 && enemy != null:
+		enemy.total_enemies -= 1  # Decrease enemy count when defeated
+		enemy.enemies_cleared += 1
+		enemy.enemies_killed_score += 100
+		hud.update_enemies_cleared_label(enemy.enemies_cleared)
+		level_complete_screen.update_enemies_killed_score(enemy.enemies_cleared, enemy.enemies_killed_score)
 		
 		if ammo_pickup and randf() < ammo_spawn_chance:
 			var ammo_instance = ammo_pickup.instantiate()
@@ -63,8 +68,12 @@ func take_damage(damage_amount):
 			print("Ammo spawned at:", ammo_instance.position)
 		
 		# Show level complete screen if all enemies are gone
-		if total_enemies && hostage.total_hostages <= 0:
-			level_complete_screen.show()
+		if hostage != null:
+			if hostage.total_hostages <= 0:
+				player.level_completed = true
+				level_complete_screen.show()
+		else:
+			print("Warning: Hostage object was freed before accessing total_hostages!")
 			
 		queue_free()
 
@@ -74,6 +83,10 @@ func kill():
 
 func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 	print(area.name)
+	
+	if player.level_completed:
+		return
+		
 	if area.name == "bullet_hitbox":
 		take_damage(50)
 		
@@ -84,5 +97,8 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 
 
 func _on_enemy_hitbox_area_exited(area: Area2D) -> void:
+	if player.level_completed:
+		return
+		
 	$AnimatedSprite2D.animation = "move"
 	$AnimatedSprite2D.play()

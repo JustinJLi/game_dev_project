@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_retry_pressed() -> void:
-	get_tree().change_scene_to_file("res://Assets/Environment/world.tscn")
+	get_tree().reload_current_scene()
 
 
 func _on_exit_to_main_menu_pressed() -> void:

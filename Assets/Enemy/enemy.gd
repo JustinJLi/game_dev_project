@@ -13,7 +13,7 @@ var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
 var ammo_spawn_chance = 0.1
 @onready var hostage: hostage = $"../Hostage"
 
-
+@onready var player: CharacterBody2D = $"../Player"
 
 
 
@@ -41,6 +41,8 @@ func _physics_process(delta: float) -> void:
 	
 	#position += (Player.position - position) / 100
 	#look_at(player.position)
+	if player.level_completed:
+		return
 	move_and_slide()
 	$AnimatedSprite2D.play()
 	
@@ -62,9 +64,12 @@ func take_damage(damage_amount):
 			get_parent().call_deferred("add_child", ammo_instance)
 			print("Ammo spawned at:", ammo_instance.position)
 
-		# Show level complete screen if all enemies are gone
-		if total_enemies && hostage.total_hostages <= 0:
-			level_complete_screen.show()
+		if hostage != null:
+			if hostage.total_hostages <= 0:
+				player.level_completed = true
+				level_complete_screen.show()
+		else:
+			print("Warning: Hostage object was freed before accessing total_hostages!")
 			
 		queue_free()
 
@@ -74,6 +79,9 @@ func kill():
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(area.name)
+	if player.level_completed:
+		return
+		
 	if area.name == "bullet_hitbox":
 		take_damage(50)
 		
@@ -84,5 +92,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 
 func _on_enemy_hitbox_area_exited(area: Area2D) -> void:
+	if player.level_completed:
+		return
 	$AnimatedSprite2D.animation = "move"
 	$AnimatedSprite2D.play()

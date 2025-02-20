@@ -190,9 +190,9 @@ text = "Total Score: 0 points"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="MenuButtons/Next Level" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MenuButtons/Next Level" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MenuButtons/Next Level" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_pressed"]
