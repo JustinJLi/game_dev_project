@@ -9,6 +9,7 @@ var total_ammo = 24
 var max_health = 100
 var health = max_health  # Player starts with full health
 var is_flashlight_on = true
+var player_damage = 0
 @onready var hud = get_parent().get_node("HUD")  
 @onready var healthbar = get_parent().get_node("CanvasLayer/HUD/HealthBar")
 #@onready var healthbar = $HealthBar
@@ -81,17 +82,23 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("toggle_flashlight"):
 		if is_flashlight_on:
+			$FlashlightToggle.play()
 			$Flashlight.hide()
 			is_flashlight_on = false
 		else:
+			$FlashlightToggle.play()
 			$Flashlight.show()
 			is_flashlight_on = true
 			
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * SPEED
 		$AnimatedSprite2D.play("move")
+		
+		if !$Walking.playing:
+			$Walking.play()
 	else:
 		$AnimatedSprite2D.play("idle")
+		$Walking.stop()
 		
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
@@ -138,11 +145,15 @@ func kill():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#print(body.name + " entered player.")
 	
-	# Example: If colliding with an enemy, take damage
-	if body.is_in_group("Enemies"):  # Ensure enemies are in the "enemies" group
-		take_damage(20)
-		$damage_buffer.start()
-		
+	if body.is_in_group("Enemies"):  
+		if body.has_method("enemy_dying") and body.enemy_dying:
+			$damage_buffer.stop()
+			return
+		else:
+			player_damage = body.damage
+			take_damage(body.damage)
+			$damage_buffer.start()
+			
 func _on_player_hitbox_body_exited(body: Node2D) -> void:
 	$damage_buffer.stop()
 
@@ -172,4 +183,4 @@ func _on_reload_timeout() -> void:
 
 
 func _on_damage_buffer_timeout() -> void:
-	take_damage(20)  # Take 20 damage if hit by an enemy
+	take_damage(player_damage)  # Take damage if hit by an enemy

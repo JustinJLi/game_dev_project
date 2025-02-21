@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://clsa2mtofaw5a"]
+[gd_scene load_steps=49 format=3 uid="uid://clsa2mtofaw5a"]
 
 [ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_g3y21"]
 [ext_resource type="Texture2D" uid="uid://cn0u6bra5lirc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_0.png" id="2_chf8q"]
@@ -39,8 +39,11 @@
 [ext_resource type="Script" path="res://States/state_machine.gd" id="22_qwo38"]
 [ext_resource type="Script" path="res://States/enemy_follow.gd" id="23_k1osr"]
 [ext_resource type="Script" path="res://States/idle_enemy.gd" id="24_vae1h"]
-[ext_resource type="AudioStream" uid="uid://e5a66svb0fl1" path="res://Assets/detected.mp3" id="25_hqxeu"]
+[ext_resource type="AudioStream" uid="uid://e5a66svb0fl1" path="res://Assets/Sounds/detected.mp3" id="25_hqxeu"]
 [ext_resource type="PackedScene" uid="uid://bmr7tlslbbydx" path="res://Assets/UI/healthbar/health_bar.tscn" id="26_3gu1f"]
+[ext_resource type="AudioStream" uid="uid://bwkidf7exmxbn" path="res://Assets/Sounds/enemy_hit.mp3" id="42_txeah"]
+[ext_resource type="AudioStream" uid="uid://c0sv63xn5iree" path="res://Assets/Sounds/enemy_death_sound (1).mp3" id="43_im6c3"]
+[ext_resource type="AudioStream" uid="uid://bslt8xf6xpmvv" path="res://Assets/Sounds/knife_attack.mp3" id="44_qpabi"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7p6bn"]
 light_mode = 2
@@ -222,6 +225,16 @@ offset_left = -52.0
 offset_top = -58.0
 offset_right = 59.0
 offset_bottom = -50.0
+
+[node name="EnemyHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("42_txeah")
+
+[node name="EnemyDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("43_im6c3")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("44_qpabi")
+parameters/looping = true
 
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="area_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://btepaiabjrmi7"]
+[gd_scene load_steps=40 format=3 uid="uid://btepaiabjrmi7"]
 
 [ext_resource type="Texture2D" uid="uid://dhgi1wm1ihfl" path="res://Assets/Enemy/Brute/skeleton-move_0.png" id="1_8665d"]
 [ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_ufanh"]
@@ -30,8 +30,11 @@
 [ext_resource type="Script" path="res://States/enemy_follow.gd" id="18_qpde1"]
 [ext_resource type="Script" path="res://States/idle_enemy.gd" id="19_i4ped"]
 [ext_resource type="Script" path="res://States/state_machine.gd" id="19_q8nji"]
-[ext_resource type="AudioStream" uid="uid://e5a66svb0fl1" path="res://Assets/detected.mp3" id="22_eq67l"]
+[ext_resource type="AudioStream" uid="uid://e5a66svb0fl1" path="res://Assets/Sounds/detected.mp3" id="22_eq67l"]
 [ext_resource type="PackedScene" uid="uid://bmr7tlslbbydx" path="res://Assets/UI/healthbar/health_bar.tscn" id="23_bfbx1"]
+[ext_resource type="AudioStream" uid="uid://d0krkpsbrqdre" path="res://Assets/Sounds/brute_hit.mp3" id="33_1idak"]
+[ext_resource type="AudioStream" uid="uid://c0sv63xn5iree" path="res://Assets/Sounds/enemy_death_sound (1).mp3" id="34_xkpxf"]
+[ext_resource type="AudioStream" uid="uid://bslt8xf6xpmvv" path="res://Assets/Sounds/knife_attack.mp3" id="35_mm27h"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5ny7l"]
 light_mode = 2
@@ -185,6 +188,16 @@ offset_left = -52.0
 offset_top = -58.0
 offset_right = 59.0
 offset_bottom = -50.0
+
+[node name="EnemyHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_1idak")
+
+[node name="EnemyDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_xkpxf")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_mm27h")
+parameters/looping = true
 
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="area_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_exited"]

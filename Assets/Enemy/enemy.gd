@@ -7,9 +7,12 @@ static var enemies_cleared = 0
 static var enemies_killed_score = 0
 @onready var healthbar = get_node("HealthBar")
 @export var max_health = 100
+@export var damage_dealt = 20
+var damage
 static var total_enemies = 0
 var health
 var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
+var enemy_dying = false
 @export var ammo_spawn_chance = 0.1
 @onready var hostage: hostage = $"../Hostage"
 
@@ -20,6 +23,7 @@ var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	set_collision_layer_value(2, true)
 	health = max_health
 	hud = get_tree().get_first_node_in_group("hud")
 	$AnimatedSprite2D.animation = "move"
@@ -38,21 +42,27 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	damage = damage_dealt
 	#var player = get_parent().get_node("Pl+ayer")
 	
 	#position += (Player.position - position) / 100
 	#look_at(player.position)
-	if player.level_completed:
+	if player.level_completed or enemy_dying:
 		return
 	move_and_slide()
 	$AnimatedSprite2D.play()
 	
 func take_damage(damage_amount):
+	if enemy_dying:
+		return
 	health -= damage_amount
 	healthbar._set_health(health)
 	print("Enemy took ", damage_amount, " damage. Health: ", health)
-
-	if health <= 0:
+	
+	if health > 0:
+		$EnemyHit.play()
+	else:
+		enemy_dying = true
 		total_enemies -= 1  # Decrease enemy count when defeated
 		enemies_cleared += 1
 		enemies_killed_score += 100
@@ -71,6 +81,10 @@ func take_damage(damage_amount):
 				level_complete_screen.show()
 		else:
 			print("Warning: Hostage object was freed before accessing total_hostages!")
+		
+		set_collision_layer_value(2, false)
+		$EnemyDeath.play()
+		await $EnemyDeath.finished
 			
 		queue_free()
 
@@ -80,20 +94,22 @@ func kill():
 
 func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 	print(area.name)
-	if player.level_completed:
+	if player.level_completed or enemy_dying:
 		return
 		
 	if area.name == "bullet_hitbox":
 		take_damage(50)
 		
-		
 	if area.name == "player_hitbox":
+		$Attack.play()
 		$AnimatedSprite2D.animation = "attack"
 		$AnimatedSprite2D.play()
 
 
 func _on_enemy_hitbox_area_exited(area: Area2D) -> void:
-	if player.level_completed:
+	if player.level_completed or enemy_dying:
 		return
+	
+	$Attack.stop()
 	$AnimatedSprite2D.animation = "move"
 	$AnimatedSprite2D.play()

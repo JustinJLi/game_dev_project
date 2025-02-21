@@ -90,12 +90,15 @@ position = Vector2(74, 66)
 rotation = 0.418879
 
 [node name="Enemy" parent="." instance=ExtResource("4_q7ssq")]
+damage_dealt = 10
 
 [node name="Enemy2" parent="." instance=ExtResource("4_q7ssq")]
 position = Vector2(413, 517)
+damage_dealt = 10
 
 [node name="Brute" parent="." instance=ExtResource("13_m0hbf")]
 position = Vector2(752, 176)
+damage_dealt = 40
 
 [node name="Hostage" parent="." instance=ExtResource("8_53skn")]
 position = Vector2(1086, 54)
