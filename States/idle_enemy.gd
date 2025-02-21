@@ -6,6 +6,8 @@ var wander_time : float
 
 @export var enemy: CharacterBody2D
 @export var move_speed := 50.0
+@export var max_detection_range := 200
+var detection_range : int
 
 var player: CharacterBody2D
 
@@ -19,7 +21,7 @@ func Enter():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	detection_range = max_detection_range
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,7 +40,7 @@ func Physics_Update(delta: float) -> void:
 		
 	var direction = player.global_position - enemy.global_position
 	
-	if direction.length() < 200:
+	if direction.length() < detection_range:
 		print("Detected!")
 		$Detected.play()
 		Transitioned.emit(self, "Follow")

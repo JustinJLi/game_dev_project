@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://btepaiabjrmi7"]
 
 [ext_resource type="Texture2D" uid="uid://dhgi1wm1ihfl" path="res://Assets/Enemy/Brute/skeleton-move_0.png" id="1_8665d"]
-[ext_resource type="Script" path="res://Assets/Enemy/brute.gd" id="1_fv2n5"]
+[ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_ufanh"]
 [ext_resource type="Texture2D" uid="uid://ch2v6ixwwtbyn" path="res://Assets/Enemy/Brute/skeleton-move_1.png" id="2_d4v81"]
 [ext_resource type="Texture2D" uid="uid://bxrp0kkq0n6ox" path="res://Assets/Enemy/Brute/skeleton-attack_0.png" id="2_e6gvp"]
 [ext_resource type="Texture2D" uid="uid://qbjthtuvpii4" path="res://Assets/Enemy/Brute/skeleton-move_2.png" id="3_01lh3"]
@@ -141,7 +141,9 @@ scale = Vector2(0.25, 0.25)
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
-script = ExtResource("1_fv2n5")
+script = ExtResource("1_ufanh")
+max_health = 200
+ammo_spawn_chance = 0.15
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -177,6 +179,10 @@ move_speed = 30.0
 stream = ExtResource("22_eq67l")
 
 [node name="HealthBar" parent="." instance=ExtResource("23_bfbx1")]
+offset_left = -52.0
+offset_top = -58.0
+offset_right = 59.0
+offset_bottom = -50.0
 
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="area_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_exited"]

@@ -179,6 +179,7 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_g3y21")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_7p6bn")
@@ -208,10 +209,12 @@ initial_state = NodePath("Idle")
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("23_k1osr")
 enemy = NodePath("../..")
+max_detection_range = 100
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("24_vae1h")
 enemy = NodePath("../..")
+max_detection_range = 100
 
 [node name="Detected" type="AudioStreamPlayer2D" parent="StateMachine/Idle"]
 stream = ExtResource("25_hqxeu")
@@ -222,5 +225,5 @@ offset_top = -58.0
 offset_right = 59.0
 offset_bottom = -50.0
 
-[connection signal="area_entered" from="enemy_hitbox" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="area_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_exited"]

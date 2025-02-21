@@ -6,11 +6,11 @@ class_name enemy
 static var enemies_cleared = 0
 static var enemies_killed_score = 0
 @onready var healthbar = get_node("HealthBar")
-var max_health = 100
-var health = max_health
+@export var max_health = 100
 static var total_enemies = 0
+var health
 var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
-var ammo_spawn_chance = 0.1
+@export var ammo_spawn_chance = 0.1
 @onready var hostage: hostage = $"../Hostage"
 
 @onready var player: CharacterBody2D = $"../Player"
@@ -20,6 +20,7 @@ var ammo_spawn_chance = 0.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	health = max_health
 	hud = get_tree().get_first_node_in_group("hud")
 	$AnimatedSprite2D.animation = "move"
 	#healthbar.light_mask = 2
@@ -77,7 +78,7 @@ func take_damage(damage_amount):
 func kill():
 	get_tree().call_deferred("reload_current_scene")
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 	print(area.name)
 	if player.level_completed:
 		return
