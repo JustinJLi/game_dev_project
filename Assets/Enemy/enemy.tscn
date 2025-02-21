@@ -209,12 +209,10 @@ initial_state = NodePath("Idle")
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("23_k1osr")
 enemy = NodePath("../..")
-max_detection_range = 100
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("24_vae1h")
 enemy = NodePath("../..")
-max_detection_range = 100
 
 [node name="Detected" type="AudioStreamPlayer2D" parent="StateMachine/Idle"]
 stream = ExtResource("25_hqxeu")

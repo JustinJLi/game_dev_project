@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxdku7tlqo1il"]
+
+[ext_resource type="Script" path="res://Assets/Environment/Notes/health_pickup.gd" id="1_y3dqq"]
+[ext_resource type="Texture2D" uid="uid://46kd7w7xkjml" path="res://Assets/Environment/Notes/heart.png" id="2_7tkex"]
+[ext_resource type="PackedScene" uid="uid://b3tgjqai3frdd" path="res://Assets/Interaction/InteractionArea/interaction_area.tscn" id="3_0y1sn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ev6fi"]
+light_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ka4v"]
+radius = 20.025
+
+[node name="HealthPickup" type="Node2D"]
+script = ExtResource("1_y3dqq")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_ev6fi")
+texture = ExtResource("2_7tkex")
+offset = Vector2(1, 0)
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_0y1sn")]
+action_name = "heal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_5ka4v")

@@ -169,11 +169,13 @@ initial_state = NodePath("Idle")
 script = ExtResource("18_qpde1")
 enemy = NodePath("../..")
 move_speed = 50.0
+max_detection_range = 250
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("19_i4ped")
 enemy = NodePath("../..")
 move_speed = 30.0
+max_detection_range = 250
 
 [node name="Detected" type="AudioStreamPlayer2D" parent="StateMachine/Idle"]
 stream = ExtResource("22_eq67l")

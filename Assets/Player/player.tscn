@@ -270,8 +270,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pvgvg"]
-radius = 80.0
-height = 228.0
+radius = 96.0
+height = 242.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
@@ -329,10 +329,9 @@ texture = ExtResource("42_k7mab")
 offset = Vector2(520, 35)
 
 [node name="PlayerLight" type="PointLight2D" parent="."]
-scale = Vector2(1.1, 1.1)
+scale = Vector2(2, 2)
 shadow_enabled = true
 texture = ExtResource("43_8g1wg")
-offset = Vector2(25, 0)
 
 [node name="reload" type="Timer" parent="."]
 wait_time = 1.5
