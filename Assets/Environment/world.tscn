@@ -56,7 +56,7 @@ render_target_update_mode = 4
 script = ExtResource("3_kpfml")
 
 [node name="MinimapImage" type="Sprite2D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport"]
-scale = Vector2(2, 2)
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("4_1x5oq")
 centered = false
 

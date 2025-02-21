@@ -18,7 +18,9 @@ func unregister_area(area: InteractionArea):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	player = get_tree().get_first_node_in_group("Player")
+	if player == null:
+		print("Warning: No player found in the scene!")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,6 +36,9 @@ func _process(delta: float) -> void:
 		label.hide()
 		
 func _sort_by_distance_to_player(area1, area2):
+	if player == null:
+		print("Warning: Player instance is null!")
+		return false  # Prevent sorting from breaking
 	var area1_to_player = player.global_position.distance_to(area1.global_position)
 	var area2_to_player = player.global_position.distance_to(area2.global_position)
 	return area1_to_player < area2_to_player

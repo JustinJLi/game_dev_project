@@ -40,6 +40,7 @@ func reset_scores():
 		hostage.hostages_rescued_score = 0
 		hostage.hostages_killed = 0
 		hostage.hostages_killed_score = 0
+		hostage.total_hostages_cleared = 0
 
 	# Update scores based on their current values
 	if enemy != null:

@@ -11,6 +11,7 @@ class_name hostage
 
 static var hostages_rescued = 0
 static var hostages_killed = 0
+static var total_hostages_cleared = 0
 var rescued = false  # Flag to track if the hostage has already been rescued
 var killed = false  # Flag to track if the hostage has already been rescued
 
@@ -61,9 +62,10 @@ func _rescue_hostage():
 	rescued = true
 	total_hostages -= 1
 	hostages_rescued += 1
+	total_hostages_cleared += 1
 	hostages_rescued_score += 150
 
-	hud.update_hostages_cleared_label(hostages_rescued)
+	hud.update_hostages_cleared_label(total_hostages_cleared)
 	level_complete_screen.update_hostages_rescued_score(hostages_rescued, hostages_rescued_score)
 
 	if total_hostages <= 0:
@@ -79,9 +81,10 @@ func _killed_hostage():
 	killed = true
 	total_hostages -= 1
 	hostages_killed += 1
+	total_hostages_cleared += 1
 	hostages_killed_score -= 150
 
-	hud.update_hostages_cleared_label(hostages_killed)
+	hud.update_hostages_cleared_label(total_hostages_cleared)
 	level_complete_screen.update_hostages_killed_score(hostages_killed, hostages_killed_score)
 
 	if total_hostages <= 0:
