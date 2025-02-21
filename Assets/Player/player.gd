@@ -9,6 +9,7 @@ var total_ammo = 24
 var max_health = 100
 var health = max_health  # Player starts with full health
 var is_flashlight_on = true
+var is_reloading = false
 var player_damage = 0
 @onready var hud = get_parent().get_node("HUD")  
 @onready var healthbar = get_parent().get_node("CanvasLayer/HUD/HealthBar")
@@ -54,7 +55,7 @@ func pauseMenu():
 	paused = !paused
 
 func _physics_process(delta):
-	if paused || level_completed || game_over:
+	if paused or level_completed or game_over:
 		return  # Stop player movement when paused
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("up"):
@@ -69,7 +70,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("left"):
 		velocity.x -= 1
 		$AnimatedSprite2D.animation = "move"
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and !is_reloading:
 		$AnimatedSprite2D.animation = "shoot"
 		if ammo > 0:
 			fire()
@@ -118,7 +119,6 @@ func fire():
 	
 	if total_ammo && ammo == 0:
 		print("Out of ammo")
-	
 	else:
 		$Shoot.play()
 		ammo -= 1
@@ -165,6 +165,7 @@ func reload():
 		
 	elif ammo < 8:
 		print("Reloading...")
+		is_reloading = true
 		$Reload.play()
 		$reload.start()
 	else:
@@ -179,6 +180,7 @@ func _on_reload_timeout() -> void:
 		ammo += total_ammo
 		total_ammo = 0  # No more ammo left outside
 	hud.update_bullet_label(ammo, total_ammo)
+	is_reloading = false
 	print("Reloaded!")
 
 

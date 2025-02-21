@@ -52,6 +52,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	$AnimatedSprite2D.play()
 	
+	if hostage != null:
+		if hostage.total_hostages <= 0:
+			player.level_completed = true
+			level_complete_screen.show()
+	
 func take_damage(damage_amount):
 	if enemy_dying:
 		return
@@ -74,13 +79,6 @@ func take_damage(damage_amount):
 			ammo_instance.position = global_position
 			get_parent().call_deferred("add_child", ammo_instance)
 			print("Ammo spawned at:", ammo_instance.position)
-
-		if hostage != null:
-			if hostage.total_hostages <= 0:
-				player.level_completed = true
-				level_complete_screen.show()
-		else:
-			print("Warning: Hostage object was freed before accessing total_hostages!")
 		
 		set_collision_layer_value(2, false)
 		$EnemyDeath.play()
@@ -88,7 +86,6 @@ func take_damage(damage_amount):
 			
 		queue_free()
 
-	
 func kill():
 	get_tree().call_deferred("reload_current_scene")
 
