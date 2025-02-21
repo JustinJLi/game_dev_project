@@ -5,6 +5,7 @@ extends Node2D
 
 const lines: Array[String] = [
 	"Look out for ammo...",
+	"Health is present, but scarce..."
 ]
 
 func _ready() -> void:
