@@ -4,7 +4,7 @@ extends Node
 
 var dialog_lines: Array[String] = []
 var current_line_index = 0
-
+var dialog_close_delay = 0.0
 var text_box
 var text_box_position: Vector2
 
@@ -47,6 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			is_dialog_active = false
 			current_line_index = 0
 			dialog_finished.emit()
+			dialog_close_delay = Time.get_ticks_msec() + 200
 			return
 		
 		_show_text_box()

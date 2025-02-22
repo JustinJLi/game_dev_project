@@ -3,15 +3,16 @@
 [ext_resource type="Script" path="res://Assets/Interaction/interaction_manager.gd" id="1_4uufc"]
 [ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="2_eoeb7"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a57uy"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eea6n"]
 light_mode = 2
 
 [node name="InteractionManager" type="Node2D"]
+z_index = 20
 script = ExtResource("1_4uufc")
 
 [node name="Label" type="Label" parent="."]
 z_index = 20
-material = SubResource("CanvasItemMaterial_a57uy")
+material = SubResource("CanvasItemMaterial_eea6n")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

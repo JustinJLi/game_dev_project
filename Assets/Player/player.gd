@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
+var dialog_close_delay = 0.0
 var screen_size
 var bullet_speed = 1000
 var bullet = preload("res://Assets/Environment/bullet.tscn")
@@ -71,6 +72,9 @@ func _physics_process(delta):
 		velocity.x -= 1
 		$AnimatedSprite2D.animation = "move"
 	if Input.is_action_just_pressed("shoot") and !is_reloading:
+		if Time.get_ticks_msec() < DialogueManager.dialog_close_delay:
+			return
+		
 		$AnimatedSprite2D.animation = "shoot"
 		if ammo > 0:
 			fire()

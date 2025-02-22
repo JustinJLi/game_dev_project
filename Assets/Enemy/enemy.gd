@@ -92,6 +92,7 @@ func kill():
 func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 	print(area.name)
 	if player.level_completed or enemy_dying:
+		$AnimatedSprite2D.stop()
 		return
 		
 	if area.name == "bullet_hitbox":
@@ -105,6 +106,7 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_enemy_hitbox_area_exited(area: Area2D) -> void:
 	if player.level_completed or enemy_dying:
+		$AnimatedSprite2D.stop()
 		return
 	
 	$Attack.stop()
