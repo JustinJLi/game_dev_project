@@ -182,6 +182,7 @@ max_detection_range = 250
 
 [node name="Detected" type="AudioStreamPlayer2D" parent="StateMachine/Idle"]
 stream = ExtResource("22_eq67l")
+bus = &"SFX"
 
 [node name="HealthBar" parent="." instance=ExtResource("23_bfbx1")]
 offset_left = -52.0

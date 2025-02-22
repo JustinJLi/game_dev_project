@@ -219,6 +219,7 @@ enemy = NodePath("../..")
 
 [node name="Detected" type="AudioStreamPlayer2D" parent="StateMachine/Idle"]
 stream = ExtResource("25_hqxeu")
+bus = &"SFX"
 
 [node name="HealthBar" parent="." instance=ExtResource("26_3gu1f")]
 offset_left = -52.0
