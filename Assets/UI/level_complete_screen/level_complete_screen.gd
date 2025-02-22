@@ -9,7 +9,13 @@ var hostages_rescued_points = 0
 var hostages_killed_points = 0
 @onready var enemy = get_tree().get_first_node_in_group("Enemies")
 @onready var hostage = get_tree().get_first_node_in_group("Hostages") as hostage
+var levels = [
+	"res://Assets/Environment/world.tscn",
+	"res://Assets/Environment/level_2.tscn",
+	"res://Assets/Environment/level_3.tscn"
+]
 
+var current_level_index = 0  # Track which level the player is on
 
 
 # Called when the node enters the scene tree for the first time.
@@ -71,7 +77,20 @@ func update_total_score():
 
 
 func _on_next_level_pressed() -> void:
-	get_tree().change_scene_to_file("res://Assets/Environment/world.tscn")
+	# Get the current scene path
+	var current_scene_path = get_tree().current_scene.scene_file_path
+
+	# Find the index of the current scene in the levels array
+	var index = levels.find(current_scene_path)
+
+	# If the current scene is found and not the last level, load the next level
+	if index != -1 and index < levels.size() - 1:
+		current_level_index = index + 1
+		get_tree().change_scene_to_file(levels[current_level_index])
+	else:
+		print("No more levels! Returning to main menu.")
+		get_tree().change_scene_to_file("res://Assets/UI/main_menu/main_menu.tscn")  # Go back to main menu
+
 
 func _on_exit_to_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Assets/UI/main_menu/main_menu.tscn")

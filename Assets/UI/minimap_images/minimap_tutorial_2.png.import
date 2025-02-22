@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxx7fq5ekctqd"
-path="res://.godot/imported/minimap_tutorial_2.png-36cc4b3727a9eaf3e5a8a7d02c277786.ctex"
+path="res://.godot/imported/minimap_tutorial_2.png-46f677c75fbf20b156b89f8442395faf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/minimap_tutorial_2.png"
-dest_files=["res://.godot/imported/minimap_tutorial_2.png-36cc4b3727a9eaf3e5a8a7d02c277786.ctex"]
+source_file="res://Assets/UI/minimap_images/minimap_tutorial_2.png"
+dest_files=["res://.godot/imported/minimap_tutorial_2.png-46f677c75fbf20b156b89f8442395faf.ctex"]
 
 [params]
 

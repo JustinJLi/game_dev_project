@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Assets/UI/sub_viewport.gd" id="3_5x1vx"]
 [ext_resource type="PackedScene" uid="uid://blj8jwv4ew0en" path="res://Assets/Environment/door.tscn" id="3_khqpi"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="4_837nf"]
-[ext_resource type="Texture2D" uid="uid://cxx7fq5ekctqd" path="res://Assets/UI/minimap_tutorial_2.png" id="4_hnejn"]
+[ext_resource type="Texture2D" uid="uid://cxx7fq5ekctqd" path="res://Assets/UI/minimap_images/minimap_tutorial_2.png" id="4_hnejn"]
 [ext_resource type="Texture2D" uid="uid://c362parb0cxiy" path="res://Assets/UI/Flash Light.png" id="5_g6ewb"]
 [ext_resource type="Script" path="res://Assets/Environment/Notes/enemy_tutorial.gd" id="6_gh1e4"]
 [ext_resource type="PackedScene" uid="uid://d32hk85x1qgl" path="res://Assets/Environment/scene_transition.tscn" id="6_umigm"]

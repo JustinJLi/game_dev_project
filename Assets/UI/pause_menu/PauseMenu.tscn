@@ -42,6 +42,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
 
 [node name="PauseMenu" type="Node2D"]
+visible = false
 script = ExtResource("1_76xee")
 
 [node name="ColorRect" type="ColorRect" parent="."]

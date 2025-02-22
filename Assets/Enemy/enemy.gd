@@ -47,8 +47,9 @@ func _physics_process(delta: float) -> void:
 	
 	#position += (Player.position - position) / 100
 	#look_at(player.position)
-	if player.level_completed or enemy_dying:
-		return
+	if player != null:
+		if player.level_completed or enemy_dying:
+			return
 	move_and_slide()
 	$AnimatedSprite2D.play()
 	
