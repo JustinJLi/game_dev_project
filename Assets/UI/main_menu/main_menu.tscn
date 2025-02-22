@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0qgldypsdhwg"]
+[gd_scene load_steps=11 format=3 uid="uid://d0qgldypsdhwg"]
 
 [ext_resource type="Script" path="res://Assets/UI/main_menu/main_menu.gd" id="1_3ro7t"]
 [ext_resource type="Texture2D" uid="uid://bgeins8yppghv" path="res://Assets/UI/main_menu/main_menu.png" id="1_rtbow"]
 [ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="2_jttxi"]
 [ext_resource type="PackedScene" uid="uid://b4akratys6jl" path="res://Assets/UI/options_menu/options_menu.tscn" id="4_do7xk"]
+[ext_resource type="AudioStream" uid="uid://ckv3j37ywue10" path="res://Assets/Sounds/Metal-Gear-Solid-Menu-Theme-_480p_25fps_H264-128kbit_AAC_.mp3" id="5_6usvt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_om1p6"]
 texture = ExtResource("1_rtbow")
@@ -133,6 +134,12 @@ vertical_alignment = 1
 
 [node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource("4_do7xk")]
 visible = false
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6usvt")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MenuButtons/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MenuButtons/Options" to="." method="_on_options_pressed"]

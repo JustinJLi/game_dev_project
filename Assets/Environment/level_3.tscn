@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://2pf5ge8kk7cl"]
+[gd_scene load_steps=18 format=4 uid="uid://2pf5ge8kk7cl"]
 
 [ext_resource type="Script" path="res://Assets/Environment/level_2.gd" id="1_5jt2d"]
 [ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="2_ni5ol"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://btepaiabjrmi7" path="res://Assets/Enemy/brute.tscn" id="12_0wbt5"]
 [ext_resource type="PackedScene" uid="uid://clsa2mtofaw5a" path="res://Assets/Enemy/enemy.tscn" id="13_sp5sd"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="14_8o8ci"]
+[ext_resource type="AudioStream" uid="uid://defx0idmm7q4a" path="res://Assets/Sounds/05-Intruder-1-_480p_30fps_H264-128kbit_AAC_.mp3" id="15_xx18y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oh8pq"]
 texture = ExtResource("6_dlnbl")
@@ -736,3 +737,9 @@ position = Vector2(985, 657)
 
 [node name="Player" parent="." instance=ExtResource("14_8o8ci")]
 position = Vector2(965, 525)
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_xx18y")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

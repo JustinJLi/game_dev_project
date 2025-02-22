@@ -228,12 +228,15 @@ offset_bottom = -50.0
 
 [node name="EnemyHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("42_txeah")
+bus = &"SFX"
 
 [node name="EnemyDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("43_im6c3")
+bus = &"SFX"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("44_qpabi")
+bus = &"SFX"
 parameters/looping = true
 
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]

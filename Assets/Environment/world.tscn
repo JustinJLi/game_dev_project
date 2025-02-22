@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cycitxx4lav04"]
+[gd_scene load_steps=20 format=4 uid="uid://cycitxx4lav04"]
 
 [ext_resource type="Script" path="res://Assets/Environment/world.gd" id="1_dcxjt"]
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_uq5s8"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://4n7jyouunb1e" path="res://Assets/Environment/Notes/magazine_pickup.tscn" id="12_ri80l"]
 [ext_resource type="PackedScene" uid="uid://btepaiabjrmi7" path="res://Assets/Enemy/brute.tscn" id="13_m0hbf"]
 [ext_resource type="PackedScene" uid="uid://cxdku7tlqo1il" path="res://Assets/Environment/Notes/health_pickup.tscn" id="14_10o2k"]
+[ext_resource type="AudioStream" uid="uid://dj06d87g5u55y" path="res://Assets/Sounds/Metal-Gear-Solid-Battle-music-_psone_-_480p_25fps_H264-128kbit_AAC_.mp3" id="16_5g3sq"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gkpny"]
 resource_name = "Wall"
@@ -151,3 +152,9 @@ position = Vector2(1494, 71)
 
 [node name="Player" parent="." instance=ExtResource("3_lilql")]
 position = Vector2(78, 81)
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_5g3sq")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

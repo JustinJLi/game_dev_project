@@ -343,20 +343,25 @@ one_shot = true
 
 [node name="Reload" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("44_cghh7")
+bus = &"SFX"
 
 [node name="EmptyClick" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("45_iyxq4")
+bus = &"SFX"
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("46_w1r8t")
+bus = &"SFX"
 
 [node name="FlashlightToggle" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("68_g85rq")
 volume_db = 5.0
+bus = &"SFX"
 
 [node name="Walking" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("69_qy5ow")
 volume_db = 5.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
