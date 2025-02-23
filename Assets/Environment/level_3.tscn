@@ -664,33 +664,43 @@ position = Vector2(1125, 616)
 
 [node name="Brute" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(55, 551)
+damage_dealt = 20
 
 [node name="Brute2" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(1491, 1036)
+damage_dealt = 20
 
 [node name="Brute3" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(1604, 887)
+damage_dealt = 20
 
 [node name="Brute4" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(1533, 353)
+damage_dealt = 20
 
 [node name="Brute5" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(1359, 1031)
+damage_dealt = 20
 
 [node name="Brute6" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(1666, 1038)
+damage_dealt = 20
 
 [node name="Brute7" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(1581, 1037)
+damage_dealt = 20
 
 [node name="Brute8" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(1088, 161)
+damage_dealt = 20
 
 [node name="Brute9" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(717, 490)
+damage_dealt = 20
 
 [node name="Brute10" parent="." instance=ExtResource("12_0wbt5")]
 position = Vector2(829, 494)
+damage_dealt = 20
 
 [node name="Enemy" parent="." instance=ExtResource("13_sp5sd")]
 position = Vector2(900, 88)

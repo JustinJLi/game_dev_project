@@ -7,7 +7,7 @@ static var enemies_cleared = 0
 static var enemies_killed_score = 0
 @onready var healthbar = get_node("HealthBar")
 @export var max_health = 100
-@export var damage_dealt = 20
+@export var damage_dealt = 10
 var damage
 static var total_enemies = 0
 var health

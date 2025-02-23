@@ -5,7 +5,7 @@ extends Node2D
 
 const lines: Array[String] = [
 	"Day 1...",
-	"4 Hostages were found in the area...",
+	"4 hostages were found in the area...",
 	"Locate them and get them out."
 ]
 

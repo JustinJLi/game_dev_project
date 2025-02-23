@@ -47,7 +47,7 @@ height = 58.0
 [node name="Hostage" type="CharacterBody2D" groups=["Hostages"]]
 z_index = 5
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_y7s2f")
 metadata/_edit_group_ = true
