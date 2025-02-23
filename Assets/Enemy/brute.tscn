@@ -131,11 +131,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oewwf"]
-radius = 96.0
+radius = 116.0
 height = 248.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_clb3v"]
-radius = 96.0
+radius = 116.0
 height = 248.0
 
 [node name="Brute" type="CharacterBody2D" groups=["Enemies"]]

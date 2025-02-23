@@ -53,10 +53,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	$AnimatedSprite2D.play()
 	
-	if hostage != null:
-		if hostage.total_hostages <= 0:
-			player.level_completed = true
-			level_complete_screen.show()
+	#if hostage != null:
+	#	if hostage.total_hostages <= 0:
+	#		player.level_completed = true
+	#		level_complete_screen.show()
 	
 func take_damage(damage_amount):
 	if enemy_dying:

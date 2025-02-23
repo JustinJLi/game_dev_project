@@ -27,7 +27,7 @@ var game_over = false
 
 
 func _ready() -> void:
-
+	InteractionManager.player = self
 	hud = get_tree().get_first_node_in_group("hud")
 	screen_size = get_viewport_rect().size
 	pause_menu.visible = false

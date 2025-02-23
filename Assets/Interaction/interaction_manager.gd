@@ -1,54 +1,46 @@
 extends Node2D
 
-@onready var player = get_tree().get_first_node_in_group("Player")
-@onready var label = $Label
+@onready var player: Node2D = get_tree().get_first_node_in_group("Player")
+@onready var label: Label = $Label
 
 const base_text = "[E] to "
 
-var active_areas = []
-var can_interact = true
+var active_areas: Array[InteractionArea] = []
+var can_interact: bool = true
 
-func register_area(area: InteractionArea):
+func register_area(area: InteractionArea) -> void:
 	active_areas.push_back(area)
 	
-func unregister_area(area: InteractionArea):
+func unregister_area(area: InteractionArea) -> void:
 	var index = active_areas.find(area)
 	if index != -1:
 		active_areas.remove_at(index)
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	player = get_tree().get_first_node_in_group("Player")
-	if player == null:
-		print("Warning: No player found in the scene!")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
-		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 36
-		label.global_position.x -= label.size.x / 2
+		label.global_position = active_areas[0].global_position - Vector2(label.size.x / 2, 36)
 		label.show()
 	else:
 		label.hide()
 		
-func _sort_by_distance_to_player(area1, area2):
+func _sort_by_distance_to_player(area1: InteractionArea, area2: InteractionArea) -> int:
 	if player == null:
 		print("Warning: Player instance is null!")
-		return false  # Prevent sorting from breaking
-	var area1_to_player = player.global_position.distance_to(area1.global_position)
-	var area2_to_player = player.global_position.distance_to(area2.global_position)
-	return area1_to_player < area2_to_player
+		return 0
+	var dist1 = player.global_position.distance_to(area1.global_position)
+	var dist2 = player.global_position.distance_to(area2.global_position)
+	return -1 if dist1 < dist2 else 1
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") && can_interact:
 		if active_areas.size() > 0:
 			can_interact = false
 			label.hide()
 			
-			await active_areas[0].interact.call()
+			if active_areas[0].interact != null:
+				await active_areas[0].interact.call()
 			
 			can_interact = true

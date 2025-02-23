@@ -42,5 +42,5 @@ func Physics_Update(delta: float) -> void:
 	
 	if direction.length() < detection_range:
 		print("Detected!")
-		$Detected.play()
+		#$Detected.play()
 		Transitioned.emit(self, "Follow")

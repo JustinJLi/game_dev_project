@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://2pf5ge8kk7cl"]
+[gd_scene load_steps=22 format=4 uid="uid://2pf5ge8kk7cl"]
 
 [ext_resource type="Script" path="res://Assets/Environment/level_2.gd" id="1_5jt2d"]
 [ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="2_ni5ol"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://4n7jyouunb1e" path="res://Assets/Environment/Notes/magazine_pickup.tscn" id="10_cyl57"]
 [ext_resource type="PackedScene" uid="uid://5pleal1rafp6" path="res://Assets/Hostage/hostage.tscn" id="11_u11ul"]
 [ext_resource type="PackedScene" uid="uid://btepaiabjrmi7" path="res://Assets/Enemy/brute.tscn" id="12_0wbt5"]
+[ext_resource type="PackedScene" uid="uid://cheyfa7hyapul" path="res://Assets/Environment/Notes/note.tscn" id="12_be2el"]
+[ext_resource type="Script" path="res://Assets/Environment/Notes/lvl3_note.gd" id="13_file8"]
 [ext_resource type="PackedScene" uid="uid://clsa2mtofaw5a" path="res://Assets/Enemy/enemy.tscn" id="13_sp5sd"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="14_8o8ci"]
 [ext_resource type="AudioStream" uid="uid://defx0idmm7q4a" path="res://Assets/Sounds/05-Intruder-1-_480p_30fps_H264-128kbit_AAC_.mp3" id="15_xx18y"]
@@ -638,6 +640,10 @@ position = Vector2(333, 161)
 [node name="MagazinePickup7" parent="." instance=ExtResource("10_cyl57")]
 position = Vector2(337, 550)
 
+[node name="Note" parent="." instance=ExtResource("12_be2el")]
+position = Vector2(964, 526)
+script = ExtResource("13_file8")
+
 [node name="Hostage" parent="." instance=ExtResource("11_u11ul")]
 position = Vector2(1881, 1045)
 
@@ -744,6 +750,7 @@ position = Vector2(985, 657)
 position = Vector2(965, 525)
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("15_xx18y")
 volume_db = -10.0
 autoplay = true
