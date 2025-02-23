@@ -32,7 +32,6 @@ func _ready() -> void:
 	total_hostages += 1
 	#hostages_rescued = 0
 	#hostages_rescued_score = 0
-	#total_hostages = 0
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -67,7 +66,7 @@ func _rescue_hostage():
 
 	hud.update_hostages_cleared_label(total_hostages_cleared)
 	level_complete_screen.update_hostages_rescued_score(hostages_rescued, hostages_rescued_score)
-
+	print(total_hostages)
 	if total_hostages <= 0:
 		player.level_completed = true
 		level_complete_screen.show()
@@ -83,10 +82,10 @@ func _killed_hostage():
 	hostages_killed += 1
 	total_hostages_cleared += 1
 	hostages_killed_score -= 150
-
+	
 	hud.update_hostages_cleared_label(total_hostages_cleared)
 	level_complete_screen.update_hostages_killed_score(hostages_killed, hostages_killed_score)
-
+	print(total_hostages)
 	if total_hostages <= 0:
 		player.level_completed = true
 		level_complete_screen.show()

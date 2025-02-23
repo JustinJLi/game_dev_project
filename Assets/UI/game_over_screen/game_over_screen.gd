@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_retry_pressed() -> void:
+	hostage.total_hostages = 0
 	get_tree().reload_current_scene()
 
 
