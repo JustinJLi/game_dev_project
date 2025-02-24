@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbwd2ap1cbdym"]
+[gd_scene load_steps=7 format=3 uid="uid://cbwd2ap1cbdym"]
 
 [ext_resource type="Script" path="res://Assets/Environment/Notes/ammo_pickup.gd" id="1_7oj4c"]
 [ext_resource type="Texture2D" uid="uid://d2knftuguvc0k" path="res://Assets/Environment/Notes/ammobox.png" id="1_vwxma"]
 [ext_resource type="PackedScene" uid="uid://b3tgjqai3frdd" path="res://Assets/Interaction/InteractionArea/interaction_area.tscn" id="3_nnoi7"]
+[ext_resource type="AudioStream" uid="uid://cggn0rs7qe16s" path="res://Assets/Sounds/ammo-grab.mp3" id="4_x5k6o"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rdntt"]
 light_mode = 2
@@ -25,3 +26,7 @@ action_name = "pickup"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_aakaa")
+
+[node name="Ammo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_x5k6o")
+volume_db = 20.0

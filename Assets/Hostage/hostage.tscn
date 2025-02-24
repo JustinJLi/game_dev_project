@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5pleal1rafp6"]
+[gd_scene load_steps=17 format=3 uid="uid://5pleal1rafp6"]
 
 [ext_resource type="Texture2D" uid="uid://beh3564ag28ye" path="res://Assets/Hostage/Citizens/Walk1Civ1.png" id="1_otn81"]
 [ext_resource type="Script" path="res://Assets/Hostage/hostage.gd" id="1_y7s2f"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://States/state_machine.gd" id="8_36plb"]
 [ext_resource type="Script" path="res://Assets/Interaction/InteractionArea/interaction_area.gd" id="8_mddan"]
 [ext_resource type="Script" path="res://States/idle_hostage.gd" id="9_vr4uc"]
+[ext_resource type="AudioStream" uid="uid://cqx8punds4mu2" path="res://Assets/Sounds/hostage_rescue.mp3" id="10_5b1v1"]
 [ext_resource type="Script" path="res://States/hostage_follow.gd" id="10_sq5bs"]
+[ext_resource type="AudioStream" uid="uid://bmjv578doxy13" path="res://Assets/Sounds/hostage_shot.mp3" id="11_01511"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jne10"]
 light_mode = 2
@@ -89,6 +91,15 @@ move_speed = 25.0
 script = ExtResource("10_sq5bs")
 hostage = NodePath("../..")
 move_speed = 50.0
+
+[node name="Rescue" type="AudioStreamPlayer2D" parent="."]
+process_mode = 2
+stream = ExtResource("10_5b1v1")
+volume_db = 10.0
+
+[node name="Shot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_01511")
+volume_db = 10.0
 
 [connection signal="area_entered" from="hostage_hitbox" to="." method="_on_hostage_hitbox_area_entered"]
 [connection signal="area_exited" from="hostage_hitbox" to="." method="_on_hostage_hitbox_area_exited"]

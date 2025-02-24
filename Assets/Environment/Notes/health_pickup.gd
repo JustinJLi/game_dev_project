@@ -19,6 +19,8 @@ func _on_interact():
 		else:
 			player.health += player.max_health - player.health
 		healthbar._set_health(player.health)
+		$Heal.play()
+		await $Heal.finished
 		queue_free()
 	else:
 		get_tree().paused = true

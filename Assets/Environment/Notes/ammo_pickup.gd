@@ -12,4 +12,6 @@ func _ready() -> void:
 func _on_interact():
 	player.total_ammo += 24
 	hud.update_bullet_label(player.ammo, player.total_ammo)
+	$Ammo.play()
+	await $Ammo.finished
 	queue_free()

@@ -26,7 +26,8 @@ const lines: Array[String] = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimatedSprite2D.play("walk")
+	set_collision_layer_value(2, true)
+	$AnimatedSprite2D.animation = "walk"
 	hud = get_tree().get_first_node_in_group("hud")
 	interaction_area.interact = Callable(self, "_on_interact")
 	total_hostages += 1
@@ -34,10 +35,16 @@ func _ready() -> void:
 	#hostages_rescued_score = 0
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
+	if killed:
+		$AnimatedSprite2D.stop()
+		return
+	else:
+		move_and_slide()
+		$AnimatedSprite2D.play()
 	
 	
 func _on_interact():
+	$Rescue.play()
 	get_tree().paused = true
 	DialogueManager.start_dialog(global_position, lines)
 	await DialogueManager.dialog_finished
@@ -89,7 +96,10 @@ func _killed_hostage():
 	if total_hostages <= 0:
 		player.level_completed = true
 		level_complete_screen.show()
-
+	
+	set_collision_layer_value(2, false)
+	$Shot.play()
+	await $Shot.finished
 	queue_free()
 
 
