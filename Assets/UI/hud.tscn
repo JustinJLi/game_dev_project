@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chi227bo1t6mq"]
+[gd_scene load_steps=10 format=3 uid="uid://chi227bo1t6mq"]
 
 [ext_resource type="Script" path="res://Assets/UI/hud.gd" id="1_j1603"]
 [ext_resource type="Texture2D" uid="uid://cib20chcah721" path="res://Assets/UI/bullet.png" id="1_yodbu"]
@@ -8,6 +8,7 @@
 [ext_resource type="LabelSettings" uid="uid://dbdyw3xgaep41" path="res://Assets/UI Settings/Enemies_label_settings.tres" id="6_p25ll"]
 [ext_resource type="Texture2D" uid="uid://cn0u6bra5lirc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_0.png" id="7_8kjnk"]
 [ext_resource type="PackedScene" uid="uid://bmr7tlslbbydx" path="res://Assets/UI/healthbar/health_bar.tscn" id="8_gw0si"]
+[ext_resource type="Texture2D" uid="uid://bk5fuq73toera" path="res://Assets/Player/Knife_2.png" id="9_7odpq"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("bullet_label", "hostages_cleared_label", "enemies_cleared_label") groups=["hud"]]
 layout_mode = 3
@@ -17,12 +18,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j1603")
-bullet_label = NodePath("BulletLabel")
+bullet_label = NodePath("Pistol/BulletLabel")
 hostages_cleared_label = NodePath("HostagesClearedLabel")
 enemies_cleared_label = NodePath("EnemiesClearedLabel")
 
-[node name="PistolAmmoContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
+[node name="Pistol" type="CanvasLayer" parent="."]
+
+[node name="PistolAmmoContainer" type="HBoxContainer" parent="Pistol"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -35,56 +37,55 @@ offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="BulletTexture1" type="TextureRect" parent="PistolAmmoContainer"]
+[node name="BulletTexture1" type="TextureRect" parent="Pistol/PistolAmmoContainer"]
 layout_mode = 2
 texture = ExtResource("1_yodbu")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="BulletTexture2" type="TextureRect" parent="PistolAmmoContainer"]
+[node name="BulletTexture2" type="TextureRect" parent="Pistol/PistolAmmoContainer"]
 layout_mode = 2
 texture = ExtResource("1_yodbu")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="BulletTexture3" type="TextureRect" parent="PistolAmmoContainer"]
+[node name="BulletTexture3" type="TextureRect" parent="Pistol/PistolAmmoContainer"]
 layout_mode = 2
 texture = ExtResource("1_yodbu")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="BulletTexture4" type="TextureRect" parent="PistolAmmoContainer"]
+[node name="BulletTexture4" type="TextureRect" parent="Pistol/PistolAmmoContainer"]
 layout_mode = 2
 texture = ExtResource("1_yodbu")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="BulletTexture5" type="TextureRect" parent="PistolAmmoContainer"]
+[node name="BulletTexture5" type="TextureRect" parent="Pistol/PistolAmmoContainer"]
 layout_mode = 2
 texture = ExtResource("1_yodbu")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="BulletTexture6" type="TextureRect" parent="PistolAmmoContainer"]
+[node name="BulletTexture6" type="TextureRect" parent="Pistol/PistolAmmoContainer"]
 layout_mode = 2
 texture = ExtResource("1_yodbu")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="BulletTexture7" type="TextureRect" parent="PistolAmmoContainer"]
+[node name="BulletTexture7" type="TextureRect" parent="Pistol/PistolAmmoContainer"]
 layout_mode = 2
 texture = ExtResource("1_yodbu")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="BulletTexture8" type="TextureRect" parent="PistolAmmoContainer"]
+[node name="BulletTexture8" type="TextureRect" parent="Pistol/PistolAmmoContainer"]
 layout_mode = 2
 texture = ExtResource("1_yodbu")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="BulletLabel" type="Label" parent="."]
-layout_mode = 0
+[node name="BulletLabel" type="Label" parent="Pistol"]
 offset_left = 1624.0
 offset_top = 952.0
 offset_right = 1792.0
@@ -92,8 +93,7 @@ offset_bottom = 1052.0
 text = "8 / 24"
 label_settings = ExtResource("2_fm1gc")
 
-[node name="GunTexture" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="GunTexture" type="TextureRect" parent="Pistol"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -106,6 +106,96 @@ offset_bottom = -72.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_owqaj")
+stretch_mode = 4
+flip_h = true
+
+[node name="Knife" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PistolAmmoContainer" type="HBoxContainer" parent="Knife"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -56.0
+offset_right = -132.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="BulletTexture1" type="TextureRect" parent="Knife/PistolAmmoContainer"]
+layout_mode = 2
+texture = ExtResource("1_yodbu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="BulletTexture2" type="TextureRect" parent="Knife/PistolAmmoContainer"]
+layout_mode = 2
+texture = ExtResource("1_yodbu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="BulletTexture3" type="TextureRect" parent="Knife/PistolAmmoContainer"]
+layout_mode = 2
+texture = ExtResource("1_yodbu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="BulletTexture4" type="TextureRect" parent="Knife/PistolAmmoContainer"]
+layout_mode = 2
+texture = ExtResource("1_yodbu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="BulletTexture5" type="TextureRect" parent="Knife/PistolAmmoContainer"]
+layout_mode = 2
+texture = ExtResource("1_yodbu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="BulletTexture6" type="TextureRect" parent="Knife/PistolAmmoContainer"]
+layout_mode = 2
+texture = ExtResource("1_yodbu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="BulletTexture7" type="TextureRect" parent="Knife/PistolAmmoContainer"]
+layout_mode = 2
+texture = ExtResource("1_yodbu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="BulletTexture8" type="TextureRect" parent="Knife/PistolAmmoContainer"]
+layout_mode = 2
+texture = ExtResource("1_yodbu")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="KnifeLabel" type="Label" parent="Knife"]
+offset_left = 1624.0
+offset_top = 952.0
+offset_right = 1792.0
+offset_bottom = 1052.0
+text = "CQC"
+label_settings = ExtResource("2_fm1gc")
+
+[node name="GunTexture" type="TextureRect" parent="Knife"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -153.0
+offset_right = -46.0
+offset_bottom = -62.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_7odpq")
+expand_mode = 1
 stretch_mode = 4
 flip_h = true
 

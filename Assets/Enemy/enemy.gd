@@ -98,6 +98,8 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 		
 	if area.name == "bullet_hitbox":
 		take_damage(50)
+	if area.name == "knife_hitbox":
+		take_damage(25)
 		
 	if area.name == "player_hitbox":
 		$Attack.play()
