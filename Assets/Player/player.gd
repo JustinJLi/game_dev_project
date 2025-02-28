@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 100.0
 var dialog_close_delay = 0.0
 var screen_size
 var bullet_speed = 1000
@@ -70,18 +70,19 @@ func pauseMenu():
 func _physics_process(delta):
 	if paused or level_completed or game_over:
 		return  # Stop player movement when paused
-	var velocity = Vector2.ZERO # The player's movement vector.	
+	self.velocity = Vector2.ZERO # The player's movement vector.
+	
 	if Input.is_action_pressed("up"):
-		velocity.y -= 1
+		self.velocity.y -= 1
 		$AnimatedSprite2D.animation = player_move_animation
 	if Input.is_action_pressed("down"):
-		velocity.y += 1
+		self.velocity.y += 1
 		$AnimatedSprite2D.animation = player_move_animation
 	if Input.is_action_pressed("right"):
-		velocity.x += 1
+		self.velocity.x += 1
 		$AnimatedSprite2D.animation = player_move_animation
 	if Input.is_action_pressed("left"):
-		velocity.x -= 1
+		self.velocity.x -= 1
 		$AnimatedSprite2D.animation = player_move_animation
 
 	if Input.is_action_just_pressed("shoot") and !is_reloading:
@@ -93,20 +94,18 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("toggle_flashlight"):
 		toggle_flashlight()
 			
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * SPEED
+	if self.velocity.length() > 0:
+		self.velocity = self.velocity.normalized() * SPEED
 		#$AnimatedSprite2D.play(player_move_animation)
 		
 		if !$Walking.playing:
 			$Walking.play()
-			
 	else:
 		switch_weapon_animation()
-	
 			#$AnimatedSprite2D.play("idle")
-			#$Walking.stop()
+		$Walking.stop()
 		
-	position += velocity * delta
+	position += self.velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 		
 	look_at(get_global_mouse_position())
@@ -122,7 +121,7 @@ func weapon_handler():
 	if current_weapon == Weapon.GUN && ammo > 0:
 		fire()
 		print("Ammo in Magazine: " + str(ammo))
-	elif current_weapon == Weapon.KNIFE && !is_knifing:
+	elif current_weapon == Weapon.KNIFE && !is_knifing && self.velocity.length() == 0:
 		attack_knife()
 	
 	if current_weapon == Weapon.GUN && ammo == 0:
@@ -184,12 +183,11 @@ func attack_knife():
 	is_knifing = true
 	$AnimatedSprite2D/knife_hitbox.position = Vector2(150, 0)  # Move knife forward
 	
-	if velocity.length() >= 0:
-		$AnimatedSprite2D.animation = "knife_attack"
+	$AnimatedSprite2D.animation = "knife_attack"
 	$AnimatedSprite2D.play() 
 	$KnifeAttack.play()
 		
-	await get_tree().create_timer(0.5).timeout  # Short attack duration
+	await get_tree().create_timer(0.4).timeout  # Short attack duration
 	is_knifing = false
 
 	$AnimatedSprite2D/knife_hitbox.position = Vector2.ZERO  # Reset position
