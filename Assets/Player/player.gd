@@ -91,7 +91,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("reload"):
 		reload()
 		
-	if Input.is_action_just_pressed("toggle_flashlight"):
+	if Input.is_action_just_pressed("toggle_flashlight") and current_weapon == Weapon.GUN:
 		toggle_flashlight()
 			
 	if self.velocity.length() > 0:
