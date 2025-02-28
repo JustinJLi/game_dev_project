@@ -11,6 +11,7 @@ var max_health = 100
 var health = max_health  # Player starts with full health
 var is_flashlight_on = true
 var is_reloading = false
+var is_knifing = false
 var player_damage = 0
 @onready var hud = get_parent().get_node("HUD")  
 @onready var healthbar = get_parent().get_node("CanvasLayer/HUD/HealthBar")
@@ -94,7 +95,7 @@ func _physics_process(delta):
 			
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * SPEED
-		$AnimatedSprite2D.play(player_move_animation)
+		#$AnimatedSprite2D.play(player_move_animation)
 		
 		if !$Walking.playing:
 			$Walking.play()
@@ -121,9 +122,10 @@ func weapon_handler():
 	if current_weapon == Weapon.GUN && ammo > 0:
 		fire()
 		print("Ammo in Magazine: " + str(ammo))
-	elif current_weapon == Weapon.KNIFE:
+	elif current_weapon == Weapon.KNIFE && !is_knifing:
 		attack_knife()
-	else:
+	
+	if current_weapon == Weapon.GUN && ammo == 0:
 		$EmptyClick.play()
 		print("Out of Ammo! Reload!")
 
@@ -140,6 +142,8 @@ func toggle_flashlight():
 func switch_weapon_animation():
 	if Input.is_action_just_pressed("switch_weapon"):
 		if current_weapon == Weapon.GUN:
+			if is_flashlight_on:
+				toggle_flashlight()
 			current_weapon = Weapon.KNIFE
 			player_move_animation = "move_knife"
 			$AnimatedSprite2D.animation = "idle_knife"
@@ -149,6 +153,8 @@ func switch_weapon_animation():
 			weapon_name = "Knife"
 			hud.update_on_screen_weapon(weapon_name)
 		else:
+			if !is_flashlight_on:
+				toggle_flashlight()
 			current_weapon = Weapon.GUN
 			player_move_animation = "move"
 			$AnimatedSprite2D.animation = "idle"
@@ -175,26 +181,23 @@ func fire():
 		hud.update_bullet_label(ammo, total_ammo)
 		
 func attack_knife():
-	#if Input.is_action_just_pressed("shoot"):	
-	#$KnifeHitbox.monitoring = true  # Enable detection
+	is_knifing = true
+	$AnimatedSprite2D/knife_hitbox.position = Vector2(150, 0)  # Move knife forward
 	
-	$AnimatedSprite2D/Knife/knife_hitbox.monitoring = true  # Enable hit detection
-	$AnimatedSprite2D/Knife.position = Vector2(30, 0)  # Move knife forward
-	$AnimatedSprite2D/Knife.rotation_degrees = -45  # Example swing angle
-	
-	$AnimatedSprite2D.animation = "knife_attack"
+	if velocity.length() >= 0:
+		$AnimatedSprite2D.animation = "knife_attack"
 	$AnimatedSprite2D.play() 
 	$KnifeAttack.play()
-	
+		
 	await get_tree().create_timer(0.5).timeout  # Short attack duration
-	
-	$AnimatedSprite2D/Knife/knife_hitbox.monitoring = false  # Disable hit detection
-	$AnimatedSprite2D/Knife.position = Vector2.ZERO  # Reset position
-	$AnimatedSprite2D/Knife.rotation_degrees = 0  # Reset rotation
+	is_knifing = false
+
+	$AnimatedSprite2D/knife_hitbox.position = Vector2.ZERO  # Reset position
 	
 	$AnimatedSprite2D.stop()
 	$KnifeAttack.stop()
-	#$KnifeHitbox.monitoring = false  # Disable after attack
+	$AnimatedSprite2D.animation = "idle_knife"
+	$AnimatedSprite2D.play()
 
 func take_damage(damage_amount):
 	if healthbar == null:
@@ -236,18 +239,19 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 		#print("Enemy hit with knife!")
 
 func reload():
-	if total_ammo == 0:
-		print("Can't reload, out of ammo")
-	#elif total_ammo < 8:
-		#ammo = total_ammo
-		
-	elif ammo < 8:
-		print("Reloading...")
-		is_reloading = true
-		$Reload.play()
-		$reload.start()
-	else:
-		print("Magazine is Full!")
+	if current_weapon == Weapon.GUN:
+		if total_ammo == 0:
+			print("Can't reload, out of ammo")
+		#elif total_ammo < 8:
+			#ammo = total_ammo
+			
+		elif ammo < 8:
+			print("Reloading...")
+			is_reloading = true
+			$Reload.play()
+			$reload.start()
+		else:
+			print("Magazine is Full!")
 
 func _on_reload_timeout() -> void:
 	var needed_ammo = 8 - ammo  # How much ammo we need to fill the magazine

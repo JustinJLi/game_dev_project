@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5enkmakxg44v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy061"]
+radius = 2.0
+height = 126.0
+
+[node name="knife_hitbox" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wy061")

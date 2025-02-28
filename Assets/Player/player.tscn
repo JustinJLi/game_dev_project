@@ -125,7 +125,7 @@
 [ext_resource type="Texture2D" uid="uid://bfqrhtlqouast" path="res://Assets/Player/Top_Down_Survivor 2/knife/move/survivor-move_knife_18.png" id="98_2khgu"]
 [ext_resource type="Texture2D" uid="uid://be31muljfavmy" path="res://Assets/Player/Top_Down_Survivor 2/knife/move/survivor-move_knife_19.png" id="99_m7cvg"]
 [ext_resource type="AudioStream" uid="uid://bslt8xf6xpmvv" path="res://Assets/Sounds/knife_attack.mp3" id="105_dwy5t"]
-[ext_resource type="PackedScene" uid="uid://dxc312up1thcw" path="res://Assets/Player/knife.tscn" id="118_b1ed1"]
+[ext_resource type="PackedScene" uid="uid://c5enkmakxg44v" path="res://Assets/Player/knife_test.tscn" id="118_ti6l3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w68qo"]
 radius = 80.0
@@ -544,8 +544,7 @@ position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_iblyq")
 animation = &"move_knife"
 
-[node name="Knife" parent="AnimatedSprite2D" instance=ExtResource("118_b1ed1")]
-position = Vector2(104, -24)
+[node name="knife_hitbox" parent="AnimatedSprite2D" instance=ExtResource("118_ti6l3")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(135, 46)
