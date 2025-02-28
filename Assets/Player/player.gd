@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+var speed = 100.0
 var dialog_close_delay = 0.0
 var screen_size
 var bullet_speed = 1000
@@ -91,11 +91,17 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("reload"):
 		reload()
 		
+	if Input.is_action_pressed("sprint"):
+		speed = 150.0
+		
+	if Input.is_action_just_released("sprint"):
+		speed = 100.0
+		
 	if Input.is_action_just_pressed("toggle_flashlight") and current_weapon == Weapon.GUN:
 		toggle_flashlight()
 			
 	if self.velocity.length() > 0:
-		self.velocity = self.velocity.normalized() * SPEED
+		self.velocity = self.velocity.normalized() * speed
 		#$AnimatedSprite2D.play(player_move_animation)
 		
 		if !$Walking.playing:

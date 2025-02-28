@@ -7,9 +7,11 @@ const lines: Array[String] = [
 	"A crumbled note...",
 	"Controls:",
 	"WASD to move.",
-	"Left click to shoot.",
+	"Hold left shift to sprint.",
+	"Left click to attack.",
 	"R to reload.",
 	"F to toggle flashlight.",
+	"Q or scroll mouse to switch weapons.",
 	"Watch your ammo."
 ]
 
