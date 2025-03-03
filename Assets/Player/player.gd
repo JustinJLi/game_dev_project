@@ -136,11 +136,13 @@ func weapon_handler():
 
 func toggle_flashlight():
 	if is_flashlight_on:
-		$FlashlightToggle.play()
+		if current_weapon == Weapon.GUN:
+			$FlashlightToggle.play()
 		$Flashlight.hide()
 		is_flashlight_on = false
 	else:
-		$FlashlightToggle.play()
+		if current_weapon == Weapon.GUN:
+			$FlashlightToggle.play()
 		$Flashlight.show()
 		is_flashlight_on = true
 
