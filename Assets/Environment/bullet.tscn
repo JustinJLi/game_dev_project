@@ -7,10 +7,10 @@
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xiae"]
-size = Vector2(8, 36)
+size = Vector2(8, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsn6q"]
-size = Vector2(8, 36)
+size = Vector2(8, 23)
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 4
@@ -25,6 +25,7 @@ material = SubResource("CanvasItemMaterial_n0hi8")
 texture = ExtResource("1_vu8jg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_1xiae")
 
 [node name="bullet_hitbox" type="Area2D" parent="."]
@@ -32,6 +33,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_hitbox"]
+position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_wsn6q")
 
 [connection signal="area_entered" from="bullet_hitbox" to="." method="_on_bullet_hitbox_area_entered"]

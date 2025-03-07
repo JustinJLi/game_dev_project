@@ -516,7 +516,7 @@ height = 242.0
 z_index = 5
 position = Vector2(87, 262)
 scale = Vector2(0.25, 0.25)
-collision_mask = 2
+collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_cmp4a")
 
@@ -542,12 +542,12 @@ shape = SubResource("CapsuleShape2D_w68qo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_iblyq")
-animation = &"move_knife"
+animation = &"idle"
 
 [node name="knife_hitbox" parent="AnimatedSprite2D" instance=ExtResource("118_ti6l3")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(135, 46)
+position = Vector2(140, 46)
 
 [node name="player_hitbox" type="Area2D" parent="."]
 collision_mask = 2

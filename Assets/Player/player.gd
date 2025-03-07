@@ -224,7 +224,7 @@ func kill():
 	#get_tree().call_deferred("reload_current_scene")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	#print(body.name + " entered player.")
+	print(body.name + " entered player.")
 	
 	if body.is_in_group("Enemies"):  
 		if body.has_method("enemy_dying") and body.enemy_dying:

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgn5xhaucw7bo"]
+
+[ext_resource type="Script" path="res://Assets/Enemy/turret.gd" id="1_0hlgu"]
+[ext_resource type="Texture2D" uid="uid://bc3k7s4u5j6a0" path="res://Assets/Enemy/GunTurret.png" id="1_bigb2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35nh0"]
+radius = 34.0
+height = 140.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xw0jy"]
+radius = 36.0
+height = 144.0
+
+[node name="Turret" type="CharacterBody2D"]
+position = Vector2(105, 114)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_0hlgu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_bigb2")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_35nh0")
+
+[node name="turret_hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="turret_hitbox"]
+shape = SubResource("CapsuleShape2D_xw0jy")
+
+[node name="TurretTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="turret_hitbox" to="." method="_on_turret_hitbox_area_entered"]
+[connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]
