@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnqmmaxqaxooe"]
+
+[ext_resource type="Texture2D" uid="uid://bf348q8vr1eyw" path="res://Assets/Environment/glass.png" id="1_808mh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wirge"]
+size = Vector2(123.077, 123.077)
+
+[node name="Window" type="Node2D" groups=["Environment"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("1_808mh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(1.83399e-06, -1.83399e-06)
+shape = SubResource("RectangleShape2D_wirge")
