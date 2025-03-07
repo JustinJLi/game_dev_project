@@ -35,7 +35,7 @@ func _ready() -> void:
 	total_enemies += 1
 	#enemies_cleared = 0
 	#enemies_killed_score = 0
-
+	print(total_enemies)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

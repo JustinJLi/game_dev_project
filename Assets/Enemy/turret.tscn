@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgn5xhaucw7bo"]
+[gd_scene load_steps=9 format=3 uid="uid://bgn5xhaucw7bo"]
 
 [ext_resource type="Script" path="res://Assets/Enemy/turret.gd" id="1_0hlgu"]
 [ext_resource type="Texture2D" uid="uid://bc3k7s4u5j6a0" path="res://Assets/Enemy/GunTurret.png" id="1_bigb2"]
+[ext_resource type="PackedScene" uid="uid://b3tgjqai3frdd" path="res://Assets/Interaction/InteractionArea/interaction_area.tscn" id="3_udtn0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_usel5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m2jip"]
+light_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35nh0"]
 radius = 34.0
@@ -11,7 +17,12 @@ height = 140.0
 radius = 36.0
 height = 144.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tr5d1"]
+radius = 54.0
+height = 176.0
+
 [node name="Turret" type="CharacterBody2D"]
+material = SubResource("CanvasItemMaterial_usel5")
 position = Vector2(105, 114)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
@@ -22,6 +33,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_m2jip")
 texture = ExtResource("1_bigb2")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -38,7 +50,14 @@ collision_mask = 5
 shape = SubResource("CapsuleShape2D_xw0jy")
 
 [node name="TurretTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_udtn0")]
+action_name = "disarm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CapsuleShape2D_tr5d1")
 
 [connection signal="area_entered" from="turret_hitbox" to="." method="_on_turret_hitbox_area_entered"]
 [connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]
