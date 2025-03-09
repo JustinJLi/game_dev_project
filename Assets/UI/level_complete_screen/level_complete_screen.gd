@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	update_total_score()
 # Reset the scores when transitioning to a new level
 func reset_scores():
-	Global.total_score_points = 0
+	#Global.total_score_points = 0
 	Global.enemies_killed_points = 0
 	Global.hostages_rescued_points = 0
 	Global.hostages_killed_points = 0

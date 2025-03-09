@@ -10,6 +10,15 @@ var upgrade_costs = {
 	"Map": 5000          # Example cost for Map upgrade
 }
 
+# Stores upgrade levels for each category
+var stored_upgrade_multipliers = {
+	"MaxHealth": 0,
+	"GunDmg": 0,
+	"KnifeDmg": 0,
+	"Map": 0
+}
+
+
 # Maximum upgrade levels (3 bars)
 const MAX_LEVEL = 3
 
@@ -27,6 +36,10 @@ var current_level_index = 0  # Track which level the player is on
 @onready var total_cost_label: Label = $TotalCostLabel
 var total_cost = 0
 @onready var level_complete_screen: Node2D = $"../../CanvasLayer2/LevelCompleteScreen"
+@onready var max_health_points_label: Label = $MaxHealthPointsLabel
+@onready var gun_dmg_points_label: Label = $GunDmgPointsLabel
+@onready var knife_dmg_points_label: Label = $KnifeDmgPointsLabel
+@onready var map_points_label: Label = $MapPointsLabel
 
 
 
@@ -58,11 +71,13 @@ func _connect_buttons(plus_name, minus_name, category):
 
 func _upgrade(category, change):
 	if category == "Map":
-		Global.upgrades[category] = clamp(Global.upgrades[category] + change, 0, 1)
+		Global.upgrade_bars_position[category] = clamp(Global.upgrade_bars_position[category] + change, 0, 1)
+		stored_upgrade_multipliers[category] = clamp(stored_upgrade_multipliers[category] + change, 0, 1)
 		_update_progress_bars(category)
 	
-	elif category in Global.upgrades:
-		Global.upgrades[category] = clamp(Global.upgrades[category] + change, 0, MAX_LEVEL)
+	elif category in Global.upgrade_bars_position:
+		Global.upgrade_bars_position[category] = clamp(Global.upgrade_bars_position[category] + change, 0, MAX_LEVEL)
+		stored_upgrade_multipliers[category] = clamp(stored_upgrade_multipliers[category] + change, 0, MAX_LEVEL)
 		_update_progress_bars(category)
 	
 	update_total_cost()
@@ -72,8 +87,8 @@ func _upgrade(category, change):
 func update_total_cost():
 	# Calculate the total cost based on upgrades
 	total_cost = 0
-	for category in Global.upgrades.keys():
-		total_cost += Global.upgrades[category] * upgrade_costs[category]
+	for category in Global.upgrade_bars_position.keys():
+		total_cost += stored_upgrade_multipliers[category] * upgrade_costs[category]
 
 	# Ensure that total cost doesn't exceed player points
 	#if total_cost > player_points:
@@ -95,7 +110,7 @@ func _update_progress_bars(category):
 		fill_stylebox.corner_radius_bottom_right = 10
 
 		
-		if Global.upgrades[category] == 1:
+		if Global.upgrade_bars_position[category] == 1:
 			fill_stylebox.bg_color = Color(255, 255, 255)  # Green for upgrade
 			bar.value = 100
 		else:
@@ -124,7 +139,7 @@ func _update_progress_bars(category):
 			fill_stylebox.corner_radius_bottom_right = 10
 			
 			
-			if i < Global.upgrades[category]: 
+			if i < Global.upgrade_bars_position[category]: 
 				fill_stylebox.bg_color = Color(255, 255, 255)  # Green when filled
 				bar.value = 100
 			else:
@@ -176,11 +191,18 @@ func _on_confirm_button_pressed() -> void:
 				#upgrades[category] += 1  # Increment the upgrade level
 				#_update_progress_bars(category)  # Update only the progress bar for this category
 		## Reset the upgrade levels after confirming purchase
-		#for category in upgrades.keys():
-			#upgrades[category] = 1  # Reset the upgrade level to 0
+		for category in Global.upgrade_bars_position.keys():
+			if Global.upgrade_bars_position[category] < 1:
+				Global.upgrade_bars_position[category] = 0  # Reset the upgrade level to 0
+			else:
+				stored_upgrade_multipliers[category] = 0
+				
+				
+	
+				
 		
 		## Update the progress bars for each category after reset
-		#for category in upgrades.keys():
+		#for category in Global.upgrades.keys():
 			#_update_progress_bars(category)
 		# After confirming, update the labels
 		total_cost = 0

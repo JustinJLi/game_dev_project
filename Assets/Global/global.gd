@@ -6,7 +6,7 @@ var hostages_rescued_points = 0
 var hostages_killed_points = 0
 
 # Stores upgrade levels for each category
-var upgrades = {
+var upgrade_bars_position = {
 	"MaxHealth": 0,
 	"GunDmg": 0,
 	"KnifeDmg": 0,
