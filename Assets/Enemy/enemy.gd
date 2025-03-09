@@ -100,8 +100,10 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 		take_damage(50)
 	if area.name == "knife_hitbox":
 		take_damage(25)
-		
-	if area.name == "player_hitbox":
+	
+	if player.level_completed:
+		return	
+	elif area.name == "player_hitbox":
 		$Attack.play()
 		$AnimatedSprite2D.animation = "attack"
 		$AnimatedSprite2D.play()

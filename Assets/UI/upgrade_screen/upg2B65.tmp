@@ -1,0 +1,545 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3op51c04ke2m"]
+
+[ext_resource type="Script" path="res://Assets/UI/upgrade_screen/upgrade_screen.gd" id="1_snisg"]
+[ext_resource type="Shader" path="res://Assets/UI/pause_menu/PauseMenu.gdshader" id="2_mhw0p"]
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="3_h2qxv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4eid"]
+shader = ExtResource("2_mhw0p")
+shader_parameter/amount = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o535t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjatd"]
+bg_color = Color(0.733005, 0.733005, 0.733005, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.207843)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ncg5"]
+bg_color = Color(0.396889, 0.396889, 0.396889, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.207843)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anuow"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.207843)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[node name="UpgradeScreen" type="Node2D"]
+script = ExtResource("1_snisg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_m4eid")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161364.0
+offset_top = -58676.0
+offset_right = 161364.0
+offset_bottom = 58676.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlusButtonsContainer" type="VBoxContainer" parent="."]
+offset_left = 1627.0
+offset_top = 234.0
+offset_right = 1738.0
+offset_bottom = 790.0
+theme_override_constants/separation = 20
+
+[node name="MaxHealthPlusButton" type="Button" parent="PlusButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="GunDamagePlusButton" type="Button" parent="PlusButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="KnifeDamagePlusButton" type="Button" parent="PlusButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="MapPlusButton" type="Button" parent="PlusButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="MinusButtonsContainer" type="VBoxContainer" parent="."]
+offset_left = 1446.0
+offset_top = 234.0
+offset_right = 1557.0
+offset_bottom = 790.0
+theme_override_constants/separation = 20
+
+[node name="MaxHealthMinusButton" type="Button" parent="MinusButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "-"
+metadata/_edit_use_anchors_ = true
+
+[node name="GunDamageMinusButton" type="Button" parent="MinusButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "-"
+metadata/_edit_use_anchors_ = true
+
+[node name="KnifeDamageMinusButton" type="Button" parent="MinusButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "-"
+metadata/_edit_use_anchors_ = true
+
+[node name="MapMinusButton" type="Button" parent="MinusButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "-"
+metadata/_edit_use_anchors_ = true
+
+[node name="MaxHealthUpgradeBarContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 780.0
+offset_top = 293.0
+offset_right = 1088.0
+offset_bottom = 343.0
+
+[node name="UpgradeBar1" type="ProgressBar" parent="MaxHealthUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="UpgradeBar2" type="ProgressBar" parent="MaxHealthUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="UpgradeBar3" type="ProgressBar" parent="MaxHealthUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="GunDmgUpgradeBarContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 780.0
+offset_top = 418.0
+offset_right = 1088.0
+offset_bottom = 468.0
+
+[node name="UpgradeBar1" type="ProgressBar" parent="GunDmgUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="UpgradeBar2" type="ProgressBar" parent="GunDmgUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="UpgradeBar3" type="ProgressBar" parent="GunDmgUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="KnifeDmgUpgradeBarContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 780.0
+offset_top = 553.0
+offset_right = 1088.0
+offset_bottom = 603.0
+
+[node name="UpgradeBar1" type="ProgressBar" parent="KnifeDmgUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="UpgradeBar2" type="ProgressBar" parent="KnifeDmgUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="UpgradeBar3" type="ProgressBar" parent="KnifeDmgUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="MapUpgradeBarContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 884.0
+offset_top = 685.0
+offset_right = 1192.0
+offset_bottom = 735.0
+
+[node name="UpgradeBar1" type="ProgressBar" parent="MapUpgradeBarContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="NextLevelButtonContainer" type="HBoxContainer" parent="."]
+offset_left = 1679.0
+offset_top = 965.0
+offset_right = 2252.0
+offset_bottom = 1065.0
+
+[node name="NextLevelButton" type="Button" parent="NextLevelButtonContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "Next Level"
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButtonContainer2" type="HBoxContainer" parent="."]
+visible = false
+offset_left = 82.0
+offset_top = 965.0
+offset_right = 655.0
+offset_bottom = 1065.0
+
+[node name="BackButton" type="Button" parent="BackButtonContainer2"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="ConfirmButtonContainer" type="HBoxContainer" parent="."]
+offset_left = 1500.0
+offset_top = 823.0
+offset_right = 2073.0
+offset_bottom = 923.0
+
+[node name="ConfirmButton" type="Button" parent="ConfirmButtonContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "Confirm"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuTitle" type="Label" parent="."]
+offset_left = 707.0
+offset_top = 3.0
+offset_right = 1240.0
+offset_bottom = 149.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 60
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxHealthLabel" type="Label" parent="."]
+offset_left = 135.0
+offset_top = 228.0
+offset_right = 495.0
+offset_bottom = 414.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 60
+text = "Max Health"
+vertical_alignment = 1
+
+[node name="GunDmgLabel" type="Label" parent="."]
+offset_left = 129.0
+offset_top = 362.0
+offset_right = 542.0
+offset_bottom = 548.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 60
+text = "Gun Damage"
+vertical_alignment = 1
+
+[node name="KnifeDmgLabel" type="Label" parent="."]
+offset_left = 132.0
+offset_top = 496.0
+offset_right = 554.0
+offset_bottom = 682.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 60
+text = "Knife Damage"
+vertical_alignment = 1
+
+[node name="MapLabel" type="Label" parent="."]
+offset_left = 130.0
+offset_top = 627.0
+offset_right = 296.0
+offset_bottom = 813.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 60
+text = "Map"
+vertical_alignment = 1
+
+[node name="TotalCostLabel" type="Label" parent="."]
+offset_left = 445.0
+offset_top = 787.0
+offset_right = 1379.0
+offset_bottom = 973.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 60
+text = "Total Cost:                    0 Points"
+vertical_alignment = 1
+
+[node name="TotalPointsLabel" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 84.0
+offset_right = 1390.0
+offset_bottom = 270.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 60
+text = "Total Points:                 0 Points"
+vertical_alignment = 1
+
+[node name="MaxHealthPointsLabel" type="Label" parent="."]
+offset_left = 1141.0
+offset_top = 217.0
+offset_right = 1411.0
+offset_bottom = 403.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 40
+text = "2000 Points"
+vertical_alignment = 1
+
+[node name="GunDmgPointsLabel" type="Label" parent="."]
+offset_left = 1141.0
+offset_top = 350.0
+offset_right = 1482.0
+offset_bottom = 536.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 40
+text = "1500 Points"
+vertical_alignment = 1
+
+[node name="KnifeDmgPointsLabel" type="Label" parent="."]
+offset_left = 1141.0
+offset_top = 483.0
+offset_right = 1482.0
+offset_bottom = 669.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 40
+text = "1000 Points"
+vertical_alignment = 1
+
+[node name="MapPointsLabel" type="Label" parent="."]
+offset_left = 1141.0
+offset_top = 620.0
+offset_right = 1482.0
+offset_bottom = 806.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_h2qxv")
+theme_override_font_sizes/font_size = 40
+text = "5000 Points"
+vertical_alignment = 1
+
+[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="NextLevelButtonContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="BackButtonContainer2/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ConfirmButtonContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

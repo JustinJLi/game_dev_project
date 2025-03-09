@@ -62,7 +62,7 @@ grow_vertical = 2
 offset_left = 790.0
 offset_top = 519.0
 offset_right = 1189.0
-offset_bottom = 756.0
+offset_bottom = 854.0
 theme_override_constants/separation = 20
 
 [node name="Retry" type="Button" parent="MenuButtons"]
@@ -83,6 +83,26 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
 text = "Retry"
+metadata/_edit_use_anchors_ = true
+
+[node name="PurchaseUpgradesButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("3_xvaqf")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
+text = "Purchase Upgrades"
 metadata/_edit_use_anchors_ = true
 
 [node name="Next Level" type="Button" parent="MenuButtons"]
@@ -191,8 +211,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MenuButtons/PurchaseUpgradesButton" to="." method="_on_purchase_upgrades_button_pressed"]
 [connection signal="pressed" from="MenuButtons/Next Level" to="." method="_on_next_level_pressed"]
-[connection signal="pressed" from="MenuButtons/Next Level" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_pressed"]

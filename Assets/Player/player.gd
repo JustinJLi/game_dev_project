@@ -34,6 +34,7 @@ var player_move_animation = "move"
 
 
 func _ready() -> void:
+	#print_tree_pretty()
 	InteractionManager.player = self
 	hud = get_tree().get_first_node_in_group("hud")
 	screen_size = get_viewport_rect().size
@@ -226,7 +227,10 @@ func kill():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print(body.name + " entered player.")
 	
-	if body.is_in_group("Enemies"):  
+	if level_completed:
+		return
+	
+	if body.is_in_group("Enemies"): 
 		if body.has_method("enemy_dying") and body.enemy_dying:
 			$damage_buffer.stop()
 			return

@@ -551,6 +551,7 @@ script = ExtResource("1_k2edu")
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("2_gmmpm")]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -564,7 +565,7 @@ grow_vertical = 0
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/HUD/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(256, 256)
-render_target_update_mode = 4
+render_target_update_mode = 0
 script = ExtResource("3_r8kr6")
 
 [node name="MinimapImage" type="Sprite2D" parent="CanvasLayer/HUD/SubViewportContainer/SubViewport"]
