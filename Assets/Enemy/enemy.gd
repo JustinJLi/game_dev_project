@@ -1,6 +1,15 @@
 extends CharacterBody2D
 class_name enemy
 
+@export var vision_renderer: Polygon2D
+@export var alert_color: Color
+
+@export_group("Rotation")
+@export var is_rotating = false
+@export var rotation_speed = 0.1
+@export var rotation_angle = 90
+@onready var original_color = vision_renderer.color if vision_renderer else Color.WHITE
+
 @onready var hud = get_parent().get_node("HUD")  
 @onready var level_complete_screen = get_parent().get_node("Player/CanvasLayer2/LevelCompleteScreen")  
 static var enemies_cleared = 0
@@ -13,6 +22,7 @@ static var total_enemies = 0
 var health
 var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
 var enemy_dying = false
+var player_spotted = false
 @export var ammo_spawn_chance = 0.1
 @onready var hostage: hostage = $"../Hostage"
 
@@ -117,3 +127,15 @@ func _on_enemy_hitbox_area_exited(area: Area2D) -> void:
 	$Attack.stop()
 	$AnimatedSprite2D.animation = "move"
 	$AnimatedSprite2D.play()
+
+
+func _on_vision_cone_area_body_entered(body: Node2D) -> void:
+	print("%s is seeing %s" % [self, body])
+	player_spotted = true
+	vision_renderer.color = alert_color
+
+
+func _on_vision_cone_area_body_exited(body: Node2D) -> void:
+	print("%s stopped seeing %s" % [self, body])
+	player_spotted = false
+	vision_renderer.color = original_color

@@ -6,7 +6,7 @@ var wander_time : float
 
 @export var enemy: CharacterBody2D
 @export var move_speed := 50.0
-@export var max_detection_range := 200
+@export var max_detection_range := 300
 var detection_range : int
 
 var player: CharacterBody2D
@@ -40,7 +40,7 @@ func Physics_Update(delta: float) -> void:
 		
 	var direction = player.global_position - enemy.global_position
 	
-	if direction.length() < detection_range:
+	if enemy.player_spotted:
 		print("Detected!")
 		#$Detected.play()
 		Transitioned.emit(self, "Follow")

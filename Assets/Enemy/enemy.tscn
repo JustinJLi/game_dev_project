@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://clsa2mtofaw5a"]
+[gd_scene load_steps=50 format=3 uid="uid://clsa2mtofaw5a"]
 
 [ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_g3y21"]
 [ext_resource type="Texture2D" uid="uid://cn0u6bra5lirc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_0.png" id="2_chf8q"]
@@ -44,6 +44,7 @@
 [ext_resource type="AudioStream" uid="uid://bwkidf7exmxbn" path="res://Assets/Sounds/enemy_hit.mp3" id="42_txeah"]
 [ext_resource type="AudioStream" uid="uid://c0sv63xn5iree" path="res://Assets/Sounds/enemy_death_sound (1).mp3" id="43_im6c3"]
 [ext_resource type="AudioStream" uid="uid://bslt8xf6xpmvv" path="res://Assets/Sounds/knife_attack.mp3" id="44_qpabi"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="45_n6gay"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7p6bn"]
 light_mode = 2
@@ -174,7 +175,7 @@ height = 116.0
 radius = 37.0
 height = 116.0
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("vision_renderer") groups=["Enemies"]]
 z_index = 5
 position = Vector2(807, 386)
 scale = Vector2(0.5, 0.5)
@@ -182,6 +183,8 @@ collision_layer = 2
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_g3y21")
+vision_renderer = NodePath("VisionCone2D/VisionConeRenderer")
+alert_color = Color(0, 0, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -240,5 +243,20 @@ stream = ExtResource("44_qpabi")
 bus = &"SFX"
 parameters/looping = true
 
+[node name="VisionCone2D" parent="." instance=ExtResource("45_n6gay")]
+rotation = -1.5708
+angle_deg = 45
+ray_count = 25
+max_distance = 300.0
+collision_layer_mask = 3
+debug_lines = true
+
+[node name="VisionConeRenderer" parent="VisionCone2D" index="0"]
+color = Color(0, 0, 0, 0)
+
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="area_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_exited"]
+[connection signal="body_entered" from="VisionCone2D/VisionConeArea" to="." method="_on_vision_cone_area_body_entered"]
+[connection signal="body_exited" from="VisionCone2D/VisionConeArea" to="." method="_on_vision_cone_area_body_exited"]
+
+[editable path="VisionCone2D"]

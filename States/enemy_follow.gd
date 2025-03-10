@@ -5,7 +5,7 @@ var player: CharacterBody2D
 
 @export var enemy: CharacterBody2D
 @export var move_speed := 150.0
-@export var max_detection_range := 200
+@export var max_detection_range := 300
 var detection_range : int
 
 func Enter():
@@ -19,7 +19,7 @@ func _ready() -> void:
 func Physics_Update(delta: float):
 	var direction = player.global_position - enemy.global_position
 	
-	if direction.length() > 25:
+	if enemy.player_spotted:
 		enemy.velocity = direction.normalized() * move_speed
 		enemy.look_at(player.position)
 	else:
@@ -27,4 +27,5 @@ func Physics_Update(delta: float):
 		
 	if direction.length() > detection_range:
 		print("Lost the player")
+		enemy.player_spotted = false
 		Transitioned.emit(self, "Idle")

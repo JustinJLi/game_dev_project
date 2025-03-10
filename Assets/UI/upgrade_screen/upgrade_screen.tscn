@@ -41,6 +41,7 @@ shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
 
 [node name="UpgradeScreen" type="Node2D"]
+visible = false
 script = ExtResource("1_snisg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -524,22 +525,22 @@ theme_override_font_sizes/font_size = 40
 text = "5000 Points"
 vertical_alignment = 1
 
-[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="NextLevelButtonContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="BackButtonContainer2/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="ConfirmButtonContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
