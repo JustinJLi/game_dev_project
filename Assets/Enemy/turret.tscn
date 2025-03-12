@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgn5xhaucw7bo"]
+[gd_scene load_steps=10 format=3 uid="uid://bgn5xhaucw7bo"]
 
 [ext_resource type="Script" path="res://Assets/Enemy/turret.gd" id="1_0hlgu"]
 [ext_resource type="Texture2D" uid="uid://bc3k7s4u5j6a0" path="res://Assets/Enemy/GunTurret.png" id="1_bigb2"]
 [ext_resource type="PackedScene" uid="uid://b3tgjqai3frdd" path="res://Assets/Interaction/InteractionArea/interaction_area.tscn" id="3_udtn0"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="4_ugfyu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_usel5"]
 
@@ -21,7 +22,7 @@ height = 144.0
 radius = 54.0
 height = 176.0
 
-[node name="Turret" type="CharacterBody2D"]
+[node name="Turret" type="CharacterBody2D" node_paths=PackedStringArray("vision_renderer")]
 material = SubResource("CanvasItemMaterial_usel5")
 position = Vector2(105, 114)
 scale = Vector2(0.5, 0.5)
@@ -29,6 +30,10 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_0hlgu")
+vision_renderer = NodePath("VisionCone2D/VisionConeRenderer")
+is_rotating = true
+rotation_speed = 1.0
+rotation_angle = 45
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -50,8 +55,6 @@ collision_mask = 5
 shape = SubResource("CapsuleShape2D_xw0jy")
 
 [node name="TurretTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_udtn0")]
 action_name = "disarm"
@@ -59,5 +62,19 @@ action_name = "disarm"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CapsuleShape2D_tr5d1")
 
+[node name="VisionCone2D" parent="." instance=ExtResource("4_ugfyu")]
+rotation = 3.14159
+angle_deg = 10
+ray_count = 10
+collision_layer_mask = 3
+debug_lines = true
+
+[node name="VisionConeRenderer" parent="VisionCone2D" index="0"]
+color = Color(0, 0, 0, 0)
+
 [connection signal="area_entered" from="turret_hitbox" to="." method="_on_turret_hitbox_area_entered"]
 [connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]
+[connection signal="body_entered" from="VisionCone2D/VisionConeArea" to="." method="_on_vision_cone_area_body_entered"]
+[connection signal="body_exited" from="VisionCone2D/VisionConeArea" to="." method="_on_vision_cone_area_body_exited"]
+
+[editable path="VisionCone2D"]

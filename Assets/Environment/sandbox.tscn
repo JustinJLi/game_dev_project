@@ -1244,7 +1244,7 @@ texture = ExtResource("8_54sqw")
 position = Vector2(487, 316)
 
 [node name="Turret3" parent="." instance=ExtResource("4_cmeq0")]
-position = Vector2(237, 318)
+position = Vector2(167, 667)
 rotation = 0.778417
 
 [node name="Turret4" parent="." instance=ExtResource("4_cmeq0")]

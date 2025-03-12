@@ -1,6 +1,16 @@
 extends CharacterBody2D
 class_name turret
 
+@export var vision_renderer: Polygon2D
+@export var alert_color: Color
+
+@export_group("Rotation")
+@export var is_rotating = false
+@export var rotation_speed = 0.1
+@export var rotation_angle = 90
+@onready var original_color = vision_renderer.color if vision_renderer else Color.WHITE
+@onready var rot_start = rotation
+
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var hud = get_parent().get_node("HUD")  
 @onready var level_complete_screen = get_parent().get_node("Player/CanvasLayer2/LevelCompleteScreen")  
@@ -23,6 +33,7 @@ var bullet = preload("res://Assets/Enemy/turret_bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
 	interaction_area.interact = Callable(self, "_on_interact")
 	set_collision_layer_value(2, true)
 	health = max_health
@@ -42,6 +53,9 @@ func _physics_process(delta: float) -> void:
 	if player != null:
 		if player.level_completed or enemy_dying:
 			return
+			
+	if is_rotating:
+		rotation = rot_start + sin(Time.get_ticks_msec()/1000. * rotation_speed) * deg_to_rad(rotation_angle/2.)
 
 func take_damage(damage_amount):
 	health -= damage_amount
@@ -75,3 +89,14 @@ func _on_turret_timer_timeout() -> void:
 func _on_turret_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "bullet_hitbox":
 		take_damage(50)
+
+
+func _on_vision_cone_area_body_entered(body: Node2D) -> void:
+	$TurretTimer.start()
+	is_rotating = false
+	print("Entered")
+
+func _on_vision_cone_area_body_exited(body: Node2D) -> void:
+	$TurretTimer.stop()
+	is_rotating = true
+	print("Exited")
