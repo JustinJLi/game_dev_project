@@ -57,7 +57,7 @@ func _on_hostage_hitbox_area_entered(area: Area2D) -> void:
 		_killed_hostage()  # Ensures only one subtraction occurs		
 
 func _on_hostage_hitbox_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and !killed:
 		_on_interact()
 		$AnimatedSprite2D.stop()
 			
