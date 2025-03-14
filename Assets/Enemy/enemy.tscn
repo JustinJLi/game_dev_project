@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://clsa2mtofaw5a"]
+[gd_scene load_steps=51 format=3 uid="uid://clsa2mtofaw5a"]
 
 [ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_g3y21"]
 [ext_resource type="Texture2D" uid="uid://cn0u6bra5lirc" path="res://Assets/Player/Top_Down_Survivor 2/knife/idle/survivor-idle_knife_0.png" id="2_chf8q"]
@@ -171,6 +171,9 @@ animations = [{
 radius = 38.0
 height = 116.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vbf8"]
+radius = 104.235
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8q00"]
 radius = 37.0
 height = 116.0
@@ -198,6 +201,12 @@ animation = &"attack"
 position = Vector2(2, -15)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fdmi2")
+
+[node name="detection_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_box"]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_6vbf8")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -254,6 +263,7 @@ debug_lines = true
 [node name="VisionConeRenderer" parent="VisionCone2D" index="0"]
 color = Color(0, 0, 0, 0)
 
+[connection signal="area_entered" from="detection_box" to="." method="_on_detection_box_area_entered"]
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="area_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_exited"]
 [connection signal="body_entered" from="VisionCone2D/VisionConeArea" to="." method="_on_vision_cone_area_body_entered"]

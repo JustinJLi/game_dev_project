@@ -5,6 +5,7 @@ var dialog_close_delay = 0.0
 var screen_size
 var bullet_speed = 1000
 var bullet = preload("res://Assets/Environment/bullet.tscn")
+var crosshair = load("res://Assets/Environment/crosshair.png")
 var ammo = 8
 var total_ammo = 24
 var max_health = 100
@@ -36,6 +37,7 @@ var player_move_animation = "move"
 func _ready() -> void:
 	#print_tree_pretty()
 	InteractionManager.player = self
+	Input.set_custom_mouse_cursor(crosshair)
 	hud = get_tree().get_first_node_in_group("hud")
 	screen_size = get_viewport_rect().size
 	pause_menu.visible = false

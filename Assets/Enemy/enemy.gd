@@ -139,3 +139,7 @@ func _on_vision_cone_area_body_exited(body: Node2D) -> void:
 	print("%s stopped seeing %s" % [self, body])
 	player_spotted = false
 	vision_renderer.color = original_color
+
+
+func _on_detection_box_area_entered(area: Area2D) -> void:
+	player_spotted = true
