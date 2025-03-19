@@ -17,12 +17,14 @@ static var enemies_killed_score = 0
 @onready var healthbar = get_node("HealthBar")
 @export var max_health = 100
 @export var damage_dealt = 10
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 var damage
 static var total_enemies = 0
 var health
 var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
 var enemy_dying = false
 var player_spotted = false
+var player_lost = false
 @export var ammo_spawn_chance = 0.1
 @onready var hostage: hostage = $"../Hostage"
 
@@ -112,7 +114,7 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 		take_damage(25)
 	
 	if player.level_completed:
-		return	
+		return
 	elif area.name == "player_hitbox":
 		$Attack.play()
 		$AnimatedSprite2D.animation = "attack"
@@ -131,15 +133,18 @@ func _on_enemy_hitbox_area_exited(area: Area2D) -> void:
 
 func _on_vision_cone_area_body_entered(body: Node2D) -> void:
 	print("%s is seeing %s" % [self, body])
-	player_spotted = true
+	if body.name == "Player":
+		player_spotted = true
 	vision_renderer.color = alert_color
 
 
 func _on_vision_cone_area_body_exited(body: Node2D) -> void:
 	print("%s stopped seeing %s" % [self, body])
-	player_spotted = false
+	if body.name == "Player":
+		player_spotted = false
 	vision_renderer.color = original_color
 
 
 func _on_detection_box_area_entered(area: Area2D) -> void:
-	player_spotted = true
+	if area.name == "player_hitbox":
+		player_spotted = true
