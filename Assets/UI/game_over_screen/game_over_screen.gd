@@ -11,10 +11,13 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_retry_pressed() -> void:
-	hostage.total_hostages = 0
-	get_tree().reload_current_scene()
+
 
 
 func _on_exit_to_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Assets/UI/main_menu/main_menu.tscn")
+
+
+func _on_restart_pressed() -> void:
+	get_tree().change_scene_to_file("res://Assets/Environment/tutorial.tscn")
+	PlayerData.reset()

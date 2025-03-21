@@ -35,6 +35,13 @@ var player_move_animation = "move"
 
 
 func _ready() -> void:
+	call_deferred("_initialize_hud")
+	health = PlayerData.health
+	ammo = PlayerData.ammo
+	total_ammo = PlayerData.total_ammo
+	is_flashlight_on = PlayerData.is_flashlight_on
+
+	
 	#print_tree_pretty()
 	InteractionManager.player = self
 	Input.set_custom_mouse_cursor(crosshair)
@@ -188,6 +195,7 @@ func fire():
 	else:
 		$Shoot.play()
 		ammo -= 1
+		PlayerData.ammo = ammo
 		hud.update_bullet_label(ammo, total_ammo)
 		
 func attack_knife():
@@ -214,6 +222,7 @@ func take_damage(damage_amount):
 		return
 
 	health -= damage_amount
+	PlayerData.health = health
 	healthbar._set_health(health)
 	print("Player took ", damage_amount, "damage. Health: ", health)
 
@@ -224,7 +233,7 @@ func take_damage(damage_amount):
 
 func kill():
 	game_over_screen.show()
-	#get_tree().call_deferred("reload_current_scene")
+	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print(body.name + " entered player.")
@@ -274,9 +283,21 @@ func _on_reload_timeout() -> void:
 		ammo += total_ammo
 		total_ammo = 0  # No more ammo left outside
 	hud.update_bullet_label(ammo, total_ammo)
+	PlayerData.ammo = ammo
+	PlayerData.total_ammo = total_ammo
 	is_reloading = false
 	print("Reloaded!")
 
 
 func _on_damage_buffer_timeout() -> void:
 	take_damage(player_damage)  # Take damage if hit by an enemy
+
+#Function for hud initialization between scenes
+func _initialize_hud():
+	if hud:
+		hud.update_bullet_label(ammo, total_ammo)
+		hud.update_on_screen_weapon(weapon_name)
+		healthbar._set_health(health)
+		print("HUD Initialized - Ammo:", ammo, "/", total_ammo, "| Health:", health)
+	else:
+		print("Error: HUD not found!")

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 InteractionManager="*res://Assets/Interaction/InteractionManager.tscn"
 DialogueManager="*res://Assets/Dialogue/DialogueManager.gd"
 Global="*res://Assets/Global/global.gd"
+PlayerData="*res://Assets/Player/playerData.gd"
 
 [display]
 

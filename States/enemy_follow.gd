@@ -26,9 +26,12 @@ func Physics_Update(delta: float):
 	if enemy.player_spotted:
 		nav_agent.target_position = player.global_position
 		timer = 0.0  
-
+		enemy.look_at(player.global_position)
+	else:
+		enemy.look_at(nav_agent.get_next_path_position())
+		
 	enemy.velocity = direction.normalized() * move_speed
-	enemy.look_at(nav_agent.get_next_path_position())
+	
 
 	# If player is far enough away from detection range
 	if direction.length() > detection_range:
