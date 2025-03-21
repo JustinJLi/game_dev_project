@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 @onready var healthbar = get_parent().get_node("CanvasLayer/HUD/HealthBar")
-@export var turret_damage = 50
+@export var turret_damage = 15
 
 func _on_turret_bullet_hitbox_area_entered(area: Area2D) -> void:
 	print("Turret bullet hit " + area.name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://btepaiabjrmi7"]
+[gd_scene load_steps=48 format=3 uid="uid://btepaiabjrmi7"]
 
 [ext_resource type="Texture2D" uid="uid://dhgi1wm1ihfl" path="res://Assets/Enemy/Brute/skeleton-move_0.png" id="1_8665d"]
 [ext_resource type="Script" path="res://Assets/Enemy/enemy.gd" id="1_ufanh"]
@@ -37,8 +37,26 @@
 [ext_resource type="AudioStream" uid="uid://bslt8xf6xpmvv" path="res://Assets/Sounds/knife_attack.mp3" id="35_mm27h"]
 [ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="36_5pfh4"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5ny7l"]
-light_mode = 2
+[sub_resource type="Shader" id="Shader_k6fei"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix,light_only;
+
+uniform vec4 flash_color : source_color;
+uniform float flash_value : hint_range(0.0, 1.0, 0.1);
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	COLOR = mix(texture_color, flash_color, flash_value);
+	COLOR.a = texture_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ex4d5"]
+resource_local_to_scene = true
+shader = SubResource("Shader_k6fei")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q1fgk"]
 animations = [{
@@ -131,6 +149,79 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="Animation" id="Animation_0ecyt"]
+resource_name = "flash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xuy2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryft3"]
+_data = {
+"RESET": SubResource("Animation_xuy2k"),
+"flash": SubResource("Animation_0ecyt")
+}
+
+[sub_resource type="Animation" id="Animation_ca6so"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5f76o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hyuvj"]
+_data = {
+"RESET": SubResource("Animation_5f76o"),
+"death": SubResource("Animation_ca6so")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oewwf"]
 radius = 116.0
 height = 248.0
@@ -153,9 +244,19 @@ ammo_spawn_chance = 0.15
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_5ny7l")
+material = SubResource("ShaderMaterial_ex4d5")
 sprite_frames = SubResource("SpriteFrames_q1fgk")
 animation = &"attack"
+
+[node name="HitFlash" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_ryft3")
+}
+
+[node name="DeathFlash" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_hyuvj")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_oewwf")

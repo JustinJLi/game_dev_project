@@ -7,7 +7,7 @@ class_name hostage
 @onready var level_complete_screen = get_parent().get_node("Player/CanvasLayer2/LevelCompleteScreen")  
 @onready var enemy: enemy = $"../Enemy"
 @onready var player: CharacterBody2D = $"../Player"
-
+@onready var death_animation = $AnimatedSprite2D/DeathFlash
 
 static var hostages_rescued = 0
 static var hostages_killed = 0
@@ -99,6 +99,7 @@ func _killed_hostage():
 	
 	set_collision_layer_value(2, false)
 	$Shot.play()
+	death_animation.play("death")
 	await $Shot.finished
 	queue_free()
 

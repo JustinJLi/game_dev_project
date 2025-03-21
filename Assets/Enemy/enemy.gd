@@ -9,7 +9,6 @@ class_name enemy
 @export var rotation_speed = 0.1
 @export var rotation_angle = 90
 @onready var original_color = vision_renderer.color if vision_renderer else Color.WHITE
-
 @onready var hud = get_parent().get_node("HUD")  
 @onready var level_complete_screen = get_parent().get_node("Player/CanvasLayer2/LevelCompleteScreen")  
 static var enemies_cleared = 0
@@ -18,6 +17,8 @@ static var enemies_killed_score = 0
 @export var max_health = 100
 @export var damage_dealt = 10
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+@onready var flash_animation = $AnimatedSprite2D/HitFlash
+@onready var death_animation = $AnimatedSprite2D/DeathFlash
 var damage
 static var total_enemies = 0
 var health
@@ -79,6 +80,7 @@ func take_damage(damage_amount):
 	
 	if health > 0:
 		$EnemyHit.play()
+		flash_animation.play("flash")
 	else:
 		enemy_dying = true
 		total_enemies -= 1  # Decrease enemy count when defeated
@@ -95,6 +97,7 @@ func take_damage(damage_amount):
 		
 		set_collision_layer_value(2, false)
 		$EnemyDeath.play()
+		death_animation.play("death")
 		await $EnemyDeath.finished
 			
 		queue_free()

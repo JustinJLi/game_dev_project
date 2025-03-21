@@ -18,13 +18,13 @@ static var enemies_cleared = 0
 static var enemies_killed_score = 0
 @onready var healthbar = get_node("HealthBar")
 @export var max_health = 300
-var damage
 static var total_enemies = 0
 var health
+@onready var hit_animation = $Sprite2D/HitFlash
 var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
 var enemy_dying = false
 @onready var hostage: hostage = $"../Hostage"
-var bullet_speed = 500
+var bullet_speed = 800
 var bullet = preload("res://Assets/Enemy/turret_bullet.tscn")
 @onready var player: CharacterBody2D = $"../Player"
 
@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage_amount):
 	health -= damage_amount
+	hit_animation.play("flash")
 	print("Enemy took ", damage_amount, " damage. Health: ", health)
 	if health <= 0:
 		total_enemies -= 1  # Decrease enemy count when defeated
@@ -66,7 +67,11 @@ func take_damage(damage_amount):
 		enemies_killed_score += 200
 		hud.update_enemies_cleared_label(enemies_cleared)
 		level_complete_screen.update_enemies_killed_score(enemies_cleared, enemies_killed_score)
+		$TurretDeath.play()
+		await $TurretDeath.finished
 		queue_free()
+	else:
+		$TurretHit.play()
 	
 func fire():
 	var bullet_instance = bullet.instantiate()
@@ -80,10 +85,13 @@ func kill():
 	get_tree().call_deferred("reload_current_scene")
 
 func _on_interact():
+	$TurretDisarm.play()
+	await $TurretDisarm.finished
 	queue_free()
 
 func _on_turret_timer_timeout() -> void:
 	fire()
+	$TurretShoot.play()
 
 
 func _on_turret_hitbox_area_entered(area: Area2D) -> void:
