@@ -290,7 +290,8 @@ func _on_reload_timeout() -> void:
 
 
 func _on_damage_buffer_timeout() -> void:
-	take_damage(player_damage)  # Take damage if hit by an enemy
+	if (!level_completed):
+		take_damage(player_damage)  # Take damage if hit by an enemy
 
 #Function for hud initialization between scenes
 func _initialize_hud():
