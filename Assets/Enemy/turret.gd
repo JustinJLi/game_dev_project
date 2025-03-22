@@ -48,7 +48,6 @@ func _ready() -> void:
 
 
 
-
 func _physics_process(delta: float) -> void:
 	if player != null:
 		if player.level_completed or enemy_dying:

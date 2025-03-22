@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1jmyekkv8dsf"]
+
+[ext_resource type="Texture2D" uid="uid://unnqvlvct0b5" path="res://Assets/Environment/m-012.jpg" id="1_kab41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec3y3"]
+size = Vector2(252, 252)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ppfbc"]
+polygon = PackedVector2Array(-128, -128, -128, 128, 128, 128, 128, -128)
+
+[node name="FacilityWall2" type="Node2D" groups=["Environment"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("1_kab41")
+
+[node name="white_wall" type="StaticBody2D" parent="Sprite2D"]
+scale = Vector2(4, 4)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/white_wall"]
+modulate = Color(0, 0, 0, 1)
+shape = SubResource("RectangleShape2D_ec3y3")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+scale = Vector2(4, 4)
+occluder = SubResource("OccluderPolygon2D_ppfbc")

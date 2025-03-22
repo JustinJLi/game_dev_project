@@ -23,6 +23,7 @@ hostages_cleared_label = NodePath("HostagesClearedLabel")
 enemies_cleared_label = NodePath("EnemiesClearedLabel")
 
 [node name="Pistol" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="PistolAmmoContainer" type="HBoxContainer" parent="Pistol"]
 anchors_preset = 3
