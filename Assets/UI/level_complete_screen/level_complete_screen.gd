@@ -12,7 +12,9 @@ extends Node2D
 var levels = [
 	"res://Assets/Environment/world.tscn",
 	"res://Assets/Environment/level_2.tscn",
-	"res://Assets/Environment/level_3.tscn"
+	"res://Assets/Environment/level_3.tscn",
+	"res://Assets/Environment/level_4.tscn",
+	"res://Assets/Environment/level_5.tscn"
 ]
 
 var current_level_index = 0  # Track which level the player is on

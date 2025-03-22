@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bgn5xhaucw7bo" path="res://Assets/Enemy/turret.tscn" id="17_66l2e"]
 [ext_resource type="PackedScene" uid="uid://clsa2mtofaw5a" path="res://Assets/Enemy/enemy.tscn" id="17_oo0lg"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="18_u7tdc"]
-[ext_resource type="AudioStream" uid="uid://defx0idmm7q4a" path="res://Assets/Sounds/05-Intruder-1-_480p_30fps_H264-128kbit_AAC_.mp3" id="19_7cjao"]
+[ext_resource type="AudioStream" uid="uid://pur8q6nryd5x" path="res://Assets/Sounds/Metal-Gear-Solid-2-Strut-C-Dining-Hall-_1080p_24fps_H264-128kbit_AAC_.mp3" id="23_l7pjw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ly8q6"]
 texture = ExtResource("6_86bhd")
@@ -762,7 +762,7 @@ position = Vector2(908, 891)
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("19_7cjao")
+stream = ExtResource("23_l7pjw")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
