@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnqmmaxqaxooe"]
 
-[ext_resource type="Texture2D" uid="uid://bf348q8vr1eyw" path="res://Assets/Environment/glass.png" id="1_808mh"]
+[ext_resource type="Texture2D" uid="uid://bf348q8vr1eyw" path="res://Assets/Art/glass.png" id="1_808mh"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wirge"]
 size = Vector2(123.077, 123.077)

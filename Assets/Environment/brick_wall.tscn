@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bd5v5xvrgm7tc"]
 
-[ext_resource type="Texture2D" uid="uid://dar3s5hmdnvqr" path="res://Assets/Environment/Dungeon_wall2.jpg" id="1_2i2ha"]
+[ext_resource type="Texture2D" uid="uid://dar3s5hmdnvqr" path="res://Assets/Art/Dungeon_wall2.jpg" id="1_2i2ha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ec3y3"]
 size = Vector2(252, 252)
@@ -15,7 +15,7 @@ scale = Vector2(0.035, 0.035)
 texture = ExtResource("1_2i2ha")
 
 [node name="white_wall" type="StaticBody2D" parent="Sprite2D"]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 collision_layer = 3
 collision_mask = 3
 

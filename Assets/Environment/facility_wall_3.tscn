@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dc8tkbemevuo"]
 
-[ext_resource type="Texture2D" uid="uid://dv7eev6q0l7e6" path="res://Assets/Environment/metalbox_diffuse.png" id="1_b2xmq"]
+[ext_resource type="Texture2D" uid="uid://dv7eev6q0l7e6" path="res://Assets/Art/metalbox_diffuse.png" id="1_b2xmq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ec3y3"]
 size = Vector2(252, 252)

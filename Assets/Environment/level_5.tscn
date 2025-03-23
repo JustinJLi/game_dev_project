@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bu6pfwr4wc5fi"]
+[gd_scene load_steps=24 format=3 uid="uid://bu6pfwr4wc5fi"]
 
 [ext_resource type="Script" path="res://Assets/Environment/level_2.gd" id="1_6wf8q"]
 [ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="2_ynnkc"]
@@ -12,17 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://dhoksebdnh2y5" path="res://Assets/Environment/facility_wall_1.tscn" id="10_0kttn"]
 [ext_resource type="PackedScene" uid="uid://d32hk85x1qgl" path="res://Assets/Environment/scene_transition.tscn" id="10_i38s0"]
 [ext_resource type="PackedScene" uid="uid://b1jmyekkv8dsf" path="res://Assets/Environment/facility_wall_2.tscn" id="11_c4laa"]
-[ext_resource type="PackedScene" uid="uid://cbwd2ap1cbdym" path="res://Assets/Environment/Notes/ammo_pickup.tscn" id="11_gg78u"]
-[ext_resource type="PackedScene" uid="uid://cxdku7tlqo1il" path="res://Assets/Environment/Notes/health_pickup.tscn" id="12_ael3f"]
 [ext_resource type="PackedScene" uid="uid://dc8tkbemevuo" path="res://Assets/Environment/facility_wall_3.tscn" id="12_mtnn7"]
-[ext_resource type="PackedScene" uid="uid://4n7jyouunb1e" path="res://Assets/Environment/Notes/magazine_pickup.tscn" id="13_n4y4u"]
-[ext_resource type="PackedScene" uid="uid://5pleal1rafp6" path="res://Assets/Hostage/hostage.tscn" id="14_r8mbd"]
-[ext_resource type="PackedScene" uid="uid://btepaiabjrmi7" path="res://Assets/Enemy/brute.tscn" id="15_xmimn"]
-[ext_resource type="PackedScene" uid="uid://clsa2mtofaw5a" path="res://Assets/Enemy/enemy.tscn" id="16_e2is4"]
-[ext_resource type="PackedScene" uid="uid://cheyfa7hyapul" path="res://Assets/Environment/Notes/note.tscn" id="17_0dfy1"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="18_3j6i5"]
-[ext_resource type="Script" path="res://Assets/Environment/Notes/lvl3_note.gd" id="18_scsf7"]
-[ext_resource type="AudioStream" uid="uid://defx0idmm7q4a" path="res://Assets/Sounds/05-Intruder-1-_480p_30fps_H264-128kbit_AAC_.mp3" id="19_3wiy1"]
+[ext_resource type="AudioStream" uid="uid://b0sstjgtf670w" path="res://Assets/Sounds/Metal-Gear-Solid-3_-Snake-Eater-Theme-_FLAC_-_2160p_30fps_AV1-128kbit_AAC_.mp3" id="23_p6eja"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oh8pq"]
 texture = ExtResource("6_bsy5v")
@@ -620,173 +612,12 @@ color = Color(0.393086, 0.393086, 0.393085, 1)
 
 [node name="SceneTransition" parent="." instance=ExtResource("10_i38s0")]
 
-[node name="AmmoPickup" parent="." instance=ExtResource("11_gg78u")]
-position = Vector2(4193, 1060)
-
-[node name="HealthPickup" parent="." instance=ExtResource("12_ael3f")]
-position = Vector2(4161, 1063)
-
-[node name="HealthPickup2" parent="." instance=ExtResource("12_ael3f")]
-position = Vector2(3511, 213)
-
-[node name="HealthPickup3" parent="." instance=ExtResource("12_ael3f")]
-position = Vector2(4125, 1064)
-
-[node name="HealthPickup5" parent="." instance=ExtResource("12_ael3f")]
-position = Vector2(4149, 976)
-
-[node name="HealthPickup6" parent="." instance=ExtResource("12_ael3f")]
-position = Vector2(2635, 847)
-
-[node name="HealthPickup7" parent="." instance=ExtResource("12_ael3f")]
-position = Vector2(2946, 610)
-
-[node name="MagazinePickup" parent="." instance=ExtResource("13_n4y4u")]
-position = Vector2(4090, 1066)
-
-[node name="HealthPickup4" parent="." instance=ExtResource("12_ael3f")]
-position = Vector2(4017, 955)
-
-[node name="MagazinePickup2" parent="." instance=ExtResource("13_n4y4u")]
-position = Vector2(3609, 693)
-
-[node name="MagazinePickup3" parent="." instance=ExtResource("13_n4y4u")]
-position = Vector2(3797, 472)
-
-[node name="MagazinePickup4" parent="." instance=ExtResource("13_n4y4u")]
-position = Vector2(2518, 954)
-
-[node name="MagazinePickup5" parent="." instance=ExtResource("13_n4y4u")]
-position = Vector2(4013, 908)
-
-[node name="MagazinePickup6" parent="." instance=ExtResource("13_n4y4u")]
-position = Vector2(2640, 216)
-
-[node name="MagazinePickup7" parent="." instance=ExtResource("13_n4y4u")]
-position = Vector2(2644, 605)
-
-[node name="Note" parent="." instance=ExtResource("17_0dfy1")]
-position = Vector2(3271, 581)
-script = ExtResource("18_scsf7")
-
-[node name="Hostage" parent="." instance=ExtResource("14_r8mbd")]
-position = Vector2(4188, 1100)
-
-[node name="Hostage2" parent="." instance=ExtResource("14_r8mbd")]
-position = Vector2(3521, 944)
-
-[node name="Hostage3" parent="." instance=ExtResource("14_r8mbd")]
-position = Vector2(3583, 498)
-
-[node name="Hostage4" parent="." instance=ExtResource("14_r8mbd")]
-position = Vector2(2639, 548)
-
-[node name="Hostage5" parent="." instance=ExtResource("14_r8mbd")]
-position = Vector2(3575, 212)
-
-[node name="Hostage6" parent="." instance=ExtResource("14_r8mbd")]
-position = Vector2(3428, 679)
-
-[node name="Brute" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(2362, 606)
-damage_dealt = 20
-
-[node name="Brute2" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3798, 1091)
-damage_dealt = 20
-
-[node name="Brute3" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3911, 942)
-damage_dealt = 20
-
-[node name="Brute4" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3840, 408)
-damage_dealt = 20
-
-[node name="Brute5" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3666, 1086)
-damage_dealt = 20
-
-[node name="Brute6" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3973, 1093)
-damage_dealt = 20
-
-[node name="Brute7" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3888, 1092)
-damage_dealt = 20
-
-[node name="Brute8" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3395, 216)
-damage_dealt = 20
-
-[node name="Brute9" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3024, 545)
-damage_dealt = 20
-
-[node name="Brute10" parent="." instance=ExtResource("15_xmimn")]
-position = Vector2(3136, 549)
-damage_dealt = 20
-
-[node name="Enemy" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3207, 143)
-
-[node name="Enemy2" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3664, 728)
-
-[node name="Enemy3" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(2943, 143)
-
-[node name="Enemy4" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3998, 824)
-
-[node name="Enemy5" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3318, 372)
-
-[node name="Enemy6" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(2598, 123)
-
-[node name="Enemy7" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3996, 719)
-
-[node name="Enemy8" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3075, 290)
-
-[node name="Enemy9" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3526, 486)
-
-[node name="Enemy10" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(2727, 957)
-
-[node name="Enemy11" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3516, 294)
-
-[node name="Enemy12" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3472, 457)
-
-[node name="Enemy13" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(2861, 374)
-
-[node name="Enemy14" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3452, 505)
-
-[node name="Enemy15" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(2874, 955)
-
-[node name="Enemy17" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(2946, 848)
-
-[node name="Enemy18" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(2945, 548)
-
-[node name="Enemy19" parent="." instance=ExtResource("16_e2is4")]
-position = Vector2(3292, 712)
-
 [node name="Player" parent="." instance=ExtResource("18_3j6i5")]
 position = Vector2(899, 1247)
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("19_3wiy1")
+stream = ExtResource("23_p6eja")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"

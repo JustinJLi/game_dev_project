@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://jb44j57186w4"]
+
+[ext_resource type="Texture2D" uid="uid://b2o5dkojwctts" path="res://Assets/Art/FloorTile_S.jpg" id="1_f28bq"]
+
+[node name="WoodFloor" type="Node2D" groups=["Environment"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("1_f28bq")

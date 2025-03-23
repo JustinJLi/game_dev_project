@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cakuynhlpilsx"]
+
+[ext_resource type="Texture2D" uid="uid://d3jvbjtdxxask" path="res://Assets/Art/WhiteMarble_COLOR.jpg" id="1_hvnqe"]
+
+[node name="WhiteMarbleFloor" type="Node2D" groups=["Environment"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_hvnqe")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://djj064hsoklde" path="res://Assets/Environment/square-xxl.png" id="1_v7yjo"]
 [ext_resource type="PackedScene" uid="uid://dtuerfvovpydv" path="res://Assets/Environment/tile.tscn" id="2_7fj0n"]
-[ext_resource type="Texture2D" uid="uid://cfqsc7nujm5bw" path="res://Assets/Environment/Tiny Platform Quest Tiles.png" id="3_4yayk"]
+[ext_resource type="Texture2D" uid="uid://cfqsc7nujm5bw" path="res://Assets/Art/Tiny Platform Quest Tiles.png" id="3_4yayk"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="3_65oq2"]
 [ext_resource type="PackedScene" uid="uid://dnqmmaxqaxooe" path="res://Assets/Environment/window.tscn" id="3_ejjuw"]
 [ext_resource type="PackedScene" uid="uid://bgn5xhaucw7bo" path="res://Assets/Enemy/turret.tscn" id="4_cmeq0"]

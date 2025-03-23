@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp1x1qte2qlnf"]
+
+[ext_resource type="Texture2D" uid="uid://d272hkbkckr2t" path="res://Assets/Art/glassfloorspritesheet.png" id="1_6o6li"]
+
+[node name="GlassFloor" type="Node2D" groups=["Environment"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_6o6li")
