@@ -13,6 +13,7 @@ config_version=5
 config/name="final_project"
 run/main_scene="res://Assets/UI/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.48, 0.48, 0.48, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -26,7 +27,9 @@ PlayerData="*res://Assets/Player/playerData.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://Assets/Art/crosshair.png"
+mouse_cursor/custom_image_hotspot=Vector2(0, 10)
 
 [editor_plugins]
 
@@ -38,6 +41,12 @@ Environment=""
 Player=""
 Enemies=""
 Hostages=""
+
+[importer_defaults]
+
+animation_library={
+"animation/fps": 60.0
+}
 
 [input]
 

@@ -5,7 +5,7 @@ var dialog_close_delay = 0.0
 var screen_size
 var bullet_speed = 1000
 var bullet = preload("res://Assets/Environment/bullet.tscn")
-var crosshair = load("res://Assets/Environment/crosshair.png")
+var crosshair = load("res://Assets/Art/crosshair.png")
 var ammo = 8
 var total_ammo = 24
 var max_health = 100
@@ -67,7 +67,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
-		
+
 func pauseMenu():
 	if paused:
 		pause_menu.hide()

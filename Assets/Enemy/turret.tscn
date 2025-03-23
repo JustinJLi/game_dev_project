@@ -132,7 +132,6 @@ rotation = 3.14159
 angle_deg = 10
 ray_count = 10
 collision_layer_mask = 3
-debug_lines = true
 
 [node name="VisionConeRenderer" parent="VisionCone2D" index="0"]
 color = Color(0, 0, 0, 0)
