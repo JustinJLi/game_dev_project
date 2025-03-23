@@ -645,7 +645,7 @@ color = Color(0.393086, 0.393086, 0.393085, 1)
 [node name="SceneTransition" parent="." instance=ExtResource("10_i38s0")]
 
 [node name="Player" parent="." instance=ExtResource("18_3j6i5")]
-position = Vector2(53, 113)
+position = Vector2(126, 1030)
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
