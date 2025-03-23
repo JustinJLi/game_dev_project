@@ -139,15 +139,19 @@ color = Color(0, 0, 0, 0)
 
 [node name="TurretHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_entas")
+bus = &"SFX"
 
 [node name="TurretDeath" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ru3ya")
+bus = &"SFX"
 
 [node name="TurretShoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_7xi84")
+bus = &"SFX"
 
 [node name="TurretDisarm" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_i5i1d")
+bus = &"SFX"
 
 [connection signal="area_entered" from="turret_hitbox" to="." method="_on_turret_hitbox_area_entered"]
 [connection signal="timeout" from="TurretTimer" to="." method="_on_turret_timer_timeout"]

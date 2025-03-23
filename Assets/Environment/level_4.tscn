@@ -622,10 +622,10 @@ color = Color(0.393086, 0.393086, 0.393085, 1)
 position = Vector2(1, -18)
 
 [node name="AmmoPickup" parent="." instance=ExtResource("10_mor1i")]
-position = Vector2(353, 824)
+position = Vector2(307, 883)
 
 [node name="AmmoPickup2" parent="." instance=ExtResource("10_mor1i")]
-position = Vector2(117, 1058)
+position = Vector2(137, 1046)
 
 [node name="HealthPickup" parent="." instance=ExtResource("11_6dvr0")]
 position = Vector2(43, 574)
@@ -637,19 +637,19 @@ position = Vector2(117, 935)
 position = Vector2(1182, 372)
 
 [node name="HealthPickup6" parent="." instance=ExtResource("11_6dvr0")]
-position = Vector2(1520, 1052)
+position = Vector2(1547, 1040)
 
 [node name="HealthPickup7" parent="." instance=ExtResource("11_6dvr0")]
-position = Vector2(1625, 1052)
+position = Vector2(1637, 1041)
 
 [node name="MagazinePickup" parent="." instance=ExtResource("12_berps")]
 position = Vector2(997, 128)
 
 [node name="HealthPickup4" parent="." instance=ExtResource("11_6dvr0")]
-position = Vector2(1054, 123)
+position = Vector2(1042, 127)
 
 [node name="MagazinePickup2" parent="." instance=ExtResource("12_berps")]
-position = Vector2(1595, 167)
+position = Vector2(1593, 179)
 
 [node name="MagazinePickup3" parent="." instance=ExtResource("12_berps")]
 position = Vector2(1068, 716)
@@ -658,7 +658,7 @@ position = Vector2(1068, 716)
 position = Vector2(1737, 1041)
 
 [node name="MagazinePickup6" parent="." instance=ExtResource("12_berps")]
-position = Vector2(296, 877)
+position = Vector2(408, 785)
 
 [node name="MagazinePickup7" parent="." instance=ExtResource("12_berps")]
 position = Vector2(95, 537)
@@ -683,7 +683,7 @@ position = Vector2(708, 889)
 damage_dealt = 20
 
 [node name="Brute8" parent="." instance=ExtResource("16_wq22n")]
-position = Vector2(1828, 1045)
+position = Vector2(1835, 1017)
 damage_dealt = 20
 
 [node name="Brute9" parent="." instance=ExtResource("16_wq22n")]
@@ -713,7 +713,7 @@ position = Vector2(1477, 168)
 position = Vector2(555, 144)
 
 [node name="Enemy10" parent="." instance=ExtResource("17_oo0lg")]
-position = Vector2(203, 1028)
+position = Vector2(215, 1009)
 
 [node name="Enemy13" parent="." instance=ExtResource("17_oo0lg")]
 position = Vector2(755, 354)
@@ -731,19 +731,19 @@ position = Vector2(823, 755)
 position = Vector2(282, 338)
 
 [node name="Turret" parent="." instance=ExtResource("17_66l2e")]
-position = Vector2(228, 545)
-rotation = 1.57079
+position = Vector2(312, 569)
+rotation = 1.309
 
 [node name="Turret2" parent="." instance=ExtResource("17_66l2e")]
-position = Vector2(891, 132)
+position = Vector2(895, 174)
 rotation = 3.14159
 
 [node name="Turret3" parent="." instance=ExtResource("17_66l2e")]
-position = Vector2(1764, 153)
+position = Vector2(1764, 140)
 rotation = 3.92699
 
 [node name="Turret4" parent="." instance=ExtResource("17_66l2e")]
-position = Vector2(1085, 210)
+position = Vector2(1109, 231)
 rotation = 0.785397
 
 [node name="Turret5" parent="." instance=ExtResource("17_66l2e")]
@@ -751,16 +751,15 @@ position = Vector2(1132, 863)
 rotation = 2.35619
 
 [node name="Turret6" parent="." instance=ExtResource("17_66l2e")]
-position = Vector2(92, 86)
-rotation = 0.785397
+position = Vector2(61, 191)
 
 [node name="Turret7" parent="." instance=ExtResource("17_66l2e")]
-position = Vector2(1865, 213)
+position = Vector2(1823, 266)
 rotation = 3.92699
 
 [node name="Turret8" parent="." instance=ExtResource("17_66l2e")]
-position = Vector2(1750, 738)
-rotation = 1.57079
+position = Vector2(1725, 769)
+rotation = 0.785397
 
 [node name="Player" parent="." instance=ExtResource("18_u7tdc")]
 position = Vector2(908, 891)
