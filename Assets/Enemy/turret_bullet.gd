@@ -12,7 +12,7 @@ func _on_turret_bullet_hitbox_area_entered(area: Area2D) -> void:
 		
 	if area.name == "player_hitbox":
 		var player = get_tree().get_first_node_in_group("Player")
-		if player:
+		if !player.level_completed:
 			player.take_damage(turret_damage)
 
 
