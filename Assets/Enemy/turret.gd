@@ -22,11 +22,12 @@ static var total_enemies = 0
 var health
 @onready var hit_animation = $Sprite2D/HitFlash
 var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
-var enemy_dying = false
+var turret_dying = false
 @onready var hostage: hostage = $"../Hostage"
 var bullet_speed = 800
 var bullet = preload("res://Assets/Enemy/turret_bullet.tscn")
 @onready var player: CharacterBody2D = $"../Player"
+@onready var enemy: enemy = $"../Enemy"
 
 
 
@@ -42,7 +43,7 @@ func _ready() -> void:
 	#healthbar.visibility_layer = 1=
 	
 	# Increase total enemies count when spawned
-	total_enemies += 1
+	enemy.total_enemies += 1
 	#enemies_cleared = 0
 	#enemies_killed_score = 0
 
@@ -50,27 +51,25 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if player != null:
-		if player.level_completed or enemy_dying:
+		if player.level_completed or turret_dying:
 			return
 			
 	if is_rotating:
 		rotation = rot_start + sin(Time.get_ticks_msec()/1000. * rotation_speed) * deg_to_rad(rotation_angle/2.)
 
 func take_damage(damage_amount):
+	if turret_dying:
+		return
 	health -= damage_amount
 	hit_animation.play("flash")
 	print("Enemy took ", damage_amount, " damage. Health: ", health)
-	if health <= 0:
-		total_enemies -= 1  # Decrease enemy count when defeated
-		enemies_cleared += 1
-		enemies_killed_score += 200
-		hud.update_enemies_cleared_label(enemies_cleared)
-		level_complete_screen.update_enemies_killed_score(enemies_cleared, enemies_killed_score)
+	
+	if health > 0:
+		$TurretHit.play()
+	else:
 		$TurretDeath.play()
 		await $TurretDeath.finished
-		queue_free()
-	else:
-		$TurretHit.play()
+		kill(200)
 	
 func fire():
 	var bullet_instance = bullet.instantiate()
@@ -80,13 +79,20 @@ func fire():
 	get_tree().get_root().call_deferred("add_child", bullet_instance)
 
 
-func kill():
-	get_tree().call_deferred("reload_current_scene")
+func kill(points):
+	turret_dying = true
+	total_enemies -= 1  # Decrease enemy count when defeated
+	enemies_cleared += 1
+	enemies_killed_score += points
+	hud.update_enemies_cleared_label(enemies_cleared)
+	level_complete_screen.update_enemies_killed_score(enemies_cleared, enemies_killed_score)
+	set_collision_layer_value(2, false)
+	queue_free()
 
 func _on_interact():
 	$TurretDisarm.play()
 	await $TurretDisarm.finished
-	queue_free()
+	kill(150)
 
 func _on_turret_timer_timeout() -> void:
 	fire()
