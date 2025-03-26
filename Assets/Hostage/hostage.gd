@@ -33,6 +33,7 @@ func _ready() -> void:
 	total_hostages += 1
 	#hostages_rescued = 0
 	#hostages_rescued_score = 0
+	print("Total Hostages: " + str(total_hostages))
 
 func _physics_process(delta: float) -> void:
 	if killed:
@@ -41,6 +42,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		move_and_slide()
 		$AnimatedSprite2D.play()
+		
+	if (player.game_over):
+		reset()
 	
 	
 func _on_interact():
@@ -106,3 +110,14 @@ func _killed_hostage():
 
 func _on_hostage_hitbox_area_exited(area: Area2D) -> void:
 	$AnimatedSprite2D.play("walk")
+	
+func reset():
+	hostages_rescued = 0
+	hostages_killed = 0
+	total_hostages_cleared = 0
+	rescued = false  # Flag to track if the hostage has already been rescued
+	killed = false  # Flag to track if the hostage has already been rescued
+
+	var hostages_rescued_score = 0
+	var hostages_killed_score = 0
+	total_hostages = 0

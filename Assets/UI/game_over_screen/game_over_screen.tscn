@@ -119,5 +119,5 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MenuButtons/Retry" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="MenuButtons/Exit To Main Menu" to="." method="_on_exit_pressed"]

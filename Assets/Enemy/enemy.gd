@@ -66,6 +66,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	$AnimatedSprite2D.play()
 	
+	if (player.game_over):
+		reset()
+	
 	#if hostage != null:
 	#	if hostage.total_hostages <= 0:
 	#		player.level_completed = true
@@ -151,3 +154,11 @@ func _on_vision_cone_area_body_exited(body: Node2D) -> void:
 func _on_detection_box_area_entered(area: Area2D) -> void:
 	if area.name == "player_hitbox":
 		player_spotted = true
+
+func reset():
+	total_enemies = 0
+	enemies_cleared = 0
+	enemies_killed_score = 0
+	enemy_dying = false
+	player_spotted = false
+	player_lost = false
