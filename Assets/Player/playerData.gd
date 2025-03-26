@@ -8,6 +8,7 @@ var is_flashlight_on = true
 var current_weapon = "GUN"
 var gun_damage = 50
 var knife_damage = 25 
+var has_map_upgrade = false
 
 # Call this to reset stats if needed
 func reset():
@@ -18,3 +19,4 @@ func reset():
 	current_weapon = "GUN"
 	var gun_damage = 50
 	var knife_damage = 25
+	var has_map_upgrade = false

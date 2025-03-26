@@ -134,7 +134,10 @@ func _physics_process(delta):
 		toggle_flashlight()
 		
 	if Input.is_action_just_released("toggle_map"):
-		toggle_map()
+		if PlayerData.has_map_upgrade:
+			toggle_map()
+		else:
+			print("Need to purchase map")
 	
 	#Allow movement if velocity it > 0 (moving)
 	if self.velocity.length() > 0:
@@ -196,23 +199,6 @@ func toggle_map():
 	elif get_tree().current_scene.scene_file_path == "res://Assets/Environment/level_5.tscn":
 		fullscreen_map.visible = !fullscreen_map.visible  # Toggle visibility
 		map_images[5].visible = !map_images[5].visible
-	#print(current_scene)
-	#
-	## Find the position of the first occurrence of the colon ":".
-	#var colon_pos = current_scene.rfind(":")
-#
-	## Take the substring before the colon (up to the found position).
-	#if colon_pos != -1:
-		#current_scene = current_scene.substr(0, colon_pos)
-#
-	#print(current_scene)  # Output: world
-	#
-	#
-	#for level in levels:
-		#if current_scene == level:
-			#fullscreen_map.visible = !fullscreen_map.visible  # Toggle visibility
-			#map_images[level].visible = !map_images[level].visible  # Toggle visibility
-		#
 		
 #Function for handling weapon switching/attacking
 func weapon_handler():

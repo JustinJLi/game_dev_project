@@ -176,6 +176,10 @@ func _on_confirm_button_pressed() -> void:
 				# Apply the max health upgrade
 				if Global.upgrade_bars_position[category] > 0:
 					PlayerData.max_health += Global.upgrade_bars_position[category] * 200  # Example: Each level adds 20 to max health
+			elif category == "Map":
+				# Apply the map upgrade
+				if Global.upgrade_bars_position[category] > 0:
+					PlayerData.has_map_upgrade = true  # Set map upgrade to true when the player purchases the map upgrade
 
 		# Reset upgrade levels after confirmation
 		for category in Global.upgrade_bars_position.keys():
