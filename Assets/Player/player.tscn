@@ -1,6 +1,7 @@
-[gd_scene load_steps=131 format=3 uid="uid://iy488y8isrrk"]
+[gd_scene load_steps=132 format=3 uid="uid://iy488y8isrrk"]
 
 [ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_cmp4a"]
+[ext_resource type="PackedScene" uid="uid://o8ku0jtnbydg" path="res://Assets/UI/full_screen_map/full_screen_map.tscn" id="2_2guo0"]
 [ext_resource type="Texture2D" uid="uid://crop6ahqsjvk1" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_0.png" id="2_foqwj"]
 [ext_resource type="Texture2D" uid="uid://d11jvcsntn7ma" path="res://Assets/Player/Top_Down_Survivor 2/handgun/idle/survivor-idle_handgun_1.png" id="3_eeghb"]
 [ext_resource type="PackedScene" uid="uid://c3jdtiryjg8cf" path="res://Assets/UI/level_complete_screen/level_complete_screen.tscn" id="3_h43iu"]
@@ -520,6 +521,11 @@ scale = Vector2(0.25, 0.25)
 collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_cmp4a")
+
+[node name="CanvasLayer5" type="CanvasLayer" parent="."]
+
+[node name="FullScreenMap" parent="CanvasLayer5" instance=ExtResource("2_2guo0")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

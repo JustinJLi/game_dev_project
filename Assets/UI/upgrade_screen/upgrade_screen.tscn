@@ -488,7 +488,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_h2qxv")
 theme_override_font_sizes/font_size = 40
-text = "2000 Points"
+text = "200 Points"
 vertical_alignment = 1
 
 [node name="GunDmgPointsLabel" type="Label" parent="."]
@@ -500,7 +500,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_h2qxv")
 theme_override_font_sizes/font_size = 40
-text = "1500 Points"
+text = "150 Points"
 vertical_alignment = 1
 
 [node name="KnifeDmgPointsLabel" type="Label" parent="."]
@@ -512,7 +512,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_h2qxv")
 theme_override_font_sizes/font_size = 40
-text = "1000 Points"
+text = "100 Points"
 vertical_alignment = 1
 
 [node name="MapPointsLabel" type="Label" parent="."]
@@ -524,7 +524,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_h2qxv")
 theme_override_font_sizes/font_size = 40
-text = "5000 Points"
+text = "1000 Points"
 vertical_alignment = 1
 
 [connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_resume_pressed"]

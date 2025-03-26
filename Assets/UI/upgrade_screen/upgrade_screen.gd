@@ -4,10 +4,10 @@ extends Node2D
 
 # Cost per upgrade level (this is an example; modify as needed)
 var upgrade_costs = {
-	"MaxHealth": 2000,  # Example cost for MaxHealth upgrade
-	"GunDmg": 1500,     # Example cost for GunDmg upgrade
-	"KnifeDmg": 1000,   # Example cost for KnifeDmg upgrade
-	"Map": 5000          # Example cost for Map upgrade
+	"MaxHealth": 200,  # Example cost for MaxHealth upgrade
+	"GunDmg": 150,     # Example cost for GunDmg upgrade
+	"KnifeDmg": 100,   # Example cost for KnifeDmg upgrade
+	"Map": 1000          # Example cost for Map upgrade
 }
 
 # Stores upgrade levels for each category
@@ -25,7 +25,10 @@ const MAX_LEVEL = 3
 var levels = [
 	"res://Assets/Environment/world.tscn",
 	"res://Assets/Environment/level_2.tscn",
-	"res://Assets/Environment/level_3.tscn"
+	"res://Assets/Environment/level_3.tscn",
+	"res://Assets/Environment/level_4.tscn",
+	"res://Assets/Environment/level_5.tscn"
+
 ]
 
 @onready var upgrade_screen: Node2D = $"."
@@ -164,11 +167,11 @@ func _on_confirm_button_pressed() -> void:
 			if category == "GunDmg":
 				# Apply the gun damage upgrade
 				if Global.upgrade_bars_position[category] > 0:
-					PlayerData.gun_damage += Global.upgrade_bars_position[category] * 10  # Example: Each level adds 2 to gun damage
+					PlayerData.gun_damage += Global.upgrade_bars_position[category] * 20  # Example: Each level adds 2 to gun damage
 			elif category == "KnifeDmg":
 				# Apply the knife damage upgrade
 				if Global.upgrade_bars_position[category] > 0:
-					PlayerData.knife_damage += Global.upgrade_bars_position[category] * 10  # Example: Each level adds 2 to knife damage
+					PlayerData.knife_damage += Global.upgrade_bars_position[category] * 20  # Example: Each level adds 2 to knife damage
 			elif category == "MaxHealth":
 				# Apply the max health upgrade
 				if Global.upgrade_bars_position[category] > 0:

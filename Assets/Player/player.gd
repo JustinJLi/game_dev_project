@@ -28,6 +28,7 @@ var player_damage = 0 #Represents damage done to the player
 @onready var pause_menu = $CanvasLayer/PauseMenu #Pause menu
 @onready var options_menu: Control = $CanvasLayer/PauseMenu/CanvasLayer/OptionsMenu #options menu
 @onready var game_over_screen: Node2D = $CanvasLayer3/GameOverScreen #Game over screen
+@onready var fullscreen_map: Node2D = $CanvasLayer5/FullScreenMap
 
 var paused = false #Determines if player paused the game
 var level_completed = false #Determines if a level is complete
@@ -36,7 +37,14 @@ var game_over = false #Determines if the player has lost (game over)
 enum Weapon { GUN, KNIFE } #Dictionary for player weapons 
 var current_weapon = Weapon.GUN #Current weapon held by the player
 var weapon_name = "" #Stores weapon name
-
+#var levels = [
+	#"world",
+	#"level_2",
+	#"level_3",
+	#"level_4",
+	#"level_5"
+#]
+#var current_scene = ""
 
 
 func _ready() -> void:
@@ -49,6 +57,8 @@ func _ready() -> void:
 	ammo = PlayerData.ammo
 	total_ammo = PlayerData.total_ammo
 	is_flashlight_on = PlayerData.is_flashlight_on
+	
+	#current_scene = get_tree().current_scene.to_string()
 
 	#Initialize interaction with objects, screen, and mouse cursor
 	InteractionManager.player = self
@@ -122,6 +132,9 @@ func _physics_process(delta):
 	#Flashlight toggle input reading
 	if Input.is_action_just_pressed("toggle_flashlight") and current_weapon == Weapon.GUN:
 		toggle_flashlight()
+		
+	if Input.is_action_just_released("toggle_map"):
+		toggle_map()
 	
 	#Allow movement if velocity it > 0 (moving)
 	if self.velocity.length() > 0:
@@ -147,7 +160,6 @@ func _physics_process(delta):
 
 #Function for acquiring different inputs
 func _input(event):
-	
 	# Acquire direction of right stick for player rotation
 	var right_stick = Vector2(
 		Input.get_action_strength("look_right") - Input.get_action_strength("look_left"),
@@ -165,6 +177,43 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		last_look_direction = last_look_direction.lerp(right_stick.normalized(), look_smoothness)
 
+
+func toggle_map():
+	var map_images = fullscreen_map.get_children()
+	
+	if get_tree().current_scene.scene_file_path == "res://Assets/Environment/world.tscn":
+		fullscreen_map.visible = !fullscreen_map.visible  # Toggle visibility
+		map_images[1].visible = !map_images[1].visible
+	elif get_tree().current_scene.scene_file_path == "res://Assets/Environment/level_2.tscn":
+		fullscreen_map.visible = !fullscreen_map.visible  # Toggle visibility
+		map_images[2].visible = !map_images[2].visible
+	elif get_tree().current_scene.scene_file_path == "res://Assets/Environment/level_3.tscn":
+		fullscreen_map.visible = !fullscreen_map.visible  # Toggle visibility
+		map_images[3].visible = !map_images[3].visible
+	elif get_tree().current_scene.scene_file_path == "res://Assets/Environment/level_4.tscn":
+		fullscreen_map.visible = !fullscreen_map.visible  # Toggle visibility
+		map_images[4].visible = !map_images[4].visible
+	elif get_tree().current_scene.scene_file_path == "res://Assets/Environment/level_5.tscn":
+		fullscreen_map.visible = !fullscreen_map.visible  # Toggle visibility
+		map_images[5].visible = !map_images[5].visible
+	#print(current_scene)
+	#
+	## Find the position of the first occurrence of the colon ":".
+	#var colon_pos = current_scene.rfind(":")
+#
+	## Take the substring before the colon (up to the found position).
+	#if colon_pos != -1:
+		#current_scene = current_scene.substr(0, colon_pos)
+#
+	#print(current_scene)  # Output: world
+	#
+	#
+	#for level in levels:
+		#if current_scene == level:
+			#fullscreen_map.visible = !fullscreen_map.visible  # Toggle visibility
+			#map_images[level].visible = !map_images[level].visible  # Toggle visibility
+		#
+		
 #Function for handling weapon switching/attacking
 func weapon_handler():
 	
