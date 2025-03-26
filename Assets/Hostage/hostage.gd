@@ -69,7 +69,7 @@ func _rescue_hostage():
 	total_hostages -= 1
 	hostages_rescued += 1
 	total_hostages_cleared += 1
-	hostages_rescued_score += 15000
+	hostages_rescued_score += 150
 
 	hud.update_hostages_cleared_label(total_hostages_cleared)
 	level_complete_screen.update_hostages_rescued_score(hostages_rescued, hostages_rescued_score)

@@ -1024,16 +1024,16 @@ position = Vector2(365, 554)
 position = Vector2(731, 882)
 
 [node name="Hostage" parent="." instance=ExtResource("8_53skn")]
-position = Vector2(252, 230)
+position = Vector2(571, 956)
 
 [node name="Hostage2" parent="." instance=ExtResource("8_53skn")]
-position = Vector2(334, 152)
+position = Vector2(1429, 257)
 
 [node name="Hostage3" parent="." instance=ExtResource("8_53skn")]
-position = Vector2(352, 90)
+position = Vector2(1709, 94)
 
 [node name="Hostage4" parent="." instance=ExtResource("8_53skn")]
-position = Vector2(313, 239)
+position = Vector2(1545, 579)
 
 [node name="Enemy" parent="." instance=ExtResource("4_q7ssq")]
 position = Vector2(1082, 318)
@@ -1084,7 +1084,7 @@ position = Vector2(1397, 584)
 position = Vector2(1820, 834)
 
 [node name="Player" parent="." instance=ExtResource("3_lilql")]
-position = Vector2(78, 81)
+position = Vector2(82, 89)
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
