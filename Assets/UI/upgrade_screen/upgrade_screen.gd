@@ -89,10 +89,6 @@ func update_total_cost():
 	total_cost = 0
 	for category in Global.upgrade_bars_position.keys():
 		total_cost += stored_upgrade_multipliers[category] * upgrade_costs[category]
-
-	# Ensure that total cost doesn't exceed player points
-	#if total_cost > player_points:
-		#total_cost = player_points  # Clamp it to the available points
 		
 
 
@@ -155,56 +151,49 @@ func update_total_points_label(player_points : int):
 func update_total_cost_label(total_cost : int):
 	total_cost_label.text = "Total Cost:                 " + str(total_cost) + " Points"
 
+		
+func _on_confirm_button_pressed() -> void:
+	if total_cost > Global.total_score_points:
+		print("Not enough cash, stranger")
+	elif total_cost <= Global.total_score_points:
+		# Deduct points and apply the upgrades
+		Global.total_score_points -= total_cost
 
-func _on_next_level_button_pressed() -> void:
-		# Get the current scene path
+		# Apply upgrades and update PlayerData
+		for category in Global.upgrade_bars_position.keys():
+			if category == "GunDmg":
+				# Apply the gun damage upgrade
+				if Global.upgrade_bars_position[category] > 0:
+					PlayerData.gun_damage += Global.upgrade_bars_position[category] * 10  # Example: Each level adds 2 to gun damage
+			elif category == "KnifeDmg":
+				# Apply the knife damage upgrade
+				if Global.upgrade_bars_position[category] > 0:
+					PlayerData.knife_damage += Global.upgrade_bars_position[category] * 10  # Example: Each level adds 2 to knife damage
+			elif category == "MaxHealth":
+				# Apply the max health upgrade
+				if Global.upgrade_bars_position[category] > 0:
+					PlayerData.max_health += Global.upgrade_bars_position[category] * 200  # Example: Each level adds 20 to max health
+
+		# Reset upgrade levels after confirmation
+		for category in Global.upgrade_bars_position.keys():
+			Global.upgrade_bars_position[category] = 0  # Reset upgrade bars position
+
+		# After confirming, update the labels
+		total_cost = 0
+		update_total_points_label(Global.total_score_points)
+		update_total_cost_label(total_cost)
+		
+	# Transition to next level
+	_load_next_level()
+
+# Load the next level
+func _load_next_level():
 	var current_scene_path = get_tree().current_scene.scene_file_path
-
-	# Find the index of the current scene in the levels array
 	var index = levels.find(current_scene_path)
 
-	# If the current scene is found and not the last level, load the next level
 	if index != -1 and index < levels.size() - 1:
 		current_level_index = index + 1
 		get_tree().change_scene_to_file(levels[current_level_index])
 	else:
 		print("No more levels! Returning to main menu.")
-		get_tree().change_scene_to_file("res://Assets/UI/main_menu/main_menu.tscn")  # Go back to main menu
-
-#func _on_back_button_pressed() -> void:
-	#level_complete_screen.show()
-	#upgrade_screen.hide()
-	
-	
-func _on_confirm_button_pressed() -> void:
-	
-	if total_cost > Global.total_score_points:
-		print("Not enough cash stranger")
-	# Confirm the purchase and check if the player has enough points
-	elif total_cost <= Global.total_score_points:
-		# Deduct points and apply the upgrades
-		Global.total_score_points -= total_cost
-# Apply the upgrades and update progress bars for the specific category
-		#for category in upgrades.keys():
-			## Apply upgrade if it hasn't reached the maximum level
-			#if upgrades[category] < MAX_LEVEL:
-				#upgrades[category] += 1  # Increment the upgrade level
-				#_update_progress_bars(category)  # Update only the progress bar for this category
-		## Reset the upgrade levels after confirming purchase
-		for category in Global.upgrade_bars_position.keys():
-			if Global.upgrade_bars_position[category] < 1:
-				Global.upgrade_bars_position[category] = 0  # Reset the upgrade level to 0
-			else:
-				stored_upgrade_multipliers[category] = 0
-				
-				
-	
-				
-		
-		## Update the progress bars for each category after reset
-		#for category in Global.upgrades.keys():
-			#_update_progress_bars(category)
-		# After confirming, update the labels
-		total_cost = 0
-		update_total_points_label(Global.total_score_points)
-		update_total_cost_label(total_cost)
+		get_tree().change_scene_to_file("res://Assets/UI/main_menu/main_menu.tscn")

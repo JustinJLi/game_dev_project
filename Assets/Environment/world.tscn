@@ -1024,16 +1024,16 @@ position = Vector2(365, 554)
 position = Vector2(731, 882)
 
 [node name="Hostage" parent="." instance=ExtResource("8_53skn")]
-position = Vector2(1439, 263)
+position = Vector2(252, 230)
 
 [node name="Hostage2" parent="." instance=ExtResource("8_53skn")]
-position = Vector2(1706, 82)
+position = Vector2(334, 152)
 
 [node name="Hostage3" parent="." instance=ExtResource("8_53skn")]
-position = Vector2(1620, 725)
+position = Vector2(352, 90)
 
 [node name="Hostage4" parent="." instance=ExtResource("8_53skn")]
-position = Vector2(583, 968)
+position = Vector2(313, 239)
 
 [node name="Enemy" parent="." instance=ExtResource("4_q7ssq")]
 position = Vector2(1082, 318)

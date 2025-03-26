@@ -24,6 +24,7 @@ var player_damage = 0 #Represents damage done to the player
 # Initializes several HUD components for the player
 @onready var hud = get_parent().get_node("HUD") #General HUD scene
 @onready var healthbar = get_parent().get_node("CanvasLayer/HUD/HealthBar") #Player healthvar
+@onready var damagebar = get_parent().get_node("CanvasLayer/HUD/HealthBar/DamageBar") #Player healthvar
 @onready var pause_menu = $CanvasLayer/PauseMenu #Pause menu
 @onready var options_menu: Control = $CanvasLayer/PauseMenu/CanvasLayer/OptionsMenu #options menu
 @onready var game_over_screen: Node2D = $CanvasLayer3/GameOverScreen #Game over screen
@@ -41,6 +42,9 @@ var weapon_name = "" #Stores weapon name
 func _ready() -> void:
 	#Initialize player hud with their persistent stats including health and ammo counts
 	call_deferred("_initialize_hud")
+	max_health = PlayerData.max_health
+	healthbar.size.x = max_health
+	damagebar.size.x = max_health
 	health = PlayerData.health
 	ammo = PlayerData.ammo
 	total_ammo = PlayerData.total_ammo

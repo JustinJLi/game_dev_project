@@ -6,6 +6,8 @@ var ammo = 8
 var total_ammo = 24
 var is_flashlight_on = true
 var current_weapon = "GUN"
+var gun_damage = 50
+var knife_damage = 25 
 
 # Call this to reset stats if needed
 func reset():
@@ -14,3 +16,5 @@ func reset():
 	total_ammo = 24
 	is_flashlight_on = true
 	current_weapon = "GUN"
+	var gun_damage = 50
+	var knife_damage = 25

@@ -311,6 +311,7 @@ layout_mode = 2
 show_percentage = false
 
 [node name="NextLevelButtonContainer" type="HBoxContainer" parent="."]
+visible = false
 offset_left = 1679.0
 offset_top = 965.0
 offset_right = 2252.0
@@ -366,10 +367,10 @@ text = "Back"
 metadata/_edit_use_anchors_ = true
 
 [node name="ConfirmButtonContainer" type="HBoxContainer" parent="."]
-offset_left = 1500.0
-offset_top = 823.0
-offset_right = 2073.0
-offset_bottom = 923.0
+offset_left = 1485.0
+offset_top = 825.0
+offset_right = 2058.0
+offset_bottom = 925.0
 
 [node name="ConfirmButton" type="Button" parent="ConfirmButtonContainer"]
 custom_minimum_size = Vector2(200, 100)
@@ -389,7 +390,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_o535t")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qjatd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5ncg5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
-text = "Confirm"
+text = "Confirm and 
+Go to Next Level"
 metadata/_edit_use_anchors_ = true
 
 [node name="MenuTitle" type="Label" parent="."]

@@ -112,9 +112,9 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 		return
 		
 	if area.name == "bullet_hitbox":
-		take_damage(50)
+		take_damage(PlayerData.gun_damage)
 	if area.name == "knife_hitbox":
-		take_damage(25)
+		take_damage(PlayerData.knife_damage)
 	
 	if player.level_completed:
 		return
