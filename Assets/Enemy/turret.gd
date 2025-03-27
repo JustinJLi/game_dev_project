@@ -97,8 +97,9 @@ func _on_interact():
 	queue_free()
 
 func _on_turret_timer_timeout() -> void:
-	fire()
-	$TurretShoot.play()
+	if !turret_dying:
+		fire()
+		$TurretShoot.play()
 
 
 func _on_turret_hitbox_area_entered(area: Area2D) -> void:
