@@ -20,11 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://c7s8y876x668w" path="res://Assets/Art/bloodsplat3_strip15.png" id="14_j6fa3"]
 [ext_resource type="PackedScene" uid="uid://cheyfa7hyapul" path="res://Assets/Environment/Notes/note.tscn" id="15_5k13u"]
 [ext_resource type="PackedScene" uid="uid://5pleal1rafp6" path="res://Assets/Hostage/hostage.tscn" id="15_hbacf"]
-[ext_resource type="Script" path="res://Assets/Environment/Notes/lvl3_note.gd" id="16_kcsar"]
 [ext_resource type="PackedScene" uid="uid://btepaiabjrmi7" path="res://Assets/Enemy/brute.tscn" id="16_wq22n"]
 [ext_resource type="PackedScene" uid="uid://bgn5xhaucw7bo" path="res://Assets/Enemy/turret.tscn" id="17_66l2e"]
 [ext_resource type="PackedScene" uid="uid://clsa2mtofaw5a" path="res://Assets/Enemy/enemy.tscn" id="17_oo0lg"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="18_u7tdc"]
+[ext_resource type="Script" path="res://Assets/Environment/Notes/lvl4_note.gd" id="20_aew54"]
 [ext_resource type="AudioStream" uid="uid://pur8q6nryd5x" path="res://Assets/Sounds/Metal-Gear-Solid-2-Strut-C-Dining-Hall-_1080p_24fps_H264-128kbit_AAC_.mp3" id="23_l7pjw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qs3r6"]
@@ -2584,7 +2584,7 @@ position = Vector2(95, 537)
 
 [node name="Note" parent="." instance=ExtResource("15_5k13u")]
 position = Vector2(943, 886)
-script = ExtResource("16_kcsar")
+script = ExtResource("20_aew54")
 
 [node name="Hostage" parent="." instance=ExtResource("15_hbacf")]
 position = Vector2(48, 45)

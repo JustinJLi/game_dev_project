@@ -4,9 +4,9 @@ extends Node2D
 @onready var sprite = $Sprite2D
 
 const lines: Array[String] = [
-	"Day 2...",
+	"Day 2. The Mansion.",
 	"6 individuals are being held hostage.",
-	"Intel reports that there are brutes on the field.",
+	"Intel reports that there are brutes within the mansion.",
 	"Be careful out there."
 ]
 

@@ -4,9 +4,9 @@ extends Node2D
 @onready var sprite = $Sprite2D
 
 const lines: Array[String] = [
-	"Day 1. The Base.",
-	"4 hostages were found in the area...",
-	"Locate them and get them out."
+	"Day 5. The Facility.",
+	"We got the intel we need.",
+	"Escape the facilty and make it back to base!",
 ]
 
 func _ready() -> void:
