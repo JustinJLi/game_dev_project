@@ -39,6 +39,8 @@ func update_on_screen_weapon(weapon_name : String):
 func _ready() -> void:
 	pistol.show()
 	knife.hide()
+	if PlayerData.has_map_upgrade:
+		$MapTexture.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

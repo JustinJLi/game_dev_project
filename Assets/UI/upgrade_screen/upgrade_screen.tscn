@@ -538,18 +538,18 @@ theme = SubResource("Theme_a2uey")
 ok_button_text = "Continue"
 dialog_text = "                                                                       Not Enough Cash Stranger!"
 
-[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_to_main_menu_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_pressed"]
