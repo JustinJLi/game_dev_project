@@ -81,6 +81,7 @@ func _rescue_hostage():
 	if total_hostages <= 0:
 		player.level_completed = true
 		level_complete_screen.show()
+		level_complete_screen.update_total_score()
 
 	queue_free()
 	
@@ -100,6 +101,7 @@ func _killed_hostage():
 	if total_hostages <= 0:
 		player.level_completed = true
 		level_complete_screen.show()
+		level_complete_screen.update_total_score()
 	
 	set_collision_layer_value(2, false)
 	$Shot.play()

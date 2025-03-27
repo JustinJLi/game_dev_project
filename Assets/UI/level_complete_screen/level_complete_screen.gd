@@ -35,7 +35,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	update_total_score()
+	pass
 # Reset the scores when transitioning to a new level
 func reset_scores():
 	#Global.total_score_points = 0
@@ -80,10 +80,13 @@ func update_hostages_killed_score(num_hostages_killed : int, score : int):
 	hostages_killed_score.text = "Hostages Killed: " + str(num_hostages_killed) + " = " + str(score) + " points"
 
 func update_total_score():
-	Global.total_score_points = Global.enemies_killed_points + Global.hostages_rescued_points + Global.hostages_killed_points
+	Global.total_score_points += Global.enemies_killed_points + Global.hostages_rescued_points + Global.hostages_killed_points
+	var total_score_for_level = Global.enemies_killed_points + Global.hostages_rescued_points + Global.hostages_killed_points
 	if Global.total_score_points <= 0:
 		Global.total_score_points = 0
-	total_score.text = "Total Score: " + str(Global.total_score_points)
+	if total_score_for_level <= 0:
+		total_score_for_level = 0
+	total_score.text = "Total Score: " + str(total_score_for_level)
 
 
 func _on_next_level_pressed() -> void:

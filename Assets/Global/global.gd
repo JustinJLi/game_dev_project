@@ -1,6 +1,7 @@
 extends Node
 
-var total_score_points = 10000
+var total_score_points = 0
+var total_player_points = 0
 var enemies_killed_points = 0
 var hostages_rescued_points = 0
 var hostages_killed_points = 0
