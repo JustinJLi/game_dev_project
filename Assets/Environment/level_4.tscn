@@ -2591,27 +2591,21 @@ position = Vector2(48, 45)
 
 [node name="Brute" parent="." instance=ExtResource("16_wq22n")]
 position = Vector2(56, 994)
-damage_dealt = 20
 
 [node name="Brute2" parent="." instance=ExtResource("16_wq22n")]
 position = Vector2(136, 147)
-damage_dealt = 20
 
 [node name="Brute5" parent="." instance=ExtResource("16_wq22n")]
 position = Vector2(708, 889)
-damage_dealt = 20
 
 [node name="Brute8" parent="." instance=ExtResource("16_wq22n")]
 position = Vector2(1835, 1017)
-damage_dealt = 20
 
 [node name="Brute9" parent="." instance=ExtResource("16_wq22n")]
 position = Vector2(319, 460)
-damage_dealt = 20
 
 [node name="Brute10" parent="." instance=ExtResource("16_wq22n")]
 position = Vector2(1600, 994)
-damage_dealt = 20
 
 [node name="Enemy" parent="." instance=ExtResource("17_oo0lg")]
 position = Vector2(201, 221)

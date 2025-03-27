@@ -2576,54 +2576,46 @@ position = Vector2(333, 1038)
 position = Vector2(51.0001, 1042)
 
 [node name="Hostage" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(1833, 989)
+position = Vector2(325, 111)
 
 [node name="Hostage2" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(1875, 163)
+position = Vector2(237, 106)
 
 [node name="Hostage3" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(43, 759)
+position = Vector2(274, 166)
 
 [node name="Hostage4" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(163, 303)
+position = Vector2(197, 158)
 
 [node name="Hostage5" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(565, 291)
+position = Vector2(137, 203)
 
 [node name="Hostage6" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(1364, 234)
+position = Vector2(158, 107)
 
 [node name="Brute" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(1677, 948)
-damage_dealt = 20
 
 [node name="Brute2" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(1161, 957)
-damage_dealt = 20
 
 [node name="Brute3" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(1799, 582)
-damage_dealt = 20
 
 [node name="Brute4" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(1813, 164)
-damage_dealt = 20
 
 [node name="Brute5" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(1675, 1036)
-damage_dealt = 20
 
 [node name="Brute6" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(790, 311)
-damage_dealt = 20
 
 [node name="Brute7" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(614, 395)
-damage_dealt = 20
 
 [node name="Brute8" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(978, 302)
-damage_dealt = 20
 
 [node name="Enemy" parent="." instance=ExtResource("14_eg5pu")]
 position = Vector2(1560, 994)

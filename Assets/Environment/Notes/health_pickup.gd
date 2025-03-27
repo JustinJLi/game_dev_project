@@ -13,9 +13,9 @@ func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
 
 func _on_interact():
-	if (player.health != 100):
-		if player.health < 50:
-			player.health += 50
+	if (player.health != PlayerData.max_health):
+		if player.health < PlayerData.max_health/2:
+			player.health += PlayerData.max_health/2
 		else:
 			player.health += player.max_health - player.health
 		healthbar._set_health(player.health)

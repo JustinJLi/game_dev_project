@@ -13,7 +13,7 @@ class_name enemy
 @onready var level_complete_screen = get_parent().get_node("Player/CanvasLayer2/LevelCompleteScreen")  
 @onready var healthbar = get_node("HealthBar")
 @export var max_health = 100
-@export var damage_dealt = 10
+@export var damage_dealt = 20
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var flash_animation = $AnimatedSprite2D/HitFlash
 @onready var death_animation = $AnimatedSprite2D/DeathFlash

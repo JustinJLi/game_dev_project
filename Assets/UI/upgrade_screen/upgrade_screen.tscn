@@ -88,7 +88,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
 text = "+"
 metadata/_edit_use_anchors_ = true
 
-[node name="GunDamagePlusButton" type="Button" parent="PlusButtonsContainer"]
+[node name="GunDmgPlusButton" type="Button" parent="PlusButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -108,7 +108,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
 text = "+"
 metadata/_edit_use_anchors_ = true
 
-[node name="KnifeDamagePlusButton" type="Button" parent="PlusButtonsContainer"]
+[node name="KnifeDmgPlusButton" type="Button" parent="PlusButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -175,7 +175,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
 text = "-"
 metadata/_edit_use_anchors_ = true
 
-[node name="GunDamageMinusButton" type="Button" parent="MinusButtonsContainer"]
+[node name="GunDmgMinusButton" type="Button" parent="MinusButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -195,7 +195,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_anuow")
 text = "-"
 metadata/_edit_use_anchors_ = true
 
-[node name="KnifeDamageMinusButton" type="Button" parent="MinusButtonsContainer"]
+[node name="KnifeDmgMinusButton" type="Button" parent="MinusButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -491,7 +491,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_h2qxv")
 theme_override_font_sizes/font_size = 40
-text = "200 Points"
+text = "2000 Points"
 vertical_alignment = 1
 
 [node name="GunDmgPointsLabel" type="Label" parent="."]
@@ -503,7 +503,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_h2qxv")
 theme_override_font_sizes/font_size = 40
-text = "150 Points"
+text = "1500 Points"
 vertical_alignment = 1
 
 [node name="KnifeDmgPointsLabel" type="Label" parent="."]
@@ -515,7 +515,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_h2qxv")
 theme_override_font_sizes/font_size = 40
-text = "100 Points"
+text = "1000 Points"
 vertical_alignment = 1
 
 [node name="MapPointsLabel" type="Label" parent="."]
@@ -527,7 +527,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_h2qxv")
 theme_override_font_sizes/font_size = 40
-text = "1000 Points"
+text = "1500 Points"
 vertical_alignment = 1
 
 [node name="NotEnoughPointsPopup" type="AcceptDialog" parent="."]
@@ -538,20 +538,20 @@ theme = SubResource("Theme_a2uey")
 ok_button_text = "Continue"
 dialog_text = "                                                                       Not Enough Cash Stranger!"
 
-[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_next_level_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/GunDmgPlusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/GunDmgPlusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/KnifeDmgPlusButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/KnifeDmgPlusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_to_main_menu_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_next_level_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/GunDmgMinusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/GunDmgMinusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/KnifeDmgMinusButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/KnifeDmgMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="NextLevelButtonContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]

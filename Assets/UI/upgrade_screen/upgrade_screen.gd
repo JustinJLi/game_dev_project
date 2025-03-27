@@ -4,13 +4,13 @@ extends Node2D
 
 # Cost per upgrade level (this is an example; modify as needed)
 var upgrade_costs = {
-	"MaxHealth": 200,  # Example cost for MaxHealth upgrade
-	"GunDmg": 150,     # Example cost for GunDmg upgrade
-	"KnifeDmg": 100,   # Example cost for KnifeDmg upgrade
-	"Map": 1000          # Example cost for Map upgrade
+	"MaxHealth": 2000,  # Example cost for MaxHealth upgrade
+	"GunDmg": 1500,     # Example cost for GunDmg upgrade
+	"KnifeDmg": 1000,   # Example cost for KnifeDmg upgrade
+	"Map": 1500          # Example cost for Map upgrade
 }
 
-# Stores upgrade levels for each category
+# Stores upgrade level multipliers for each category
 var stored_upgrade_multipliers = {
 	"MaxHealth": 0,
 	"GunDmg": 0,
@@ -31,8 +31,7 @@ var levels = [
 
 ]
 
-@onready var upgrade_screen: Node2D = $"."
-
+# onready variables
 var current_level_index = 0  # Track which level the player is on
 #@onready var level_complete_screen = get_parent().get_node("CanvasLayer2/LevelCompleteScreen")  
 @onready var total_points_label: Label = $TotalPointsLabel
@@ -44,22 +43,34 @@ var total_cost = 0
 @onready var knife_dmg_points_label: Label = $KnifeDmgPointsLabel
 @onready var map_points_label: Label = $MapPointsLabel
 @onready var not_enough_points_popup: AcceptDialog = $NotEnoughPointsPopup
+@onready var plus_buttons = {}  # Store plus buttons to disable them later
 
 
 
 func _ready():
-	#upgrade_screen.hide()
-
+	
+	# Update points labels on startup
 	update_total_points_label(Global.total_score_points)
 	update_total_cost_label(total_cost)
 
 	
 	# Connect buttons dynamically
 	_connect_buttons("MaxHealthPlusButton", "MaxHealthMinusButton", "MaxHealth")
-	_connect_buttons("GunDamagePlusButton", "GunDamageMinusButton", "GunDmg")
-	_connect_buttons("KnifeDamagePlusButton", "KnifeDamageMinusButton", "KnifeDmg")
+	_connect_buttons("GunDmgPlusButton", "GunDmgMinusButton", "GunDmg")
+	_connect_buttons("KnifeDmgPlusButton", "KnifeDmgMinusButton", "KnifeDmg")
 	_connect_buttons("MapPlusButton", "MapMinusButton", "Map")
 	#$ConfirmButton.connect("pressed", Callable(self, "_confirm_purchase"))
+	
+	
+	for category in Global.has_max_upgrades:
+		print(Global.has_max_upgrades[category])
+		if Global.has_max_upgrades[category] == true:
+				var plus_button = $PlusButtonsContainer.find_child(category + "PlusButton")
+				var minus_button = $MinusButtonsContainer.find_child(category + "MinusButton")
+				plus_button.disabled = true
+				minus_button.disabled = true
+				print(plus_button)
+				print(minus_button)
 
 
 func _process(delta: float) -> void:
@@ -72,6 +83,9 @@ func _connect_buttons(plus_name, minus_name, category):
 	
 	plus_button.connect("pressed", Callable(self, "_upgrade").bind(category, 1))
 	minus_button.connect("pressed", Callable(self, "_upgrade").bind(category, -1))
+	
+	# Store plus buttons for later disabling
+	plus_buttons[category] = plus_button
 
 func _upgrade(category, change):
 	if category == "Map":
@@ -83,6 +97,14 @@ func _upgrade(category, change):
 		Global.upgrade_bars_position[category] = clamp(Global.upgrade_bars_position[category] + change, 0, MAX_LEVEL)
 		stored_upgrade_multipliers[category] = clamp(stored_upgrade_multipliers[category] + change, 0, MAX_LEVEL)
 		_update_progress_bars(category)
+	
+	# Disable plus button if max level is reached
+	
+	if category == "Map":
+		if category in plus_buttons:
+			plus_buttons[category].disabled = Global.upgrade_bars_position[category] >= 1
+	elif category in plus_buttons:
+		plus_buttons[category].disabled = Global.upgrade_bars_position[category] >= MAX_LEVEL
 	
 	update_total_cost()
 
@@ -159,7 +181,7 @@ func update_total_cost_label(total_cost : int):
 func _on_confirm_button_pressed() -> void:
 	if total_cost > Global.total_score_points:
 		print("Not enough cash stranger")
-				# Show popup when not enough points
+		# Show popup when not enough points
 		not_enough_points_popup.show()
 		not_enough_points_popup.popup_centered()
 	elif total_cost <= Global.total_score_points:
@@ -168,22 +190,26 @@ func _on_confirm_button_pressed() -> void:
 
 		# Apply upgrades and update PlayerData
 		for category in Global.upgrade_bars_position.keys():
+			if Global.upgrade_bars_position[category] >= MAX_LEVEL || Global.upgrade_bars_position["Map"] >= 1:
+				Global.has_max_upgrades[category] = true
+				
 			if category == "GunDmg":
 				# Apply the gun damage upgrade
 				if Global.upgrade_bars_position[category] > 0:
-					PlayerData.gun_damage += Global.upgrade_bars_position[category] * 20  # Example: Each level adds 2 to gun damage
+					PlayerData.gun_damage += Global.upgrade_bars_position[category] * 20  # Example: Each level adds 20 to gun damage
 			elif category == "KnifeDmg":
 				# Apply the knife damage upgrade
 				if Global.upgrade_bars_position[category] > 0:
-					PlayerData.knife_damage += Global.upgrade_bars_position[category] * 20  # Example: Each level adds 2 to knife damage
+					PlayerData.knife_damage += Global.upgrade_bars_position[category] * 20  # Example: Each level adds 20 to knife damage
 			elif category == "MaxHealth":
 				# Apply the max health upgrade
 				if Global.upgrade_bars_position[category] > 0:
-					PlayerData.max_health += Global.upgrade_bars_position[category] * 200  # Example: Each level adds 20 to max health
+					PlayerData.max_health += Global.upgrade_bars_position[category] * 100  # Example: Each level adds 100 to max health
 			elif category == "Map":
 				# Apply the map upgrade
 				if Global.upgrade_bars_position[category] > 0:
 					PlayerData.has_map_upgrade = true  # Set map upgrade to true when the player purchases the map upgrade
+
 
 		# Reset upgrade levels after confirmation
 		for category in Global.upgrade_bars_position.keys():

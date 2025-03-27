@@ -13,6 +13,12 @@ var upgrade_bars_position = {
 	"Map": 0
 }
 
+var has_max_upgrades = {
+	"MaxHealth": false,
+	"GunDmg": false,
+	"KnifeDmg": false,
+	"Map": false
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

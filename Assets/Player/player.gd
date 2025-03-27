@@ -53,6 +53,10 @@ func _ready() -> void:
 	max_health = PlayerData.max_health
 	healthbar.size.x = max_health
 	damagebar.size.x = max_health
+	healthbar.max_value = max_health
+	damagebar.max_value = max_health
+	#healthbar.value = max_health
+	#damagebar.value = max_health
 	health = PlayerData.health
 	ammo = PlayerData.ammo
 	total_ammo = PlayerData.total_ammo
