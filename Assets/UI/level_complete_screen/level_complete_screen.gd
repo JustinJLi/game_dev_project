@@ -99,6 +99,7 @@ func _on_next_level_pressed() -> void:
 		get_tree().change_scene_to_file(levels[current_level_index])
 	else:
 		print("No more levels! Returning to main menu.")
+		PlayerData.reset()
 		get_tree().change_scene_to_file("res://Assets/UI/main_menu/main_menu.tscn")  # Go back to main menu
 
 
