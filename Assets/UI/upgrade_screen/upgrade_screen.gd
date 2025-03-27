@@ -43,6 +43,7 @@ var total_cost = 0
 @onready var gun_dmg_points_label: Label = $GunDmgPointsLabel
 @onready var knife_dmg_points_label: Label = $KnifeDmgPointsLabel
 @onready var map_points_label: Label = $MapPointsLabel
+@onready var not_enough_points_popup: AcceptDialog = $NotEnoughPointsPopup
 
 
 
@@ -157,7 +158,10 @@ func update_total_cost_label(total_cost : int):
 		
 func _on_confirm_button_pressed() -> void:
 	if total_cost > Global.total_score_points:
-		print("Not enough cash, stranger")
+		print("Not enough cash stranger")
+				# Show popup when not enough points
+		not_enough_points_popup.show()
+		not_enough_points_popup.popup_centered()
 	elif total_cost <= Global.total_score_points:
 		# Deduct points and apply the upgrades
 		Global.total_score_points -= total_cost
@@ -190,8 +194,8 @@ func _on_confirm_button_pressed() -> void:
 		update_total_points_label(Global.total_score_points)
 		update_total_cost_label(total_cost)
 		
-	# Transition to next level
-	_load_next_level()
+		# Transition to next level
+		_load_next_level()
 
 # Load the next level
 func _load_next_level():

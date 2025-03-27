@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3op51c04ke2m"]
+[gd_scene load_steps=10 format=3 uid="uid://d3op51c04ke2m"]
 
 [ext_resource type="Script" path="res://Assets/UI/upgrade_screen/upgrade_screen.gd" id="1_snisg"]
 [ext_resource type="Shader" path="res://Assets/UI/pause_menu/PauseMenu.gdshader" id="2_mhw0p"]
@@ -39,6 +39,9 @@ corner_radius_bottom_left = 16
 shadow_color = Color(0, 0, 0, 0.207843)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="Theme" id="Theme_a2uey"]
+default_font = ExtResource("3_h2qxv")
 
 [node name="UpgradeScreen" type="Node2D"]
 visible = false
@@ -527,18 +530,26 @@ theme_override_font_sizes/font_size = 40
 text = "1000 Points"
 vertical_alignment = 1
 
-[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_resume_pressed"]
+[node name="NotEnoughPointsPopup" type="AcceptDialog" parent="."]
+title = " Warning"
+position = Vector2i(465, 265)
+size = Vector2i(955, 515)
+theme = SubResource("Theme_a2uey")
+ok_button_text = "Continue"
+dialog_text = "                                                                       Not Enough Cash Stranger!"
+
 [connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/MaxHealthPlusButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="PlusButtonsContainer/GunDamagePlusButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/KnifeDamagePlusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="PlusButtonsContainer/MapPlusButton" to="." method="_on_exit_to_main_menu_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/MaxHealthMinusButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MinusButtonsContainer/GunDamageMinusButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/KnifeDamageMinusButton" to="." method="_on_exit_to_main_menu_pressed"]
 [connection signal="pressed" from="MinusButtonsContainer/MapMinusButton" to="." method="_on_exit_pressed"]
