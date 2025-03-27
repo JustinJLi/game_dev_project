@@ -45,8 +45,8 @@ func reset_scores():
 	
 	# Check if enemy exists before accessing it
 	if enemy != null:
-		enemy.enemies_cleared = 0
-		enemy.enemies_killed_score = 0
+		EnemyStats.enemies_cleared = 0
+		EnemyStats.enemies_killed_score = 0
 	
 	# Check if hostage exists before accessing it
 	if hostage != null:
@@ -58,7 +58,7 @@ func reset_scores():
 
 	# Update scores based on their current values
 	if enemy != null:
-		update_enemies_killed_score(enemy.enemies_cleared, enemy.enemies_killed_score)
+		update_enemies_killed_score(EnemyStats.enemies_cleared, EnemyStats.enemies_killed_score)
 	if hostage != null:
 		update_hostages_rescued_score(hostage.hostages_rescued, hostage.hostages_rescued_score)
 		update_hostages_killed_score(hostage.hostages_killed, hostage.hostages_killed_score)
@@ -108,6 +108,7 @@ func _on_exit_to_main_menu_pressed() -> void:
 
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()
+	EnemyStats.reset()
 
 
 func _on_purchase_upgrades_button_pressed() -> void:

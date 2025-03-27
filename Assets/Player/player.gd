@@ -76,6 +76,7 @@ func _ready() -> void:
 	
 	print("Ammo in Magazine: " + str(ammo))
 	print("Player Health: " + str(health))
+	print("Total enemies in level: " + str(EnemyStats.total_enemies))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

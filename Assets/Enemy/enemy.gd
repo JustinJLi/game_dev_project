@@ -11,8 +11,6 @@ class_name enemy
 @onready var original_color = vision_renderer.color if vision_renderer else Color.WHITE
 @onready var hud = get_parent().get_node("HUD")  
 @onready var level_complete_screen = get_parent().get_node("Player/CanvasLayer2/LevelCompleteScreen")  
-static var enemies_cleared = 0
-static var enemies_killed_score = 0
 @onready var healthbar = get_node("HealthBar")
 @export var max_health = 100
 @export var damage_dealt = 10
@@ -20,7 +18,6 @@ static var enemies_killed_score = 0
 @onready var flash_animation = $AnimatedSprite2D/HitFlash
 @onready var death_animation = $AnimatedSprite2D/DeathFlash
 var damage
-static var total_enemies = 0
 var health
 var ammo_pickup = preload("res://Assets/Environment/Notes/ammo_pickup.tscn")
 var enemy_dying = false
@@ -45,10 +42,9 @@ func _ready() -> void:
 	healthbar.hide()
 	
 	# Increase total enemies count when spawned
-	total_enemies += 1
+	EnemyStats.total_enemies += 1
 	#enemies_cleared = 0
 	#enemies_killed_score = 0
-	print(total_enemies)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -67,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play()
 	
 	if (player.game_over):
-		reset()
+		EnemyStats.reset()
 	
 	#if hostage != null:
 	#	if hostage.total_hostages <= 0:
@@ -86,11 +82,11 @@ func take_damage(damage_amount):
 		flash_animation.play("flash")
 	else:
 		enemy_dying = true
-		total_enemies -= 1  # Decrease enemy count when defeated
-		enemies_cleared += 1
-		enemies_killed_score += 100
-		hud.update_enemies_cleared_label(enemies_cleared)
-		level_complete_screen.update_enemies_killed_score(enemies_cleared, enemies_killed_score)
+		EnemyStats.total_enemies -= 1  # Decrease enemy count when defeated
+		EnemyStats.enemies_cleared += 1
+		EnemyStats.enemies_killed_score += 100
+		hud.update_enemies_cleared_label(EnemyStats.enemies_cleared)
+		level_complete_screen.update_enemies_killed_score(EnemyStats.enemies_cleared, EnemyStats.enemies_killed_score)
 		
 		if ammo_pickup and randf() < ammo_spawn_chance:
 			var ammo_instance = ammo_pickup.instantiate()
@@ -153,11 +149,3 @@ func _on_vision_cone_area_body_exited(body: Node2D) -> void:
 func _on_detection_box_area_entered(area: Area2D) -> void:
 	if area.name == "player_hitbox":
 		player_spotted = true
-
-func reset():
-	total_enemies = 0
-	enemies_cleared = 0
-	enemies_killed_score = 0
-	enemy_dying = false
-	player_spotted = false
-	player_lost = false
