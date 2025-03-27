@@ -5,7 +5,7 @@ var player: CharacterBody2D
 
 @export var enemy: CharacterBody2D
 @export var move_speed := 150.0
-@export var max_detection_range := 300
+@export var max_detection_range := 400
 var detection_range : int
 var nav_agent: NavigationAgent2D
 var timer: float = 0.0

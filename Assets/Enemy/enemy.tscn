@@ -356,9 +356,10 @@ parameters/looping = true
 [node name="VisionCone2D" parent="." instance=ExtResource("45_n6gay")]
 rotation = -1.5708
 angle_deg = 45
-ray_count = 25
-max_distance = 300.0
+ray_count = 15
+max_distance = 400.0
 collision_layer_mask = 3
+debug_lines = true
 
 [node name="VisionConeRenderer" parent="VisionCone2D" index="0"]
 color = Color(0, 0, 0, 0)
@@ -366,6 +367,7 @@ color = Color(0, 0, 0, 0)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 200.0
 path_postprocessing = 1
+avoidance_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
