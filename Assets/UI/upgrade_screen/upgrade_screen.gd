@@ -214,15 +214,18 @@ func _on_confirm_button_pressed() -> void:
 			if category == "GunDmg":
 				# Apply the gun damage upgrade
 				if Global.upgrade_bars_position[category] > 0:
-					PlayerData.gun_damage += Global.upgrade_bars_position[category] * 20  # Example: Each level adds 20 to gun damage
+					Global.upgrade_bars_position_temp[category] = Global.upgrade_bars_position[category]
+					PlayerData.gun_damage += Global.upgrade_bars_position_temp[category] * 20  # Example: Each level adds 20 to gun damage
 			elif category == "KnifeDmg":
 				# Apply the knife damage upgrade
 				if Global.upgrade_bars_position[category] > 0:
-					PlayerData.knife_damage += Global.upgrade_bars_position[category] * 20  # Example: Each level adds 20 to knife damage
+					Global.upgrade_bars_position_temp[category] = Global.upgrade_bars_position[category]
+					PlayerData.knife_damage += Global.upgrade_bars_position_temp[category] * 20  # Example: Each level adds 20 to knife damage
 			elif category == "MaxHealth":
 				# Apply the max health upgrade
 				if Global.upgrade_bars_position[category] > 0:
-					PlayerData.max_health += Global.upgrade_bars_position[category] * 100  # Example: Each level adds 100 to max health
+					Global.upgrade_bars_position_temp[category] = Global.upgrade_bars_position[category]
+					PlayerData.max_health += Global.upgrade_bars_position_temp[category] * 50  # Example: Each level adds 20 to max health
 			elif category == "Map":
 				# Check if player has purchased map already
 				if Global.upgrade_bars_position["Map"] >= 1:
@@ -233,9 +236,9 @@ func _on_confirm_button_pressed() -> void:
 					PlayerData.has_map_upgrade = true  # Set map upgrade to true when the player purchases the map upgrade
 
 
-		## Reset upgrade levels after confirmation
-		#for category in Global.upgrade_bars_position.keys():
-			#Global.upgrade_bars_position[category] = 0  # Reset upgrade bars position
+		# Reset upgrade levels after confirmation
+		for category in Global.upgrade_bars_position_temp.keys():
+			Global.upgrade_bars_position[category] = 0  # Reset upgrade bars position
 
 		# After confirming, update the labels
 		total_cost = 0
