@@ -213,17 +213,17 @@ func _on_confirm_button_pressed() -> void:
 				
 			if category == "GunDmg":
 				# Apply the gun damage upgrade
-				if Global.upgrade_bars_position[category] > 0:
+				if Global.upgrade_bars_position[category] > Global.upgrade_bars_new_lowest_position[category]:
 					Global.upgrade_bars_position_temp[category] = Global.upgrade_bars_position[category]
 					PlayerData.gun_damage += Global.upgrade_bars_position_temp[category] * 20  # Example: Each level adds 20 to gun damage
 			elif category == "KnifeDmg":
 				# Apply the knife damage upgrade
-				if Global.upgrade_bars_position[category] > 0:
+				if Global.upgrade_bars_position[category] > Global.upgrade_bars_new_lowest_position[category]:
 					Global.upgrade_bars_position_temp[category] = Global.upgrade_bars_position[category]
 					PlayerData.knife_damage += Global.upgrade_bars_position_temp[category] * 20  # Example: Each level adds 20 to knife damage
 			elif category == "MaxHealth":
 				# Apply the max health upgrade
-				if Global.upgrade_bars_position[category] > 0:
+				if Global.upgrade_bars_position[category] > Global.upgrade_bars_new_lowest_position[category]:
 					Global.upgrade_bars_position_temp[category] = Global.upgrade_bars_position[category]
 					PlayerData.max_health += Global.upgrade_bars_position_temp[category] * 50  # Example: Each level adds 20 to max health
 			elif category == "Map":
@@ -238,7 +238,7 @@ func _on_confirm_button_pressed() -> void:
 
 		# Reset upgrade levels after confirmation
 		for category in Global.upgrade_bars_position_temp.keys():
-			Global.upgrade_bars_position[category] = 0  # Reset upgrade bars position
+			Global.upgrade_bars_position_temp[category] = 0  # Reset upgrade bars position
 
 		# After confirming, update the labels
 		total_cost = 0
