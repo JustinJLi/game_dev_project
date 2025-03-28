@@ -1,8 +1,10 @@
 extends Node2D
 
+#get the player and the label used in the interaction
 @onready var player: Node2D = get_tree().get_first_node_in_group("Player")
 @onready var label: Label = $Label
 
+#Default text and variables used to determine access to interaction
 const keyboard_text = "[E] to "
 const controller_text = "[X] to "
 var active_areas: Array[InteractionArea] = []

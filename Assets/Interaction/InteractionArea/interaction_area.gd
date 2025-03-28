@@ -15,10 +15,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+#Register the area as an interactable object
 func _on_body_entered(body: Node2D) -> void:
 	InteractionManager.register_area(self)
 
-
+#Register the area as an interactable object
 func _on_body_exited(body: Node2D) -> void:
 	InteractionManager.unregister_area(self)
