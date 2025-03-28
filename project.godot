@@ -13,8 +13,9 @@ config_version=5
 config/name="final_project"
 run/main_scene="res://Assets/UI/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-boot_splash/bg_color=Color(0.48, 0.48, 0.48, 1)
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Assets/Art/bloodsplat3_strip15.png"
+config/icon="res://Assets/Art/crosshair.png"
 
 [autoload]
 

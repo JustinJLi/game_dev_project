@@ -8,7 +8,7 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_om1p6"]
 texture = ExtResource("1_rtbow")
-modulate_color = Color(0.517184, 0.517184, 0.517184, 1)
+modulate_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cabqj"]
 
