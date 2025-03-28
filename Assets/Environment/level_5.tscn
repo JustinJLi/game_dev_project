@@ -1551,7 +1551,6 @@ tile_map_data = PackedByteArray("AAABAAIAAQACAB0AAAABAAMAAQACAB0AAAACAAIAAQADAB0
 tile_set = SubResource("TileSet_et8bx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.393086, 0.393086, 0.393085, 1)
 
 [node name="SceneTransition" parent="." instance=ExtResource("10_i38s0")]
