@@ -359,7 +359,6 @@ angle_deg = 45
 ray_count = 15
 max_distance = 400.0
 collision_layer_mask = 3
-debug_lines = true
 
 [node name="VisionConeRenderer" parent="VisionCone2D" index="0"]
 color = Color(0, 0, 0, 0)
