@@ -14,6 +14,13 @@ var upgrade_bars_position = {
 	"Map": 0
 }
 
+var upgrade_bars_new_lowest_position = {
+	"MaxHealth": 0,
+	"GunDmg": 0,
+	"KnifeDmg": 0,
+	"Map": 0
+}
+
 var has_max_upgrades = {
 	"MaxHealth": false,
 	"GunDmg": false,

@@ -44,6 +44,10 @@ var total_cost = 0
 @onready var map_points_label: Label = $MapPointsLabel
 @onready var not_enough_points_popup: AcceptDialog = $NotEnoughPointsPopup
 @onready var plus_buttons = {}  # Store plus buttons to disable them later
+@onready var max_health_upgrade_bar_container: HBoxContainer = $MaxHealthUpgradeBarContainer
+@onready var gun_dmg_upgrade_bar_container: HBoxContainer = $GunDmgUpgradeBarContainer
+@onready var knife_dmg_upgrade_bar_container: HBoxContainer = $KnifeDmgUpgradeBarContainer
+@onready var map_upgrade_bar_container: HBoxContainer = $MapUpgradeBarContainer
 
 
 
@@ -60,7 +64,8 @@ func _ready():
 	_connect_buttons("KnifeDmgPlusButton", "KnifeDmgMinusButton", "KnifeDmg")
 	_connect_buttons("MapPlusButton", "MapMinusButton", "Map")
 	#$ConfirmButton.connect("pressed", Callable(self, "_confirm_purchase"))
-	
+	for category in Global.upgrade_bars_position:
+		_update_progress_bars(category)
 	
 	for category in Global.has_max_upgrades:
 		print(Global.has_max_upgrades[category])
@@ -71,11 +76,23 @@ func _ready():
 				minus_button.disabled = true
 				print(plus_button)
 				print(minus_button)
-
+				
+		if Global.upgrade_bars_position[category] >= 1:
+			Global.upgrade_bars_new_lowest_position[category] = Global.upgrade_bars_position[category]
 
 func _process(delta: float) -> void:
 	update_total_points_label(Global.total_score_points)
 	update_total_cost_label(total_cost)
+	for category in Global.upgrade_bars_position:
+		if Global.upgrade_bars_position[category] == Global.upgrade_bars_new_lowest_position[category]:
+			var minus_button = $MinusButtonsContainer.find_child(category + "MinusButton")
+			minus_button.disabled = true
+			print(minus_button)
+		else:
+			var minus_button = $MinusButtonsContainer.find_child(category + "MinusButton")
+			minus_button.disabled = false
+			print(minus_button)
+
 
 func _connect_buttons(plus_name, minus_name, category):
 	var plus_button = $PlusButtonsContainer.find_child(plus_name)
@@ -190,8 +207,9 @@ func _on_confirm_button_pressed() -> void:
 
 		# Apply upgrades and update PlayerData
 		for category in Global.upgrade_bars_position.keys():
-			if Global.upgrade_bars_position[category] >= MAX_LEVEL || Global.upgrade_bars_position["Map"] >= 1:
+			if Global.upgrade_bars_position[category] >= MAX_LEVEL:
 				Global.has_max_upgrades[category] = true
+			
 				
 			if category == "GunDmg":
 				# Apply the gun damage upgrade
@@ -206,14 +224,18 @@ func _on_confirm_button_pressed() -> void:
 				if Global.upgrade_bars_position[category] > 0:
 					PlayerData.max_health += Global.upgrade_bars_position[category] * 100  # Example: Each level adds 100 to max health
 			elif category == "Map":
+				# Check if player has purchased map already
+				if Global.upgrade_bars_position["Map"] >= 1:
+					Global.has_max_upgrades[category] = true
+				
 				# Apply the map upgrade
 				if Global.upgrade_bars_position[category] > 0:
 					PlayerData.has_map_upgrade = true  # Set map upgrade to true when the player purchases the map upgrade
 
 
-		# Reset upgrade levels after confirmation
-		for category in Global.upgrade_bars_position.keys():
-			Global.upgrade_bars_position[category] = 0  # Reset upgrade bars position
+		## Reset upgrade levels after confirmation
+		#for category in Global.upgrade_bars_position.keys():
+			#Global.upgrade_bars_position[category] = 0  # Reset upgrade bars position
 
 		# After confirming, update the labels
 		total_cost = 0
