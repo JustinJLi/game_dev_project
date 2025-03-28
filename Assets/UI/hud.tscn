@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chi227bo1t6mq"]
+[gd_scene load_steps=13 format=3 uid="uid://chi227bo1t6mq"]
 
 [ext_resource type="Script" path="res://Assets/UI/hud.gd" id="1_j1603"]
 [ext_resource type="Texture2D" uid="uid://cib20chcah721" path="res://Assets/UI/bullet.png" id="1_yodbu"]
@@ -10,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bmr7tlslbbydx" path="res://Assets/UI/healthbar/health_bar.tscn" id="8_gw0si"]
 [ext_resource type="Texture2D" uid="uid://bk5fuq73toera" path="res://Assets/Player/Knife_2.png" id="9_7odpq"]
 [ext_resource type="Texture2D" uid="uid://caugwp23atoec" path="res://Assets/Art/map.png" id="10_v2bvr"]
+[ext_resource type="FontFile" uid="uid://blykbpqefuxbh" path="res://TooMuchInk.ttf" id="11_gn7st"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i2tk4"]
+font = ExtResource("11_gn7st")
+font_size = 46
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("bullet_label", "hostages_cleared_label", "enemies_cleared_label") groups=["hud"]]
 layout_mode = 3
@@ -24,7 +29,6 @@ hostages_cleared_label = NodePath("HostagesClearedLabel")
 enemies_cleared_label = NodePath("EnemiesClearedLabel")
 
 [node name="Pistol" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PistolAmmoContainer" type="HBoxContainer" parent="Pistol"]
 anchors_preset = 3
@@ -249,6 +253,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HealthBar" parent="." instance=ExtResource("8_gw0si")]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 64.0
@@ -263,3 +268,13 @@ offset_right = 144.0
 offset_bottom = 1152.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_v2bvr")
+
+[node name="MapLabel" type="Label" parent="MapTexture"]
+visible = false
+layout_mode = 0
+offset_top = -44.0
+offset_right = 144.0
+offset_bottom = 3.0
+text = "[m]"
+label_settings = SubResource("LabelSettings_i2tk4")
+horizontal_alignment = 1

@@ -3,6 +3,7 @@ extends Control
 @export var bullet_label : Label
 @export var hostages_cleared_label : Label
 @export var enemies_cleared_label : Label
+@export var map_label : Label
 
 @onready var ammo_container = $Pistol/PistolAmmoContainer
 @onready var bullets = ammo_container.get_children()
@@ -10,7 +11,7 @@ extends Control
 #var weapons_array = ["Knife", "Pistol"]
 @onready var pistol: CanvasLayer = $Pistol
 @onready var knife: CanvasLayer = $Knife
-
+@onready var player: Node2D = get_tree().get_first_node_in_group("Player")
 
 func update_bullet_label(current_ammo: int, total_ammo: int):
 		bullet_label.text = str(current_ammo) + " / " + str(total_ammo)
@@ -41,8 +42,15 @@ func _ready() -> void:
 	knife.hide()
 	if PlayerData.has_map_upgrade:
 		$MapTexture.show()
+		$MapTexture/MapLabel.show()
+	else:
+		$MapTexture.hide()
+		$MapTexture/MapLabel.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if player.is_mouse:
+		$MapTexture/MapLabel.text = "[m]"
+	else:
+		$MapTexture/MapLabel.text = "[select]"

@@ -68,14 +68,14 @@ func _ready():
 		_update_progress_bars(category)
 	
 	for category in Global.has_max_upgrades:
-		print(Global.has_max_upgrades[category])
+		#print(Global.has_max_upgrades[category])
 		if Global.has_max_upgrades[category] == true:
 				var plus_button = $PlusButtonsContainer.find_child(category + "PlusButton")
 				var minus_button = $MinusButtonsContainer.find_child(category + "MinusButton")
 				plus_button.disabled = true
 				minus_button.disabled = true
-				print(plus_button)
-				print(minus_button)
+				#print(plus_button)
+				#print(minus_button)
 				
 		if Global.upgrade_bars_position[category] >= 1:
 			Global.upgrade_bars_new_lowest_position[category] = Global.upgrade_bars_position[category]
@@ -87,11 +87,11 @@ func _process(delta: float) -> void:
 		if Global.upgrade_bars_position[category] == Global.upgrade_bars_new_lowest_position[category]:
 			var minus_button = $MinusButtonsContainer.find_child(category + "MinusButton")
 			minus_button.disabled = true
-			print(minus_button)
+			#print(minus_button)
 		else:
 			var minus_button = $MinusButtonsContainer.find_child(category + "MinusButton")
 			minus_button.disabled = false
-			print(minus_button)
+			#print(minus_button)
 
 
 func _connect_buttons(plus_name, minus_name, category):
