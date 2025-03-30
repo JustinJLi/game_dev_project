@@ -2576,22 +2576,22 @@ position = Vector2(333, 1038)
 position = Vector2(51.0001, 1042)
 
 [node name="Hostage" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(325, 111)
+position = Vector2(1415, 250)
 
 [node name="Hostage2" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(237, 106)
+position = Vector2(1876, 159)
 
 [node name="Hostage3" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(274, 166)
+position = Vector2(564, 296)
 
 [node name="Hostage4" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(197, 158)
+position = Vector2(47, 765)
 
 [node name="Hostage5" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(137, 203)
+position = Vector2(154, 307)
 
 [node name="Hostage6" parent="." instance=ExtResource("12_cql2y")]
-position = Vector2(158, 107)
+position = Vector2(1872, 996)
 
 [node name="Brute" parent="." instance=ExtResource("13_e02nb")]
 position = Vector2(1677, 948)
@@ -2660,7 +2660,7 @@ position = Vector2(169, 470)
 position = Vector2(53, 403)
 
 [node name="Player" parent="." instance=ExtResource("15_lnr41")]
-position = Vector2(70, 72)
+position = Vector2(70, 100)
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
