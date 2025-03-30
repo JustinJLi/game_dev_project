@@ -253,7 +253,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HealthBar" parent="." instance=ExtResource("8_gw0si")]
-visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 64.0

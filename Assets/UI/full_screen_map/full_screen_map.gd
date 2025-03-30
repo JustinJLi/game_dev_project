@@ -1,10 +1,6 @@
 extends Node2D
 
-
-# Assuming you have a TextureRect node to display the map
-@onready var fullscreen_map = $FullscreenMap
-@onready var map_texture = preload("res://Assets/UI/map_images/lvl_1_map.png")
-
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 

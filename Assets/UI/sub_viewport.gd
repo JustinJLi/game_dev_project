@@ -1,4 +1,5 @@
 extends SubViewport
+# Code used for subviewport of scrapped minimap idea
 
 @onready var camera = $Camera2D
 @onready var player = get_tree().get_first_node_in_group("Player")  # Find player globally

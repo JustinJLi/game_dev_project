@@ -188,7 +188,7 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		last_look_direction = last_look_direction.lerp(right_stick.normalized(), look_smoothness)
 
-
+# Toggles map with specific image based on the level the player is on
 func toggle_map():
 	var map_images = fullscreen_map.get_children()
 	
