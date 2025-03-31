@@ -227,8 +227,8 @@ radius = 116.0
 height = 248.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_clb3v"]
-radius = 116.0
-height = 248.0
+radius = 120.0
+height = 256.0
 
 [node name="Brute" type="CharacterBody2D" node_paths=PackedStringArray("vision_renderer") groups=["Enemies"]]
 position = Vector2(-4, 0)

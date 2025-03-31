@@ -1498,6 +1498,7 @@ script = ExtResource("1_f0kp0")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("2_ynnkc")]
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HUD"]
 visible = false

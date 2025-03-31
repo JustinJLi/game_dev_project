@@ -29,6 +29,7 @@ EnemyStats="*res://Assets/Enemy/enemyStats.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://Assets/Art/crosshair.png"
 mouse_cursor/custom_image_hotspot=Vector2(0, 10)

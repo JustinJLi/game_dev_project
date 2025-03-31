@@ -120,7 +120,7 @@ func _on_turret_timer_timeout() -> void:
 #If the player shot a bullet at the turret, take 50 damage
 func _on_turret_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "bullet_hitbox":
-		take_damage(50)
+		take_damage(PlayerData.gun_damage)
 
 #Start timer once the player is in sight of the turret
 func _on_vision_cone_area_body_entered(body: Node2D) -> void:
