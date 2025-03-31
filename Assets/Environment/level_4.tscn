@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://b1c4s4vy51gly"]
+[gd_scene load_steps=41 format=4 uid="uid://b1c4s4vy51gly"]
 
 [ext_resource type="Script" path="res://Assets/Environment/level_2.gd" id="1_vvsnk"]
 [ext_resource type="PackedScene" uid="uid://chi227bo1t6mq" path="res://Assets/UI/hud.tscn" id="2_i8q3i"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://clsa2mtofaw5a" path="res://Assets/Enemy/enemy.tscn" id="17_oo0lg"]
 [ext_resource type="PackedScene" uid="uid://iy488y8isrrk" path="res://Assets/Player/player.tscn" id="18_u7tdc"]
 [ext_resource type="Script" path="res://Assets/Environment/Notes/lvl4_note.gd" id="20_aew54"]
+[ext_resource type="Script" path="res://Assets/Environment/Notes/lvl4_note1.gd" id="21_4oxxg"]
+[ext_resource type="Script" path="res://Assets/Environment/Notes/lvl4_note2.gd" id="22_tryje"]
+[ext_resource type="Script" path="res://Assets/Environment/Notes/lvl4_note3.gd" id="23_h58sc"]
 [ext_resource type="AudioStream" uid="uid://pur8q6nryd5x" path="res://Assets/Sounds/Metal-Gear-Solid-2-Strut-C-Dining-Hall-_1080p_24fps_H264-128kbit_AAC_.mp3" id="23_l7pjw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qs3r6"]
@@ -2586,6 +2589,18 @@ position = Vector2(95, 537)
 [node name="Note" parent="." instance=ExtResource("15_5k13u")]
 position = Vector2(943, 886)
 script = ExtResource("20_aew54")
+
+[node name="Note2" parent="." instance=ExtResource("15_5k13u")]
+position = Vector2(812, 206)
+script = ExtResource("21_4oxxg")
+
+[node name="Note3" parent="." instance=ExtResource("15_5k13u")]
+position = Vector2(1232, 728)
+script = ExtResource("22_tryje")
+
+[node name="Note4" parent="." instance=ExtResource("15_5k13u")]
+position = Vector2(72, 488)
+script = ExtResource("23_h58sc")
 
 [node name="Hostage" parent="." instance=ExtResource("15_hbacf")]
 position = Vector2(48, 45)

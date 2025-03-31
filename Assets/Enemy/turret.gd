@@ -106,10 +106,11 @@ func kill(points):
 #Function that is called when the turret is interacted with by the player
 func _on_interact():
 	#Get slightly less points for a disarm, but play the bark and remove the turret from the scene
-	kill(150)
-	$TurretDisarm.play()
-	await $TurretDisarm.finished
-	queue_free()
+	if !turret_dying:
+		kill(150)
+		$TurretDisarm.play()
+		await $TurretDisarm.finished
+		queue_free()
 
 #When a player is in sight of the turret and the turret cooldown is over, shoot a bullet
 func _on_turret_timer_timeout() -> void:
