@@ -1,7 +1,8 @@
 extends Control
 
 # Exported variables for UI labels, which can be set in the editor
-@export var bullet_label : Label
+#@export var bullet_label : Label
+@onready var bullet_label: Label = $Pistol/BulletLabel
 @export var hostages_cleared_label : Label
 @export var enemies_cleared_label : Label
 @export var map_label : Label
@@ -18,7 +19,15 @@ extends Control
 # Updates the bullet label to show current and total ammo
 func update_bullet_label(current_ammo: int, total_ammo: int):
 	bullet_label.text = str(current_ammo) + " / " + str(total_ammo)
+
+	# Change color based on ammo count
+	if current_ammo == 0:
+		bullet_label.modulate = Color(1,0,0)
+	else:
+		bullet_label.modulate = Color(1,1,1)
+
 	update_bullet_graphics(current_ammo)  # Update the visual representation of the bullets
+
 
 # Updates the bullet graphics based on the current ammo count
 func update_bullet_graphics(current_ammo: int):

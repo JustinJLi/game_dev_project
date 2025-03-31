@@ -16,7 +16,7 @@
 font = ExtResource("11_gn7st")
 font_size = 46
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("bullet_label", "hostages_cleared_label", "enemies_cleared_label") groups=["hud"]]
+[node name="HUD" type="Control" node_paths=PackedStringArray("hostages_cleared_label", "enemies_cleared_label") groups=["hud"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j1603")
-bullet_label = NodePath("Pistol/BulletLabel")
 hostages_cleared_label = NodePath("HostagesClearedLabel")
 enemies_cleared_label = NodePath("EnemiesClearedLabel")
 
